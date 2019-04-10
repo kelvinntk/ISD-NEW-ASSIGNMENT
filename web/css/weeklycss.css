@@ -1,0 +1,183 @@
+/* Global "table" column settings */
+
+
+.product-date {
+  float: left;
+  width: 10%;
+}
+
+.product-meal {
+  float: left;
+  width: 30%;
+}
+
+.product-image {
+  float: left;
+  width: 20%;
+}
+
+.product-price {
+  float: left;
+  width: 12%;
+}
+
+.product-Calories {
+  float: left;
+  width: 10%;
+}
+
+.shopping-cart {
+  width: 100%;
+}
+
+/* Apply clearfix in a few places */
+
+.shopping-cart:before,
+.shopping-cart:after,
+.column-labels:before,
+.column-labels:after,
+.product:before,
+.product:after,
+.totals-item:before,
+.totals-item:after {
+  content: '';
+  display: table;
+}
+
+.shopping-cart:after,
+.column-labels:after,
+.product:after,
+.totals-item:after {
+  clear: both;
+}
+
+/* Body/Header stuff */
+
+body {
+  font-weight: 100;
+}
+
+h1 {
+  font-weight: 100;
+}
+
+label {
+  color: #aaa;
+}
+
+/* Column headers */
+
+.column-labels label {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #eee;
+}
+
+/* Product entries */
+
+.product {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.product .product-image {
+  text-align: center;
+}
+
+.product .product-image img {
+  width: 100px;
+}
+
+.product-details .product-title {
+  margin-right: 20px;
+}
+
+
+.product .product-quantity input {
+  width: 40px;
+}
+
+.product .print-coupon:hover {
+  background-color: #a44;
+}
+
+.product .print-coupon {
+  border: 0;
+  padding: 4px 8px;
+  background-color: #c66;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.checkout {
+  background-color: white;
+  border: 2px solid #555555;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  float: right;
+}
+
+.checkout:hover {
+  background-color: #555555;
+  color: white;
+}
+
+.update {
+  background-color: white;
+  border: 2px solid #555555;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  float: right;
+}
+
+.update:hover {
+  background-color: #555555;
+  color: white;
+}
+
+.backorder {
+  background-color: white;
+  border: 2px solid #555555;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  float: right;
+}
+
+.backorder:hover {
+  background-color: #555555;
+  color: white;
+}
+
+.buttongroup1 {
+  margin-top: 5%;
+  margin-right: 45%;
+  text-align: center;
+}
