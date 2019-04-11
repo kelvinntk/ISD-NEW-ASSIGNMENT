@@ -2,8 +2,6 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,74 +11,53 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import Enity.*;
+import java.util.List;
+import javax.persistence.Query;
 
 /**
  *
  * @author Kelvin Ng Tiong Kiat
  */
-@WebServlet(name = "registerServlet", urlPatterns = {"/registerServlet"})
-public class registerServlet extends HttpServlet {
-
+@WebServlet(name = "profileServlet", urlPatterns = {"/profileServlet"})
+public class profileServlet extends HttpServlet {
     @PersistenceContext
     EntityManager em;
     @Resource
-    UserTransaction utx;   
-
+    UserTransaction utx;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            // get parameters from JSP
-            String id = request.getParameter("id");
-            String name = request.getParameter("name");
-            String email = request.getParameter("email");
-            String pass = request.getParameter("pass");
-            String rePass = request.getParameter("rePass");
-            String phone = request.getParameter("phone");
-            
-            if (id.indexOf("STUD") >=0 ){
-                // create student object
-                Student student  = new Student();
-                System.out.println(id);
-                student.setStudid(id);
-                student.setStudname(name);
-                student.setStudemail(email);
-                student.setStudpassword(pass);
-                student.setStudpassword(rePass);
-                student.setStudphone(phone);
-
-                // add student to database
-                utx.begin();
-                em.persist(student);
-                utx.commit();
-            } else if (id.indexOf("STAFF") >=0){
-                //create staff object
-                Staff staff  = new Staff();
-                System.out.println(id);
-                staff.setStaffid(id);
-                staff.setStaffname(name);
-                staff.setStaffemail1(email);
-                staff.setStaffpass(pass);
-                
-                // add student to database
-                utx.begin();
-                em.persist(staff);
-                utx.commit();
-            }
-        } catch (Exception ex) {
-            System.out.print("ERROR");
-            ex.printStackTrace();
-        }
         
-        // redirect
-        response.sendRedirect("login.jsp?success=DONE");
+            String id = request.getParameter("id");
+            String newEmail = request.getParameter("email");
+            String newPass = request.getParameter("pass");
+            String newPhone = request.getParameter("phone");
+            
+            try{
+            Query studquery = em.createNamedQuery("Student.findAll");
+            List <Student> studList = studquery.getResultList();
+                        
+            utx.begin();
+            Student student = new Student();  
+            student.setStudid(id);
+            student.setStudemail(newEmail);
+            student.setStudpassword(newPass);
+            student.setStudphone(newPhone);
+            em.merge(student);
+            utx.commit();
+            
+            HttpSession session = request.getSession();
+            studquery = em.createNamedQuery("Student.findAll");
+            studList = studquery.getResultList();
+            session.setAttribute("studList", studList);
+            
+            response.sendRedirect("Staff/FoodList.jsp");
+                
+            }catch (Exception ex){
+                System.out.println("Error");
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

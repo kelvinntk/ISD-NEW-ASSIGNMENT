@@ -35,31 +35,40 @@ public class loginServlet extends HttpServlet {
 
         // check if combination exists
         Student student = new Student();
-        
+        Staff staff = new Staff();
        try {
-            utx.begin();
+            //find id info from db
             student = (Student) em.find(Student.class, id);
+            staff = (Staff) em.find(Staff.class, id);
             //student = (Student) em.createQuery("SELECT s FROM Student s WHERE s.id = " + id + " AND s.pass = " + pass).getSingleResult();
-            utx.commit();
-
-          } catch (Exception ex) {
-              //error msg
-          }
-
-          // if exists, create session
-          if (student != null) {
             
-            if (student.getStudpassword().equals(pass)) {
-                HttpSession session  = request.getSession(true);
-                session.setAttribute("student", student);
-                request.getRequestDispatcher("studenthome.jsp").forward(request, response);
-            }
-          // if doesnt exist, go back to login page
-          } else {
-            request.setAttribute("errorMsg", "Invalid <span style=\"color: #ea5454\">username</span> or <span style=\"color: #ea5454\">pass</span>.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-
-          }
+            if (student != null) {
+                if (student.getStudpassword().equals(pass)) {
+                    HttpSession session  = request.getSession(true);
+                    session.setAttribute("student", student);
+                    request.getRequestDispatcher("studenthome.jsp").forward(request, response);
+                }
+                // if doesnt exist, go back to login page
+                else {
+                request.setAttribute("errorMsg", "Invalid <span style=\"color: #ea5454\">username</span> or <span style=\"color: #ea5454\">pass</span>.");
+                response.sendRedirect("login.jsp?loginstatus=studloginfail");
+                }
+          } 
+            else  if (staff != null) {
+                if (staff.getStaffpass().equals(pass)) {
+                    HttpSession session  = request.getSession(true);
+                    session.setAttribute("staff", staff);
+                    request.getRequestDispatcher("staffhome.jsp").forward(request, response);
+                }
+                else {
+                // if doesnt exist, go back to login page
+                request.setAttribute("errorMsg", "Invalid <span style=\"color: #ea5454\">username</span> or <span style=\"color: #ea5454\">pass</span>.");
+                request.getRequestDispatcher("login.jsp?loginstatus=staffloginfail").forward(request, response);
+                }
+          } 
+          } catch (Exception ex) {
+              System.out.println("ERROR");
+          }      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

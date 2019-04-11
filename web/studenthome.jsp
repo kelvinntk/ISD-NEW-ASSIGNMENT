@@ -4,6 +4,9 @@
     Author     : Kelvin Ng Tiong Kiat
 --%>
 
+<jsp:useBean id="student" scope="session" class="Enity.Student" />
+<%@page import="Enity.Student"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +45,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
             <li class="nav-item active"><a onclick="myFunction()" href="" class="nav-link">Credit point</a></li>
-            <li class="nav-item active"><a href="../login.html" class="nav-link">Student</a></li>
+            <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("student") != null) { %> ${student.studname} <% } else { %> Student <% } %></a></li>
           </ul>
         </div>
       </div>
@@ -58,7 +61,7 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center site-vh-100">
           <div class="col-md-12">
-            <h1 class="site-heading site-animate mb-3">Hello (Student name)</h1>
+            <h1 class="site-heading site-animate mb-3">Hello ${student.studname} </h1>
             <h2 class="h5 site-subheading mb-5 site-animate">Welcome to DeliciousFood</h2> 
                                
             <div class="menu">

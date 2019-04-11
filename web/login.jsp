@@ -3,7 +3,7 @@
     Created on : Apr 8, 2019, 3:54:46 PM
     Author     : Kelvin Ng Tiong Kiat
 --%>
-
+<jsp:useBean id="student" scope="session" class="Enity.Student" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,31 @@
   </head>
 
   <body>
-
+      <%
+          String status = request.getParameter("success");
+          String loginstatus = request.getParameter("loginstatus");
+      %>
+      <%
+          if (status != null){
+              if(status.equals("DONE")){
+      %>
+      <script>alert(" You have Successful register your account. **Press OK to proceed**");</script>
+      <%}}%>
+      
+      <%
+          if (loginstatus != null){
+              if(loginstatus.equals("studloginfail")){
+      %>
+      <script>alert(" **Student! Invalid ID or Password. Press OK to retry** ");</script>
+      <%}}%>
+      
+      <%
+          if (loginstatus != null){
+              if(loginstatus.equals("staffloginfail")){
+      %>
+      <script>alert(" **Staff! Invalid ID or Password. Press OK to retry** ");</script>
+      <%}}%>
+ 
     <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
         <a class="navbar-brand" href="home.html">DelicousFood</a>

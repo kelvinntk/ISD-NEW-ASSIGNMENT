@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href="../login.html" class="nav-link">Staff</a></li>
+            <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("staff") != null) { %> ${staff.staffname} <% } else { %> Staff <% } %></a></li>
           </ul>
         </div>
       </div>
@@ -52,7 +52,7 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center site-vh-100">
           <div class="col-md-12">
-            <h1 class="site-heading site-animate mb-3">Hello (Staff name)</h1>
+            <h1 class="site-heading site-animate mb-3">Hello ${staff.staffname}</h1>
             <h2 class="h5 site-subheading mb-5 site-animate">Button below will lead you to the process</h2>  
                 <div class="profile">
                     <p><a href="profile.jsp" class="btn btn-outline-white btn-lg site-animate">Profile</a></p>
