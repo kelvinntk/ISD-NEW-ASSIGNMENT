@@ -25,7 +25,7 @@ import Enity.*;
  *
  * @author Kelvin Ng Tiong Kiat
  */
-@WebServlet(name = "NewServlet", urlPatterns = {"/registerServlet"})
+@WebServlet(name = "registerServlet", urlPatterns = {"/registerServlet"})
 public class registerServlet extends HttpServlet {
 
     @PersistenceContext
