@@ -11,9 +11,7 @@
     <title>User Profile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-      
-	<link rel="stylesheet" type="text/css" href="css/profilecss.css">
+    <link rel="stylesheet" type="text/css" href="css/profilecss.css">
   </head>
   <body style="background-image: url('images/foodbg3.jpg'); background-size: cover">
    <div id="container">
@@ -29,32 +27,32 @@
         <h2 style="font-size:30px;">Your Profile</h2>
         <div class="wrap-input100">
             <span class="label-input100">Your ID</span>
-            <input class="input100" type="text" name="id" value="<%=student.getStudid()%>" disabled>
+            <input class="input100" type="text" name="id" value="<%=student.getStudid()%>" style="color:red;" disabled>
             <span class="focus-input100"></span>
         </div>
         <div class="wrap-input100">
             <span class="label-input100">Full name</span>
-            <input class="input100" type="text" name="name" value="<%=student.getStudname()%>">
+            <input class="input100" type="text" name="name" value="<%=student.getStudname()%>" >
             <span class="focus-input100"></span>
         </div>
         <div class="wrap-input100">
             <span class="label-input100">Email</span>
-            <input class="input100" type="email" name="email" value="<%=student.getStudid()%>">
+            <input class="input100" type="email" name="email" value="<%=student.getStudemail()%>">
             <span class="focus-input100"></span>
         </div>
         <div class="wrap-input100">
             <span class="label-input100">Password</span>
-            <input class="input100" type="password" name="pass" value="<%=student.getStudid()%>">
+            <input class="input100" type="password" name="pass" value="<%=student.getStudpassword()%>">
             <span class="focus-input100"></span>
         </div>
 
         <div class="wrap-input100">
             <span class="label-input100">Phone</span>
-            <input class="input100" type="text" name="phone">
+            <input class="input100" type="text" name="phone" value="<%=student.getStudphone()%>">
             <span class="focus-input100"></span>
         </div>
         <div>
-            <input class="button" type="submit">
+            <input class="button" type="Submit" value="Save">
         </div>
         <%
             } // end of else

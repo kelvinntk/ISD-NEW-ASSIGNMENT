@@ -55,7 +55,7 @@
             <h1 class="site-heading site-animate mb-3">Hello ${staff.staffname}</h1>
             <h2 class="h5 site-subheading mb-5 site-animate">Button below will lead you to the process</h2>  
                 <div class="profile">
-                    <p><a href="profile.jsp" class="btn btn-outline-white btn-lg site-animate">Profile</a></p>
+                    <p><a href="staffprofile.jsp" class="btn btn-outline-white btn-lg site-animate">Profile</a></p>
                 </div>
                 <div class="profileH">
                     Here you can view or edit your profile
@@ -67,7 +67,7 @@
                     The total pre-order that made from Student
                 </div>
                 <div class="coupon">
-                    <p><a href="../coupon.jsp" class="btn btn-outline-white btn-lg site-animate">Coupon</a></p>
+                    <p><a href="coupon.jsp" class="btn btn-outline-white btn-lg site-animate">Coupon</a></p>
                 </div>
                 <div class="couponH">
                     Insert coupon code to redeem their food

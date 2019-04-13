@@ -15,6 +15,7 @@ import javax.transaction.UserTransaction;
 import Enity.*;
 import java.util.List;
 import javax.persistence.Query;
+import javax.validation.ConstraintViolationException;
 
 /**
  *
@@ -29,8 +30,11 @@ public class profileServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-            String id = request.getParameter("id");
+            
+            HttpSession session = request.getSession(false);
+            Student student = (Student) session.getAttribute("student");
+            
+            String newName = request.getParameter("name");
             String newEmail = request.getParameter("email");
             String newPass = request.getParameter("pass");
             String newPhone = request.getParameter("phone");
@@ -38,25 +42,27 @@ public class profileServlet extends HttpServlet {
             try{
             Query studquery = em.createNamedQuery("Student.findAll");
             List <Student> studList = studquery.getResultList();
-                        
-            utx.begin();
-            Student student = new Student();  
-            student.setStudid(id);
+            
+            student.setStudname(newName);
             student.setStudemail(newEmail);
             student.setStudpassword(newPass);
             student.setStudphone(newPhone);
+            
+            utx.begin();
             em.merge(student);
             utx.commit();
             
-            HttpSession session = request.getSession();
+
             studquery = em.createNamedQuery("Student.findAll");
             studList = studquery.getResultList();
-            session.setAttribute("studList", studList);
+            session.setAttribute("student", student);
             
-            response.sendRedirect("Staff/FoodList.jsp");
+            response.sendRedirect("studenthome.jsp");
                 
-            }catch (Exception ex){
-                System.out.println("Error");
+            }catch (ConstraintViolationException e){
+                System.out.println(e.getConstraintViolations());
+            }catch(Exception ex){
+                System.out.println("ERROR");
             }
     }
 

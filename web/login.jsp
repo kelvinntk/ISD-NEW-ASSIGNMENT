@@ -4,6 +4,7 @@
     Author     : Kelvin Ng Tiong Kiat
 --%>
 <jsp:useBean id="student" scope="session" class="Enity.Student" />
+<jsp:useBean id="staff" scope="session" class="Enity.Staff" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +56,7 @@
  
     <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="home.html">DelicousFood</a>
+        <a class="navbar-brand" href="home.jsp">DelicousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
