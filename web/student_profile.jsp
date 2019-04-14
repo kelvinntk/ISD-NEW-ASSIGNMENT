@@ -15,7 +15,7 @@
   </head>
   <body style="background-image: url('images/foodbg3.jpg'); background-size: cover">
    <div id="container">
-     <form class="login100-form" action="profileServlet" method="post">
+     <form class="login100-form" action="student_profileServlet" method="post">
           <%
             // get session attributes
             Student student = (Student) session.getAttribute("student");
@@ -50,6 +50,10 @@
             <span class="label-input100">Phone</span>
             <input class="input100" type="text" name="phone" value="<%=student.getStudphone()%>">
             <span class="focus-input100"></span>
+        </div>
+            
+        <div>
+            <button href="studenthome.jsp" class="button" style="color: red;">Back</button>
         </div>
         <div>
             <input class="button" type="Submit" value="Save">

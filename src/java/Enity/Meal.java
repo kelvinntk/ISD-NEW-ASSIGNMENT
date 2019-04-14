@@ -8,15 +8,14 @@ package Enity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -56,14 +55,10 @@ public class Meal implements Serializable {
     @Lob
     @Column(name = "MEALIMAGE")
     private Serializable mealimage;
-    @ManyToMany(mappedBy = "mealList")
-    private List<Food> foodList;
-    @JoinTable(name = "ORDERMEAL", joinColumns = {
-        @JoinColumn(name = "MEAL_MEALID", referencedColumnName = "MEALID")}, inverseJoinColumns = {
-        @JoinColumn(name = "ORDER_ORDERID", referencedColumnName = "ORDERID")
-        , @JoinColumn(name = "ORDER_STUDENT_STUDID", referencedColumnName = "STUDENT_STUDID")})
-    @ManyToMany
-    private List<Order1> order1List;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meal")
+    private List<MealFood> mealFoodList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meal")
+    private List<Ordermeal> ordermealList;
 
     public Meal() {
     }
@@ -113,21 +108,21 @@ public class Meal implements Serializable {
     }
 
     @XmlTransient
-    public List<Food> getFoodList() {
-        return foodList;
+    public List<MealFood> getMealFoodList() {
+        return mealFoodList;
     }
 
-    public void setFoodList(List<Food> foodList) {
-        this.foodList = foodList;
+    public void setMealFoodList(List<MealFood> mealFoodList) {
+        this.mealFoodList = mealFoodList;
     }
 
     @XmlTransient
-    public List<Order1> getOrder1List() {
-        return order1List;
+    public List<Ordermeal> getOrdermealList() {
+        return ordermealList;
     }
 
-    public void setOrder1List(List<Order1> order1List) {
-        this.order1List = order1List;
+    public void setOrdermealList(List<Ordermeal> ordermealList) {
+        this.ordermealList = ordermealList;
     }
 
     @Override

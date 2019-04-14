@@ -36,51 +36,52 @@ public class registerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            // get parameters from JSP
-            String id = request.getParameter("id");
-            String name = request.getParameter("name");
-            String email = request.getParameter("email");
-            String pass = request.getParameter("pass");
-            String rePass = request.getParameter("rePass");
-            String phone = request.getParameter("phone");
+        
+        // get parameters from JSP
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String pass = request.getParameter("pass");
+        String rePass = request.getParameter("rePass");
+        String phone = request.getParameter("phone");
+        
+        Student student = new Student();
+        Staff staff = new Staff();
+        Manager manager = new Manager();
+        
+        try {   
+            student = (Student) em.find(Student.class, id);
             
-            if (id.indexOf("STUD") >=0 ){
-                // create student object
-                Student student  = new Student();
-                System.out.println(id);
-                student.setStudid(id);
-                student.setStudname(name);
-                student.setStudemail(email);
-                student.setStudpassword(pass);
-                student.setStudpassword(rePass);
-                student.setStudphone(phone);
-
-                // add student to database
-                utx.begin();
-                em.persist(student);
-                utx.commit();
-            } else if (id.indexOf("STAFF") >=0){
-                //create staff object
-                Staff staff  = new Staff();
-                System.out.println(id);
-                staff.setStaffid(id);
-                staff.setStaffname(name);
-                staff.setStaffemail1(email);
-                staff.setStaffpass(pass);
-                
-                // add student to database
-                utx.begin();
-                em.persist(staff);
-                utx.commit();
+            //validation
+            if (student != null){
+                if (id.indexOf("STUD") >=0 ){
+                    if(student.getStudid().equals(id)){
+                        HttpSession session  = request.getSession(true);
+                        session.setAttribute("student", student);
+                        response.sendRedirect("Register.jsp?status=studExisted&studid=" + student.getStudid() + "");
+                    } else{
+                        student.setStudid(id);
+                        student.setStudname(name);
+                        student.setStudemail(email);
+                        student.setStudpassword(pass);
+                        student.setStudpassword(rePass);
+                        student.setStudphone(phone);
+                        // add student to database
+                        utx.begin();
+                        em.persist(student);
+                        utx.commit();
+                    }  
+                }
             }
+            
         } catch (Exception ex) {
             System.out.print("ERROR");
             ex.printStackTrace();
         }
+        response.sendRedirect("login.jsp?success=DONE");
         
         // redirect
-        response.sendRedirect("login.jsp?success=DONE");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -30,19 +30,28 @@
   </head>
 
   <body style="background-color: #999999;">
-
+      <%
+          String status = request.getParameter("status");
+      %>
+      <%
+          if (status != null){
+              if(status.equals("studExisted")){
+      %>
+      <script>alert(" **Already exist** ");</script>
+      <%}}%>
+      
+      
     <div class="limiter">
       <div class="container-login100">
         <div class="login100-more" style="background-image: url('images/foodbg1.jpg');">
           <a href="../home.html" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">Cancel</a>
         </div>
-
         <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+            
           <form class="login100-form validate-form" action="registerServlet" method="post">
             <span class="login100-form-title p-b-59">
 	Sign Up
             </span>
-
             <div class="wrap-input100 validate-input" data-validate="User ID is required">
               <span class="label-input100">Your ID</span>
               <input class="input100" type="text" name="id" placeholder="EG0001...">

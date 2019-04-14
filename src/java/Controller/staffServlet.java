@@ -5,44 +5,66 @@
  */
 package Controller;
 
+import Enity.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
+import javax.validation.ConstraintViolationException;
 
 /**
  *
  * @author Kelvin Ng Tiong Kiat
  */
-@WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
-public class NewServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+@WebServlet(name = "staffServlet", urlPatterns = {"/staffServlet"})
+public class staffServlet extends HttpServlet {
+    @PersistenceContext
+    EntityManager em;
+    @Resource
+    UserTransaction utx;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+            HttpSession session = request.getSession(false);
+            Staff staff = (Staff) session.getAttribute("staff");
+            
+            String newName = request.getParameter("name");
+            String newEmail = request.getParameter("email");
+            String newPass = request.getParameter("pass");
+        
+        try {
+            Query staffquery = em.createNamedQuery("Staff.findAll");
+            List <Staff> staffList = staffquery.getResultList();
+            
+            staff.setStaffname(newName);
+            staff.setStaffemail(newEmail);
+            staff.setStaffpass(newPass);
+            
+            utx.begin();
+            em.merge(staff);
+            utx.commit();
+            
+            staffquery = em.createNamedQuery("Staff.findAll");
+            staffList = staffquery.getResultList();
+            session.setAttribute("staff", staff);
+            
+            response.sendRedirect("staffhome.jsp");
+            
+        } catch (ConstraintViolationException e){
+            System.out.println(e.getConstraintViolations());
+        } catch(Exception ex){
+            System.out.println("ERROR");
         }
     }
 

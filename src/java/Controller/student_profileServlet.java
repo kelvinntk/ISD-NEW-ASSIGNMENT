@@ -21,8 +21,8 @@ import javax.validation.ConstraintViolationException;
  *
  * @author Kelvin Ng Tiong Kiat
  */
-@WebServlet(name = "profileServlet", urlPatterns = {"/profileServlet"})
-public class profileServlet extends HttpServlet {
+@WebServlet(name = "student_profileServlet", urlPatterns = {"/student_profileServlet"})
+public class student_profileServlet extends HttpServlet {
     @PersistenceContext
     EntityManager em;
     @Resource

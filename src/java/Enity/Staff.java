@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Staff.findAll", query = "SELECT s FROM Staff s")
     , @NamedQuery(name = "Staff.findByStaffid", query = "SELECT s FROM Staff s WHERE s.staffid = :staffid")
     , @NamedQuery(name = "Staff.findByStaffname", query = "SELECT s FROM Staff s WHERE s.staffname = :staffname")
-    , @NamedQuery(name = "Staff.findByStaffemail1", query = "SELECT s FROM Staff s WHERE s.staffemail1 = :staffemail1")
+    , @NamedQuery(name = "Staff.findByStaffemail", query = "SELECT s FROM Staff s WHERE s.staffemail = :staffemail")
     , @NamedQuery(name = "Staff.findByStaffpass", query = "SELECT s FROM Staff s WHERE s.staffpass = :staffpass")})
 public class Staff implements Serializable {
 
@@ -43,8 +43,8 @@ public class Staff implements Serializable {
     @Column(name = "STAFFNAME")
     private String staffname;
     @Size(max = 50)
-    @Column(name = "STAFFEMAIL1")
-    private String staffemail1;
+    @Column(name = "STAFFEMAIL")
+    private String staffemail;
     @Size(max = 50)
     @Column(name = "STAFFPASS")
     private String staffpass;
@@ -72,12 +72,12 @@ public class Staff implements Serializable {
         this.staffname = staffname;
     }
 
-    public String getStaffemail1() {
-        return staffemail1;
+    public String getStaffemail() {
+        return staffemail;
     }
 
-    public void setStaffemail1(String staffemail1) {
-        this.staffemail1 = staffemail1;
+    public void setStaffemail(String staffemail) {
+        this.staffemail = staffemail;
     }
 
     public String getStaffpass() {

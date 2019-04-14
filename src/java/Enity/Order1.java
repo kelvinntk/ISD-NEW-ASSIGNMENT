@@ -8,14 +8,15 @@ package Enity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,11 +52,11 @@ public class Order1 implements Serializable {
     @Size(max = 20)
     @Column(name = "COUPONCODE")
     private String couponcode;
-    @ManyToMany(mappedBy = "order1List")
-    private List<Meal> mealList;
     @JoinColumn(name = "STUDENT_STUDID", referencedColumnName = "STUDID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Student student;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order1")
+    private List<Ordermeal> ordermealList;
 
     public Order1() {
     }
@@ -100,21 +101,21 @@ public class Order1 implements Serializable {
         this.couponcode = couponcode;
     }
 
-    @XmlTransient
-    public List<Meal> getMealList() {
-        return mealList;
-    }
-
-    public void setMealList(List<Meal> mealList) {
-        this.mealList = mealList;
-    }
-
     public Student getStudent() {
         return student;
     }
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    @XmlTransient
+    public List<Ordermeal> getOrdermealList() {
+        return ordermealList;
+    }
+
+    public void setOrdermealList(List<Ordermeal> ordermealList) {
+        this.ordermealList = ordermealList;
     }
 
     @Override

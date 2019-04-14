@@ -36,10 +36,12 @@ public class loginServlet extends HttpServlet {
         // check if combination exists
         Student student = new Student();
         Staff staff = new Staff();
+        Manager manager = new Manager();
        try {
             //find id info from db
             student = (Student) em.find(Student.class, id);
             staff = (Staff) em.find(Staff.class, id);
+            manager = (Manager) em.find(Manager.class, id);
             //student = (Student) em.createQuery("SELECT s FROM Student s WHERE s.id = " + id + " AND s.pass = " + pass).getSingleResult();
             
             if (student != null) {
@@ -50,7 +52,6 @@ public class loginServlet extends HttpServlet {
                 }
                 // if doesnt exist, go back to login page
                 else {
-                request.setAttribute("errorMsg", "Invalid <span style=\"color: #ea5454\">username</span> or <span style=\"color: #ea5454\">pass</span>.");
                 response.sendRedirect("login.jsp?loginstatus=studloginfail");
                 }
           } 
@@ -62,10 +63,20 @@ public class loginServlet extends HttpServlet {
                 }
                 else {
                 // if doesnt exist, go back to login page
-                request.setAttribute("errorMsg", "Invalid <span style=\"color: #ea5454\">username</span> or <span style=\"color: #ea5454\">pass</span>.");
                 request.getRequestDispatcher("login.jsp?loginstatus=staffloginfail").forward(request, response);
                 }
           } 
+            else if (manager != null){
+                 if (manager.getManagerpass().equals(pass)) {
+                    HttpSession session  = request.getSession(true);
+                    session.setAttribute("manager", manager);
+                    request.getRequestDispatcher("managerhome.jsp").forward(request, response);
+                }
+                else {
+                // if doesnt exist, go back to login page
+                request.getRequestDispatcher("login.jsp?loginstatus=staffloginfail").forward(request, response);
+                }
+            }
           } catch (Exception ex) {
               System.out.println("ERROR");
           }      

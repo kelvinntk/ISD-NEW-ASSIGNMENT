@@ -71,7 +71,7 @@
                 View the menu and order your meal
             </div>
             <div class="profile">  
-            <p><a href="profile.jsp" class="btn btn-outline-white btn-lg site-animate">Profile</a></p>
+            <p><a href="student_profile.jsp" class="btn btn-outline-white btn-lg site-animate">Profile</a></p>
             </div> 
             <div class="profileH">
                 Here you can view or edit your profile
