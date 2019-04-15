@@ -95,7 +95,7 @@
             </div>
               
               <div style="margin-left: 10px;">
-                  <a href="" >Forgot password?</a>
+                  <a href="recoverPass.jsp" >Forgot password?</a>
               </div>
             
             <div class="container-login100-form-btn m-t-32">

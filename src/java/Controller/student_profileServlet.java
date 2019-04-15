@@ -52,13 +52,13 @@ public class student_profileServlet extends HttpServlet {
             em.merge(student);
             utx.commit();
             
-
             studquery = em.createNamedQuery("Student.findAll");
             studList = studquery.getResultList();
             session.setAttribute("student", student);
             
-            response.sendRedirect("studenthome.jsp");
-                
+                request.setAttribute("alertMsg", "<span style=\"color: #20D845\">Sucessfully edit your profile</span>");
+                request.getRequestDispatcher("studenthome.jsp").forward(request, response);
+                return;    
             }catch (ConstraintViolationException e){
                 System.out.println(e.getConstraintViolations());
             }catch(Exception ex){

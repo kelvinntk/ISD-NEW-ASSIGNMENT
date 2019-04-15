@@ -42,7 +42,6 @@ public class loginServlet extends HttpServlet {
             student = (Student) em.find(Student.class, id);
             staff = (Staff) em.find(Staff.class, id);
             manager = (Manager) em.find(Manager.class, id);
-            //student = (Student) em.createQuery("SELECT s FROM Student s WHERE s.id = " + id + " AND s.pass = " + pass).getSingleResult();
             
             if (student != null) {
                 if (student.getStudpassword().equals(pass)) {

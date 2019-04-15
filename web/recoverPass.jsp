@@ -44,7 +44,7 @@
         
       <section class="site-cover" style="background:black;height: 400px;" id="section-home">
         <h1 style="padding-top:200px;text-align:center; visibility:hidden;" class="site-heading site-animate mb-3">
-          <p style="color:#b8b8b8;">Top up</p>
+          <p style="color:#b8b8b8;">Password recovery</p>
         </h1>
       </section>
 
@@ -57,34 +57,27 @@
                 
               <div class="col-lg-12 p-5">
                   
-                <h1 class="mb-4">Credit point</h1>  
-                <label for="m_fname">RM1 = 1 Credit point</label><br><br>
+                <h1 class="mb-4">Password</h1>  
+                <label for="m_fname">THIS FUNCTION IS NOT AVAILABLE YET</label><br><br>
                 
-                <form action="topupServlet" method="post">
-                    ${errorMsg}
-                    
+                <form action="topupServlet" method="post">                 
                    <div class="row">
                     <div class="col-md-12 form-group">
-                      <label for="m_fname">Student ID</label>
-                      <input type="text" name="id" class="form-control" id="m_fname">
+                      <label for="m_fname">Enter your email</label>
+                      <input type="text" name="email" class="form-control" id="m_fname">
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-12 form-group">
-                      <label for="m_fname">Insert your value in (RM)</label>
-                      <input type="text" name="credit" class="form-control" id="m_fname">
-                    </div>
-                  </div>
                     <br>
+                    
                   <div class="row">
                     <div class="col-md-12 form-group">
-                      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Enter">
+                      <input href="login.jsp"  class="btn btn-primary btn-lg btn-block" value="Enter">
                     </div>
                   </div>
                     
                           <div class="buttongroup1" style="text-align: center;">
-                              <button href="staffhome.jsp" style="float:left;" class="backorder">Back</button>
+                              <button href="home.jsp" style="float:left;" class="backorder">Back</button>
                           </div>
                 </form>
                 

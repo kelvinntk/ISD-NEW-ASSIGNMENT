@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Meal.findByMealname", query = "SELECT m FROM Meal m WHERE m.mealname = :mealname")
     , @NamedQuery(name = "Meal.findByMealdesc", query = "SELECT m FROM Meal m WHERE m.mealdesc = :mealdesc")
     , @NamedQuery(name = "Meal.findByMealprice", query = "SELECT m FROM Meal m WHERE m.mealprice = :mealprice")
-    , @NamedQuery(name = "Meal.findByMealimage", query = "SELECT m FROM Meal m WHERE m.mealimage = :mealimage")})
+    , @NamedQuery(name = "Meal.findByMealimage", query = "SELECT m FROM Meal m WHERE m.mealimage = :mealimage")
+    , @NamedQuery(name = "Meal.findByMealcategory", query = "SELECT m FROM Meal m WHERE m.mealcategory = :mealcategory")})
 public class Meal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,6 +56,9 @@ public class Meal implements Serializable {
     @Size(max = 50)
     @Column(name = "MEALIMAGE")
     private String mealimage;
+    @Size(max = 50)
+    @Column(name = "MEALCATEGORY")
+    private String mealcategory;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "meal")
     private List<MealFood> mealFoodList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "meal")
@@ -105,6 +109,14 @@ public class Meal implements Serializable {
 
     public void setMealimage(String mealimage) {
         this.mealimage = mealimage;
+    }
+
+    public String getMealcategory() {
+        return mealcategory;
+    }
+
+    public void setMealcategory(String mealcategory) {
+        this.mealcategory = mealcategory;
     }
 
     @XmlTransient

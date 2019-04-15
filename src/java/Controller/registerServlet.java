@@ -48,12 +48,14 @@ public class registerServlet extends HttpServlet {
         
         Student student = new Student();
         Staff staff = new Staff();
+        Manager manager = new Manager();
         
         try {   
             student = (Student) em.find(Student.class, id);
             staff = (Staff) em.find(Staff.class, id);
+            manager = (Manager) em.find(Manager.class, id);
             //validation
-            if (student == null && staff == null){
+            if (student == null && staff == null && manager == null){
                         if (id.indexOf("STUD") >=0 ){
                             student = new Student();
                             student.setStudid(id);
@@ -62,6 +64,7 @@ public class registerServlet extends HttpServlet {
                             student.setStudpassword(pass);
                             student.setStudpassword(rePass);
                             student.setStudphone(phone);
+                            student.setCredpoint(0);
                             // add student to database
                             utx.begin();
                             em.persist(student);
@@ -80,11 +83,22 @@ public class registerServlet extends HttpServlet {
                             utx.commit();
                             response.sendRedirect("login.jsp?success=DONE");
                         }
+                        else if(id.indexOf("MNG") >=0 ){
+                            manager = new Manager();
+                            manager.setManagerid(id);
+                            manager.setManagername(name);
+                            manager.setManageremail(email);
+                            manager.setManagerpass(pass);  
+                            
+                            utx.begin();
+                            em.persist(manager);
+                            utx.commit();
+                            response.sendRedirect("login.jsp?success=DONE");
+                        }
             } else{
                 request.setAttribute("errorMsg", "<span style=\"color: #ea5454\">ID already Exists</span>");
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
                 return;
-                //response.sendRedirect("Register.jsp?status=studExisted&studid=" + student.getStudid() + "");
             } 
             
         } catch (ConstraintViolationException e){

@@ -30,15 +30,6 @@
   </head>
 
   <body style="background-color: #999999;">
-      <%
-          String status = request.getParameter("status");
-      %>
-      <%
-          if (status != null){
-              if(status.equals("studExisted")){
-      %>
-      <script>alert(" **Student ID" ${student.studid} "Already exist** ");</script>
-      <%}}%>
       
       
     <div class="limiter">

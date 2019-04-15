@@ -44,28 +44,24 @@
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a onclick="myFunction()" href="" class="nav-link">Credit point</a></li>
+            <li class="nav-item active"><a class="nav-link">Credit point:  </a></li>
             <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("student") != null) { %> ${student.studname} <% } else { %> Student <% } %></a></li>
           </ul>
         </div>
       </div>
     </nav>
     <!-- END nav -->
-    <script>
-        function myFunction() {
-            alert("Your Balance: ");
-        }
-    </script>
 
+    
     <section class="site-cover" style="background-image: url(images/bg_3.jpg);" id="section-home">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center site-vh-100">
           <div class="col-md-12">
             <h1 class="site-heading site-animate mb-3">Hello ${student.studname} </h1>
             <h2 class="h5 site-subheading mb-5 site-animate">Welcome to DeliciousFood</h2> 
-                               
+            ${alertMsg}                   
             <div class="menu">
-                <p><a href="menu.jsp" class="btn btn-outline-white btn-lg site-animate">Menu</a></p>
+                <p><a href="Menu.jsp" class="btn btn-outline-white btn-lg site-animate">Menu</a></p>
             </div>
             <div class="menuH">
                 View the menu and order your meal

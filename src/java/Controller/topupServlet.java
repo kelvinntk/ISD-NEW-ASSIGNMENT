@@ -42,7 +42,7 @@ public class topupServlet extends HttpServlet {
         try {
             
             student = (Student) em.find(Student.class, id);
-            
+
             if (student != null) {
                 if (student.getStudid().equals(id)) {
                     HttpSession session  = request.getSession(true);
@@ -53,12 +53,18 @@ public class topupServlet extends HttpServlet {
 
                     utx.begin();
                     em.merge(student);
+                    System.out.println(id);
                     utx.commit();
 
-                    response.sendRedirect("topUp.jsp?status=success");
+                   // response.sendRedirect("topUp.jsp?status=success");
+                request.setAttribute("successMsg", "<span style=\"color: #20D845\">Sucessful add credit point</span>");
+                request.getRequestDispatcher("topUp.jsp").forward(request, response);
+                return;
                 }
             } else {
-                response.sendRedirect("topUp.jsp?status=notExist");
+                request.setAttribute("errorMsg", "<span style=\"color: #ea5454\">ERROR: Student not exists</span>");
+                request.getRequestDispatcher("topUp.jsp").forward(request, response);
+                return;
             }
         } catch (ConstraintViolationException e){
                 System.out.println(e.getConstraintViolations());
