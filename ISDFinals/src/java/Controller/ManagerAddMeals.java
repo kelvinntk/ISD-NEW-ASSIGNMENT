@@ -52,6 +52,13 @@ public class ManagerAddMeals extends HttpServlet {
             meal.setMealprice(mealprice);
             meal.setMealimage(mealimage);
             meal.setMealcategory(mealcategory);
+             for (int i = 0; i < foodList.size(); ++i) {
+                if (request.getParameter("foodArr[" + i + "]")!=null) {
+                    
+                    MealFood mealfood = new MealFood(mealFoodID,foodList.get(i),meal,1);
+                    selectedMealFood.add(mealfood);
+                }
+            }
             utx.begin();
             em.persist(meal);
             utx.commit();
