@@ -56,7 +56,7 @@ public class ManagerAddMeals extends HttpServlet {
             em.persist(meal);
             utx.commit();
             Query query = em.createNamedQuery("Meal.findAll");
-                    List<Meal> mealList = query.getResultList();
+                   
                     session.setAttribute("mealList", mealList);
         } catch(Exception ex) {
             System.out.println("ERROR");
