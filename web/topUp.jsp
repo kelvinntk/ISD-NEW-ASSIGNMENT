@@ -1,16 +1,16 @@
 <%-- 
-    Document   : cart
+    Document   : topup
     Created on : Apr 2, 2019, 2:05:32 PM
     Author     : User
 --%>
-
-  <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Enity.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html>
 
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>Payment</title>
+      <title>Top up</title>
       <link rel="stylesheet" href="css/ordercart.css">
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -26,7 +26,22 @@
     </head>
 
     <body>
-
+      <%
+          String status = request.getParameter("status");
+      %>
+      <%
+          if (status != null){
+              if(status.equals("notExist")){
+      %>
+      <script>alert(" **Invalid ID or Not Exist** ");</script>
+      <%}}%>
+      <%
+          if (status != null){
+              if(status.equals("success")){
+      %>
+      <script>alert(" **Successfully added** ");</script>
+      <%}}%>
+      
       <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
         <div class="container">
           <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
@@ -48,62 +63,45 @@
         </h1>
       </section>
 
-
-
-      <!-- Register -->
+      <!-- Coupon -->
         <div id="reservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel">
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-body">
             <div class="row">
               <div class="col-lg-12 p-5">
+                <h1 class="mb-4">Credit point</h1>  
+                <label for="m_fname">RM1 = 1 Credit point</label><br><br><br>
                 
-                <h1 class="mb-4">Register</h1>  
-                <form action="#" method="post">
-                  <div class="row">
+                <form action="topupServlet" method="post">
+                   <div class="row">
                     <div class="col-md-12 form-group">
-                      <label for="m_fname">First Name</label>
-                      <input type="text" class="form-control" id="m_fname">
-                    </div>
-                    
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12 form-group">
-                      <label for="m_email">Email</label>
-                      <input type="email" class="form-control" id="m_email">
-                    </div>
-                  </div>
-                    
-                  <div class="row">
-                    <div class="col-md-12 form-group">
-                      <label for="m_pass">Password</label>
-                      <input type="password" class="form-control" id="m_pass">
-                    </div>
-                  </div>
-                    
-                  <div class="row">
-                    <div class="col-md-12 form-group">
-                      <label for="m_phone">Phone number</label>
-                      <input type="text" class="form-control" id="m_phone">
+                      <label for="m_fname">Student ID</label>
+                      <input type="text" name="id" class="form-control" id="m_fname">
                     </div>
                   </div>
 
-                  
                   <div class="row">
                     <div class="col-md-12 form-group">
-                      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign Up">
+                      <label for="m_fname">Insert your value in (RM)</label>
+                      <input type="text" name="credit" class="form-control" id="m_fname">
                     </div>
                   </div>
-
+                    <br>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Enter">
+                    </div>
+                  </div>
                 </form>
+                
               </div>
-            </div>
-            
+            </div> 
           </div>
         </div>
       </div>
     </div>
-    <!-- End Register -->
+    <!-- End coupon -->
 
       <div class="buttongroup1" style="margin-bottom:50px;padding-top:100px;  text-align: center;">
         <form action="Menu.jsp" method="post">

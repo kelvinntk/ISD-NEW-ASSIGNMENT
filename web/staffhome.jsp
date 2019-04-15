@@ -72,6 +72,12 @@
                 <div class="couponH">
                     Insert coupon code to redeem their food
                 </div>
+                <div class="topup">
+                    <p><a href="topUp.jsp" class="btn btn-outline-white btn-lg site-animate">Top up</a></p>
+                </div>
+                <div class="topupH">
+                    Insert student credit point
+                </div>
                     <p><a href="logout.jsp" class="btn btn-outline-white btn-lg site-animate">Log out</a></p>
           </div>
         </div>
