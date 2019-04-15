@@ -48,6 +48,7 @@ public class loginServlet extends HttpServlet {
                     HttpSession session  = request.getSession(true);
                     session.setAttribute("student", student);
                     request.getRequestDispatcher("studenthome.jsp").forward(request, response);
+                    
                 }
                 // if doesnt exist, go back to login page
                 else {
