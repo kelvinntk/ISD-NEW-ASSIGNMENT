@@ -1,0 +1,48 @@
+.menuH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.menu:hover ~ .menuH {
+  height: 30px;
+  opacity: 2;
+}
+
+.profileH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.profile:hover ~ .profileH{
+  height: 30px;
+  opacity: 2;
+}
+
+.intakeH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.intake:hover ~ .intakeH {
+  height: 30px;
+  opacity: 2;
+}
+
+.historyH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.history:hover ~ .historyH {
+  height: 30px;
+  opacity: 2;
+}
+

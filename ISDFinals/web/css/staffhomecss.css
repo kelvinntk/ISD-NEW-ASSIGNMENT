@@ -1,0 +1,35 @@
+.profileH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.profile:hover ~ .profileH {
+  height: 30px;
+  opacity: 2;
+}
+
+.orderH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.order:hover ~ .orderH {
+  height: 30px;
+  opacity: 2;
+}
+
+.couponH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.coupon:hover ~ .couponH {
+  height: 30px;
+  opacity: 2;
+}

@@ -1,0 +1,59 @@
+.menuH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.menu:hover ~ .menuH {
+  height: 30px;
+  opacity: 2;
+}
+
+.profileH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.profile:hover ~ .profileH{
+  height: 30px;
+  opacity: 2;
+}
+
+.reportH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.report:hover ~ .reportH {
+  height: 30px;
+  opacity: 2;
+}
+.addfoodH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+    
+}
+.addfood:hover ~ .addfoodH{
+  height: 30px;
+  opacity: 2;
+    
+}
+.addmealH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+    
+}
+.addmeal:hover ~ .addmealH{
+  height: 30px;
+  opacity: 2;
+    
+}
