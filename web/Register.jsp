@@ -37,7 +37,7 @@
           if (status != null){
               if(status.equals("studExisted")){
       %>
-      <script>alert(" **Already exist** ");</script>
+      <script>alert(" **Student ID" ${student.studid} "Already exist** ");</script>
       <%}}%>
       
       
@@ -52,6 +52,7 @@
             <span class="login100-form-title p-b-59">
 	Sign Up
             </span>
+            ${errorMsg}
             <div class="wrap-input100 validate-input" data-validate="User ID is required">
               <span class="label-input100">Your ID</span>
               <input class="input100" type="text" name="id" placeholder="EG0001...">
@@ -92,9 +93,9 @@
             <div class="container-login100-form-btn">
               <div class="wrap-login100-form-btn">
                 <div class="login100-form-bgbtn"></div>
-                <input class="login100-form-btn" type="submit" href="login.jsp" style="background-color: #F7DC6F; ">
+                <input class="login100-form-btn" type="submit" value="Sign up" style="background-color: #F7DC6F; ">
               </div>
-                
+
               <a href="login.jsp" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
 	Sign in
                     <i class="fa fa-long-arrow-right m-l-5"></i>

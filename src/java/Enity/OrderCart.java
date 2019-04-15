@@ -29,20 +29,20 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Kelvin Ng Tiong Kiat
  */
 @Entity
-@Table(name = "Order")
+@Table(name = "ORDER_CART")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Order1.findAll", query = "SELECT o FROM Order1 o")
-    , @NamedQuery(name = "Order1.findByOrderid", query = "SELECT o FROM Order1 o WHERE o.order1PK.orderid = :orderid")
-    , @NamedQuery(name = "Order1.findByOrderdate", query = "SELECT o FROM Order1 o WHERE o.orderdate = :orderdate")
-    , @NamedQuery(name = "Order1.findByOrderstatus", query = "SELECT o FROM Order1 o WHERE o.orderstatus = :orderstatus")
-    , @NamedQuery(name = "Order1.findByCouponcode", query = "SELECT o FROM Order1 o WHERE o.couponcode = :couponcode")
-    , @NamedQuery(name = "Order1.findByStudentStudid", query = "SELECT o FROM Order1 o WHERE o.order1PK.studentStudid = :studentStudid")})
-public class Order1 implements Serializable {
+    @NamedQuery(name = "OrderCart.findAll", query = "SELECT o FROM OrderCart o")
+    , @NamedQuery(name = "OrderCart.findByOrderid", query = "SELECT o FROM OrderCart o WHERE o.orderCartPK.orderid = :orderid")
+    , @NamedQuery(name = "OrderCart.findByOrderdate", query = "SELECT o FROM OrderCart o WHERE o.orderdate = :orderdate")
+    , @NamedQuery(name = "OrderCart.findByOrderstatus", query = "SELECT o FROM OrderCart o WHERE o.orderstatus = :orderstatus")
+    , @NamedQuery(name = "OrderCart.findByCouponcode", query = "SELECT o FROM OrderCart o WHERE o.couponcode = :couponcode")
+    , @NamedQuery(name = "OrderCart.findByStudentStudid", query = "SELECT o FROM OrderCart o WHERE o.orderCartPK.studentStudid = :studentStudid")})
+public class OrderCart implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected Order1PK order1PK;
+    protected OrderCartPK orderCartPK;
     @Column(name = "ORDERDATE")
     @Temporal(TemporalType.DATE)
     private Date orderdate;
@@ -55,26 +55,26 @@ public class Order1 implements Serializable {
     @JoinColumn(name = "STUDENT_STUDID", referencedColumnName = "STUDID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Student student;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order1")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderCart")
     private List<Ordermeal> ordermealList;
 
-    public Order1() {
+    public OrderCart() {
     }
 
-    public Order1(Order1PK order1PK) {
-        this.order1PK = order1PK;
+    public OrderCart(OrderCartPK orderCartPK) {
+        this.orderCartPK = orderCartPK;
     }
 
-    public Order1(String orderid, String studentStudid) {
-        this.order1PK = new Order1PK(orderid, studentStudid);
+    public OrderCart(String orderid, String studentStudid) {
+        this.orderCartPK = new OrderCartPK(orderid, studentStudid);
     }
 
-    public Order1PK getOrder1PK() {
-        return order1PK;
+    public OrderCartPK getOrderCartPK() {
+        return orderCartPK;
     }
 
-    public void setOrder1PK(Order1PK order1PK) {
-        this.order1PK = order1PK;
+    public void setOrderCartPK(OrderCartPK orderCartPK) {
+        this.orderCartPK = orderCartPK;
     }
 
     public Date getOrderdate() {
@@ -121,18 +121,18 @@ public class Order1 implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (order1PK != null ? order1PK.hashCode() : 0);
+        hash += (orderCartPK != null ? orderCartPK.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order1)) {
+        if (!(object instanceof OrderCart)) {
             return false;
         }
-        Order1 other = (Order1) object;
-        if ((this.order1PK == null && other.order1PK != null) || (this.order1PK != null && !this.order1PK.equals(other.order1PK))) {
+        OrderCart other = (OrderCart) object;
+        if ((this.orderCartPK == null && other.orderCartPK != null) || (this.orderCartPK != null && !this.orderCartPK.equals(other.orderCartPK))) {
             return false;
         }
         return true;
@@ -140,7 +140,7 @@ public class Order1 implements Serializable {
 
     @Override
     public String toString() {
-        return "Enity.Order1[ order1PK=" + order1PK + " ]";
+        return "Enity.OrderCart[ orderCartPK=" + orderCartPK + " ]";
     }
     
 }

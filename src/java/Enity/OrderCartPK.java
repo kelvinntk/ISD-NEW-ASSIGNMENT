@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
  * @author Kelvin Ng Tiong Kiat
  */
 @Embeddable
-public class Order1PK implements Serializable {
+public class OrderCartPK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
@@ -30,10 +30,10 @@ public class Order1PK implements Serializable {
     @Column(name = "STUDENT_STUDID")
     private String studentStudid;
 
-    public Order1PK() {
+    public OrderCartPK() {
     }
 
-    public Order1PK(String orderid, String studentStudid) {
+    public OrderCartPK(String orderid, String studentStudid) {
         this.orderid = orderid;
         this.studentStudid = studentStudid;
     }
@@ -65,10 +65,10 @@ public class Order1PK implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order1PK)) {
+        if (!(object instanceof OrderCartPK)) {
             return false;
         }
-        Order1PK other = (Order1PK) object;
+        OrderCartPK other = (OrderCartPK) object;
         if ((this.orderid == null && other.orderid != null) || (this.orderid != null && !this.orderid.equals(other.orderid))) {
             return false;
         }
@@ -80,7 +80,7 @@ public class Order1PK implements Serializable {
 
     @Override
     public String toString() {
-        return "Enity.Order1PK[ orderid=" + orderid + ", studentStudid=" + studentStudid + " ]";
+        return "Enity.OrderCartPK[ orderid=" + orderid + ", studentStudid=" + studentStudid + " ]";
     }
     
 }

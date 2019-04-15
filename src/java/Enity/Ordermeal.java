@@ -26,8 +26,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Ordermeal.findAll", query = "SELECT o FROM Ordermeal o")
     , @NamedQuery(name = "Ordermeal.findByOrdermealid", query = "SELECT o FROM Ordermeal o WHERE o.ordermealPK.ordermealid = :ordermealid")
-    , @NamedQuery(name = "Ordermeal.findByOrderOrderid", query = "SELECT o FROM Ordermeal o WHERE o.ordermealPK.orderOrderid = :orderOrderid")
-    , @NamedQuery(name = "Ordermeal.findByOrderStudentStudid", query = "SELECT o FROM Ordermeal o WHERE o.ordermealPK.orderStudentStudid = :orderStudentStudid")
+    , @NamedQuery(name = "Ordermeal.findByOrderCartOrderid", query = "SELECT o FROM Ordermeal o WHERE o.ordermealPK.orderCartOrderid = :orderCartOrderid")
+    , @NamedQuery(name = "Ordermeal.findByOrderCartStudentStudid", query = "SELECT o FROM Ordermeal o WHERE o.ordermealPK.orderCartStudentStudid = :orderCartStudentStudid")
     , @NamedQuery(name = "Ordermeal.findByMealMealid", query = "SELECT o FROM Ordermeal o WHERE o.ordermealPK.mealMealid = :mealMealid")})
 public class Ordermeal implements Serializable {
 
@@ -38,10 +38,10 @@ public class Ordermeal implements Serializable {
     @ManyToOne(optional = false)
     private Meal meal;
     @JoinColumns({
-        @JoinColumn(name = "ORDER_ORDERID", referencedColumnName = "ORDERID", insertable = false, updatable = false)
-        , @JoinColumn(name = "ORDER_STUDENT_STUDID", referencedColumnName = "STUDENT_STUDID", insertable = false, updatable = false)})
+        @JoinColumn(name = "ORDER_CART_ORDERID", referencedColumnName = "ORDERID", insertable = false, updatable = false)
+        , @JoinColumn(name = "ORDER_CART_STUDENT_STUDID", referencedColumnName = "STUDENT_STUDID", insertable = false, updatable = false)})
     @ManyToOne(optional = false)
-    private Order1 order1;
+    private OrderCart orderCart;
 
     public Ordermeal() {
     }
@@ -50,8 +50,8 @@ public class Ordermeal implements Serializable {
         this.ordermealPK = ordermealPK;
     }
 
-    public Ordermeal(String ordermealid, String orderOrderid, String orderStudentStudid, String mealMealid) {
-        this.ordermealPK = new OrdermealPK(ordermealid, orderOrderid, orderStudentStudid, mealMealid);
+    public Ordermeal(String ordermealid, String orderCartOrderid, String orderCartStudentStudid, String mealMealid) {
+        this.ordermealPK = new OrdermealPK(ordermealid, orderCartOrderid, orderCartStudentStudid, mealMealid);
     }
 
     public OrdermealPK getOrdermealPK() {
@@ -70,12 +70,12 @@ public class Ordermeal implements Serializable {
         this.meal = meal;
     }
 
-    public Order1 getOrder1() {
-        return order1;
+    public OrderCart getOrderCart() {
+        return orderCart;
     }
 
-    public void setOrder1(Order1 order1) {
-        this.order1 = order1;
+    public void setOrderCart(OrderCart orderCart) {
+        this.orderCart = orderCart;
     }
 
     @Override

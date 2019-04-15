@@ -12,7 +12,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -34,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Meal.findByMealid", query = "SELECT m FROM Meal m WHERE m.mealid = :mealid")
     , @NamedQuery(name = "Meal.findByMealname", query = "SELECT m FROM Meal m WHERE m.mealname = :mealname")
     , @NamedQuery(name = "Meal.findByMealdesc", query = "SELECT m FROM Meal m WHERE m.mealdesc = :mealdesc")
-    , @NamedQuery(name = "Meal.findByMealprice", query = "SELECT m FROM Meal m WHERE m.mealprice = :mealprice")})
+    , @NamedQuery(name = "Meal.findByMealprice", query = "SELECT m FROM Meal m WHERE m.mealprice = :mealprice")
+    , @NamedQuery(name = "Meal.findByMealimage", query = "SELECT m FROM Meal m WHERE m.mealimage = :mealimage")})
 public class Meal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,9 +52,9 @@ public class Meal implements Serializable {
     private String mealdesc;
     @Column(name = "MEALPRICE")
     private Integer mealprice;
-    @Lob
+    @Size(max = 50)
     @Column(name = "MEALIMAGE")
-    private Serializable mealimage;
+    private String mealimage;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "meal")
     private List<MealFood> mealFoodList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "meal")
@@ -99,11 +99,11 @@ public class Meal implements Serializable {
         this.mealprice = mealprice;
     }
 
-    public Serializable getMealimage() {
+    public String getMealimage() {
         return mealimage;
     }
 
-    public void setMealimage(Serializable mealimage) {
+    public void setMealimage(String mealimage) {
         this.mealimage = mealimage;
     }
 

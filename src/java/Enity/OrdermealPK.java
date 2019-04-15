@@ -27,13 +27,13 @@ public class OrdermealPK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "ORDER_ORDERID")
-    private String orderOrderid;
+    @Column(name = "ORDER_CART_ORDERID")
+    private String orderCartOrderid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "ORDER_STUDENT_STUDID")
-    private String orderStudentStudid;
+    @Column(name = "ORDER_CART_STUDENT_STUDID")
+    private String orderCartStudentStudid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -43,10 +43,10 @@ public class OrdermealPK implements Serializable {
     public OrdermealPK() {
     }
 
-    public OrdermealPK(String ordermealid, String orderOrderid, String orderStudentStudid, String mealMealid) {
+    public OrdermealPK(String ordermealid, String orderCartOrderid, String orderCartStudentStudid, String mealMealid) {
         this.ordermealid = ordermealid;
-        this.orderOrderid = orderOrderid;
-        this.orderStudentStudid = orderStudentStudid;
+        this.orderCartOrderid = orderCartOrderid;
+        this.orderCartStudentStudid = orderCartStudentStudid;
         this.mealMealid = mealMealid;
     }
 
@@ -58,20 +58,20 @@ public class OrdermealPK implements Serializable {
         this.ordermealid = ordermealid;
     }
 
-    public String getOrderOrderid() {
-        return orderOrderid;
+    public String getOrderCartOrderid() {
+        return orderCartOrderid;
     }
 
-    public void setOrderOrderid(String orderOrderid) {
-        this.orderOrderid = orderOrderid;
+    public void setOrderCartOrderid(String orderCartOrderid) {
+        this.orderCartOrderid = orderCartOrderid;
     }
 
-    public String getOrderStudentStudid() {
-        return orderStudentStudid;
+    public String getOrderCartStudentStudid() {
+        return orderCartStudentStudid;
     }
 
-    public void setOrderStudentStudid(String orderStudentStudid) {
-        this.orderStudentStudid = orderStudentStudid;
+    public void setOrderCartStudentStudid(String orderCartStudentStudid) {
+        this.orderCartStudentStudid = orderCartStudentStudid;
     }
 
     public String getMealMealid() {
@@ -86,8 +86,8 @@ public class OrdermealPK implements Serializable {
     public int hashCode() {
         int hash = 0;
         hash += (ordermealid != null ? ordermealid.hashCode() : 0);
-        hash += (orderOrderid != null ? orderOrderid.hashCode() : 0);
-        hash += (orderStudentStudid != null ? orderStudentStudid.hashCode() : 0);
+        hash += (orderCartOrderid != null ? orderCartOrderid.hashCode() : 0);
+        hash += (orderCartStudentStudid != null ? orderCartStudentStudid.hashCode() : 0);
         hash += (mealMealid != null ? mealMealid.hashCode() : 0);
         return hash;
     }
@@ -102,10 +102,10 @@ public class OrdermealPK implements Serializable {
         if ((this.ordermealid == null && other.ordermealid != null) || (this.ordermealid != null && !this.ordermealid.equals(other.ordermealid))) {
             return false;
         }
-        if ((this.orderOrderid == null && other.orderOrderid != null) || (this.orderOrderid != null && !this.orderOrderid.equals(other.orderOrderid))) {
+        if ((this.orderCartOrderid == null && other.orderCartOrderid != null) || (this.orderCartOrderid != null && !this.orderCartOrderid.equals(other.orderCartOrderid))) {
             return false;
         }
-        if ((this.orderStudentStudid == null && other.orderStudentStudid != null) || (this.orderStudentStudid != null && !this.orderStudentStudid.equals(other.orderStudentStudid))) {
+        if ((this.orderCartStudentStudid == null && other.orderCartStudentStudid != null) || (this.orderCartStudentStudid != null && !this.orderCartStudentStudid.equals(other.orderCartStudentStudid))) {
             return false;
         }
         if ((this.mealMealid == null && other.mealMealid != null) || (this.mealMealid != null && !this.mealMealid.equals(other.mealMealid))) {
@@ -116,7 +116,7 @@ public class OrdermealPK implements Serializable {
 
     @Override
     public String toString() {
-        return "Enity.OrdermealPK[ ordermealid=" + ordermealid + ", orderOrderid=" + orderOrderid + ", orderStudentStudid=" + orderStudentStudid + ", mealMealid=" + mealMealid + " ]";
+        return "Enity.OrdermealPK[ ordermealid=" + ordermealid + ", orderCartOrderid=" + orderCartOrderid + ", orderCartStudentStudid=" + orderCartStudentStudid + ", mealMealid=" + mealMealid + " ]";
     }
     
 }

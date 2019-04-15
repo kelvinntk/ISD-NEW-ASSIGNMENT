@@ -77,6 +77,9 @@ public class loginServlet extends HttpServlet {
                 request.getRequestDispatcher("login.jsp?loginstatus=staffloginfail").forward(request, response);
                 }
             }
+            else{
+                request.getRequestDispatcher("login.jsp?loginstatus=invalidID").forward(request, response);
+            }
           } catch (Exception ex) {
               System.out.println("ERROR");
           }      

@@ -20,6 +20,7 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import Enity.*;
+import javax.validation.ConstraintViolationException;
 
 /**
  *
@@ -47,40 +48,53 @@ public class registerServlet extends HttpServlet {
         
         Student student = new Student();
         Staff staff = new Staff();
-        Manager manager = new Manager();
         
         try {   
             student = (Student) em.find(Student.class, id);
-            
+            staff = (Staff) em.find(Staff.class, id);
             //validation
-            if (student != null){
-                if (id.indexOf("STUD") >=0 ){
-                    if(student.getStudid().equals(id)){
-                        HttpSession session  = request.getSession(true);
-                        session.setAttribute("student", student);
-                        response.sendRedirect("Register.jsp?status=studExisted&studid=" + student.getStudid() + "");
-                    } else{
-                        student.setStudid(id);
-                        student.setStudname(name);
-                        student.setStudemail(email);
-                        student.setStudpassword(pass);
-                        student.setStudpassword(rePass);
-                        student.setStudphone(phone);
-                        // add student to database
-                        utx.begin();
-                        em.persist(student);
-                        utx.commit();
-                    }  
-                }
-            }
+            if (student == null && staff == null){
+                        if (id.indexOf("STUD") >=0 ){
+                            student = new Student();
+                            student.setStudid(id);
+                            student.setStudname(name);
+                            student.setStudemail(email);
+                            student.setStudpassword(pass);
+                            student.setStudpassword(rePass);
+                            student.setStudphone(phone);
+                            // add student to database
+                            utx.begin();
+                            em.persist(student);
+                            utx.commit();
+                            response.sendRedirect("login.jsp?success=DONE");
+                        } 
+                        else if(id.indexOf("STAFF") >=0 ){
+                            staff = new Staff();
+                            staff.setStaffid(id);
+                            staff.setStaffname(name);
+                            staff.setStaffemail(email);
+                            staff.setStaffpass(pass);  
+                            
+                            utx.begin();
+                            em.persist(staff);
+                            utx.commit();
+                            response.sendRedirect("login.jsp?success=DONE");
+                        }
+            } else{
+                request.setAttribute("errorMsg", "<span style=\"color: #ea5454\">ID already Exists</span>");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+                return;
+                //response.sendRedirect("Register.jsp?status=studExisted&studid=" + student.getStudid() + "");
+            } 
             
+        } catch (ConstraintViolationException e){
+                System.out.println(e.getConstraintViolations());
+                
         } catch (Exception ex) {
             System.out.print("ERROR");
             ex.printStackTrace();
         }
-        response.sendRedirect("login.jsp?success=DONE");
-        
-        // redirect
+     // redirect
         
     }
 

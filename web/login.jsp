@@ -53,6 +53,12 @@
       %>
       <script>alert(" **Staff! Invalid ID or Password. Press OK to retry** ");</script>
       <%}}%>
+      <%
+          if (loginstatus != null){
+              if(loginstatus.equals("invalidID")){
+      %>
+      <script>alert(" **Invalid ID. Press OK to retry** ");</script>
+      <%}}%>
  
     <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
@@ -78,20 +84,24 @@
           </span>
           <form class="login100-form validate-form p-b-33 p-t-5" action="loginServlet" method="post">
 
-            <div class="wrap-input100 validate-input" data-validate="Invalid User ID">
+            <div class="wrap-input100 validate-input" data-validate="ID Can't be empty">
               <input class="input100" type="text" name="id" placeholder="User ID">
               <span class="focus-input100" data-placeholder="&#xe82a;"></span>
             </div>
 
-            <div class="wrap-input100 validate-input" data-validate="Invalid Password">
+            <div class="wrap-input100 validate-input" data-validate="Password can't be empty">
               <input class="input100" type="password" name="pass" placeholder="Password">
               <span class="focus-input100" data-placeholder="&#xe80f;"></span>
             </div>
+              
+              <div style="margin-left: 10px;">
+                  <a href="" >Forgot password?</a>
+              </div>
             
             <div class="container-login100-form-btn m-t-32">
-              <input class="login100-form-btn" type="submit" >
-                
+              <input class="login100-form-btn" type="submit" value="Login" >  
             </div>
+              
             <div class="container-login100-form-btn m-t-32">
               <button class="login100-form-btn">
 	Sign up <!--Go their home page--> 
