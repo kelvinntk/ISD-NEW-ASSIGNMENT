@@ -34,7 +34,7 @@
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href=" " class="nav-link">Manager</a></li>
+            <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("manager") != null) { %> ${manager.managername} <% } else { %> Manager <% } %></a></li>
           </ul>
         </div>
       </div>
@@ -46,7 +46,7 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center site-vh-100">
           <div class="col-md-12">
-            <h1 class="site-heading site-animate mb-3">Hello (Manager name)</h1>
+            <h1 class="site-heading site-animate mb-3">Hello ${manager.managername}</h1>
             <h2 class="h5 site-subheading mb-5 site-animate">Welcome to DeliciousFood</h2> 
             
             <div class="profile">  

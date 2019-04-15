@@ -10,8 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
-
+import Enity.*;
 /**
  *
  * @author Kelvin Ng Tiong Kiat
@@ -23,41 +24,65 @@ public class loginServlet extends HttpServlet {
     EntityManager em;
     @Resource
     UserTransaction utx;
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            //get input details
-            String email = request.getParameter("email");
-            String pass = request.getParameter("pass");
-            
-            if(loginID.indexOf("STD") >=0){
-                Query query = em.createNamedQuery("Student.findAll");
-                List<Student> studentList = query.getResultList();
+        
+         // get email and password
+        String id = request.getParameter("id");
+        String pass = request.getParameter("pass");
 
-                for(int i=0 ; i<studentList.size() ; i++){
-                    Student stud = studentList.get(i);
-                    if(stud.getStudid().equals(loginID) && stud.getStudpassword().equals(password)){
-                        Student std = em.find(Student.class ,loginID);
-                        HttpSession session = request.getSession();
-                        session.setAttribute("student",std);
-                        
-                        Query foodquery = em.createNamedQuery("Food.findAll");
-                        Query mealquery = em.createNamedQuery("Meal.findAll");
-                        
-                        
-                        response.sendRedirect("HeaderFooter/loading.jsp?status=studentloggingin");
-                    }  
+        // check if combination exists
+        Student student = new Student();
+        Staff staff = new Staff();
+        Manager manager = new Manager();
+       try {
+            //find id info from db
+            student = (Student) em.find(Student.class, id);
+            staff = (Staff) em.find(Staff.class, id);
+            manager = (Manager) em.find(Manager.class, id);
+            
+            if (student != null) {
+                if (student.getStudpassword().equals(pass)) {
+                    HttpSession session  = request.getSession(true);
+                    session.setAttribute("student", student);
+                    request.getRequestDispatcher("studenthome.jsp").forward(request, response);
                     
                 }
-                response.sendRedirect("LoginRegister/Login.jsp?status=loginfailed");
+                // if doesnt exist, go back to login page
+                else {
+                response.sendRedirect("login.jsp?loginstatus=studloginfail");
+                }
+          } 
+            else  if (staff != null) {
+                if (staff.getStaffpass().equals(pass)) {
+                    HttpSession session  = request.getSession(true);
+                    session.setAttribute("staff", staff);
+                    request.getRequestDispatcher("staffhome.jsp").forward(request, response);
+                }
+                else {
+                // if doesnt exist, go back to login page
+                request.getRequestDispatcher("login.jsp?loginstatus=staffloginfail").forward(request, response);
+                }
+          } 
+            else if (manager != null){
+                 if (manager.getManagerpass().equals(pass)) {
+                    HttpSession session  = request.getSession(true);
+                    session.setAttribute("manager", manager);
+                    request.getRequestDispatcher("managerhome.jsp").forward(request, response);
+                }
+                else {
+                // if doesnt exist, go back to login page
+                request.getRequestDispatcher("login.jsp?loginstatus=staffloginfail").forward(request, response);
+                }
             }
-
-            
-        }catch (Exception ex){
-            //ntg
-        }
+            else{
+                request.getRequestDispatcher("login.jsp?loginstatus=invalidID").forward(request, response);
+            }
+          } catch (Exception ex) {
+              System.out.println("ERROR");
+          }      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

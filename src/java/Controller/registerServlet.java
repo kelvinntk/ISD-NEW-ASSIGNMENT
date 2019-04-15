@@ -20,12 +20,13 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import Enity.*;
+import javax.validation.ConstraintViolationException;
 
 /**
  *
  * @author Kelvin Ng Tiong Kiat
  */
-@WebServlet(name = "NewServlet", urlPatterns = {"/registerServlet"})
+@WebServlet(name = "registerServlet", urlPatterns = {"/registerServlet"})
 public class registerServlet extends HttpServlet {
 
     @PersistenceContext
@@ -36,7 +37,7 @@ public class registerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
+        
         // get parameters from JSP
         String id = request.getParameter("id");
         String name = request.getParameter("name");
@@ -45,27 +46,70 @@ public class registerServlet extends HttpServlet {
         String rePass = request.getParameter("rePass");
         String phone = request.getParameter("phone");
         
-        // create student object
-        Student student  = new Student();
-        System.out.println(id);
-        student.setStudid(id);
-        student.setStudname(name);
-        student.setStudemail(email);
-        student.setStudpassword(pass);
-        student.setStudpassword(rePass);
-        student.setStudphone(phone);
+        Student student = new Student();
+        Staff staff = new Staff();
+        Manager manager = new Manager();
         
-        // add student to database
-            utx.begin();
-            em.persist(student);
-            utx.commit();
+        try {   
+            student = (Student) em.find(Student.class, id);
+            staff = (Staff) em.find(Staff.class, id);
+            manager = (Manager) em.find(Manager.class, id);
+            //validation
+            if (student == null && staff == null && manager == null){
+                        if (id.indexOf("STUD") >=0 ){
+                            student = new Student();
+                            student.setStudid(id);
+                            student.setStudname(name);
+                            student.setStudemail(email);
+                            student.setStudpassword(pass);
+                            student.setStudpassword(rePass);
+                            student.setStudphone(phone);
+                            student.setCredpoint(0);
+                            // add student to database
+                            utx.begin();
+                            em.persist(student);
+                            utx.commit();
+                            response.sendRedirect("login.jsp?success=DONE");
+                        } 
+                        else if(id.indexOf("STAFF") >=0 ){
+                            staff = new Staff();
+                            staff.setStaffid(id);
+                            staff.setStaffname(name);
+                            staff.setStaffemail(email);
+                            staff.setStaffpass(pass);  
+                            
+                            utx.begin();
+                            em.persist(staff);
+                            utx.commit();
+                            response.sendRedirect("login.jsp?success=DONE");
+                        }
+                        else if(id.indexOf("MNG") >=0 ){
+                            manager = new Manager();
+                            manager.setManagerid(id);
+                            manager.setManagername(name);
+                            manager.setManageremail(email);
+                            manager.setManagerpass(pass);  
+                            
+                            utx.begin();
+                            em.persist(manager);
+                            utx.commit();
+                            response.sendRedirect("login.jsp?success=DONE");
+                        }
+            } else{
+                request.setAttribute("errorMsg", "<span style=\"color: #ea5454\">ID already Exists</span>");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+                return;
+            } 
+            
+        } catch (ConstraintViolationException e){
+                System.out.println(e.getConstraintViolations());
+                
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            System.out.print("ERROR");
             ex.printStackTrace();
         }
+     // redirect
         
-        // redirect
-        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

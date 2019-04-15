@@ -8,14 +8,13 @@ package Enity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,7 +31,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Food.findAll", query = "SELECT f FROM Food f")
     , @NamedQuery(name = "Food.findByFoodid", query = "SELECT f FROM Food f WHERE f.foodid = :foodid")
-    , @NamedQuery(name = "Food.findByFoodname", query = "SELECT f FROM Food f WHERE f.foodname = :foodname")})
+    , @NamedQuery(name = "Food.findByFoodname", query = "SELECT f FROM Food f WHERE f.foodname = :foodname")
+    , @NamedQuery(name = "Food.findByCalories", query = "SELECT f FROM Food f WHERE f.calories = :calories")})
 public class Food implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,11 +45,10 @@ public class Food implements Serializable {
     @Size(max = 50)
     @Column(name = "FOODNAME")
     private String foodname;
-    @JoinTable(name = "MEAL_FOOD", joinColumns = {
-        @JoinColumn(name = "FOOD_FOODID", referencedColumnName = "FOODID")}, inverseJoinColumns = {
-        @JoinColumn(name = "MEAL_MEALID", referencedColumnName = "MEALID")})
-    @ManyToMany
-    private List<Meal> mealList;
+    @Column(name = "CALORIES")
+    private Integer calories;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "food")
+    private List<MealFood> mealFoodList;
 
     public Food() {
     }
@@ -74,13 +73,21 @@ public class Food implements Serializable {
         this.foodname = foodname;
     }
 
-    @XmlTransient
-    public List<Meal> getMealList() {
-        return mealList;
+    public Integer getCalories() {
+        return calories;
     }
 
-    public void setMealList(List<Meal> mealList) {
-        this.mealList = mealList;
+    public void setCalories(Integer calories) {
+        this.calories = calories;
+    }
+
+    @XmlTransient
+    public List<MealFood> getMealFoodList() {
+        return mealFoodList;
+    }
+
+    public void setMealFoodList(List<MealFood> mealFoodList) {
+        this.mealFoodList = mealFoodList;
     }
 
     @Override

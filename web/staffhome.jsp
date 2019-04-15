@@ -40,8 +40,8 @@
         </button>
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href="../login.html" class="nav-link">Staff</a></li>
+            <li class="nav-item active"><a href="staffhome.jsp" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("staff") != null) { %> ${staff.staffname} <% } else { %> Staff <% } %></a></li>
           </ul>
         </div>
       </div>
@@ -52,10 +52,10 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center site-vh-100">
           <div class="col-md-12">
-            <h1 class="site-heading site-animate mb-3">Hello (Staff name)</h1>
+            <h1 class="site-heading site-animate mb-3">Hello ${staff.staffname}</h1>
             <h2 class="h5 site-subheading mb-5 site-animate">Button below will lead you to the process</h2>  
                 <div class="profile">
-                    <p><a href="profile.jsp" class="btn btn-outline-white btn-lg site-animate">Profile</a></p>
+                    <p><a href="staffprofile.jsp" class="btn btn-outline-white btn-lg site-animate">Profile</a></p>
                 </div>
                 <div class="profileH">
                     Here you can view or edit your profile
@@ -67,10 +67,16 @@
                     The total pre-order that made from Student
                 </div>
                 <div class="coupon">
-                    <p><a href="../coupon.jsp" class="btn btn-outline-white btn-lg site-animate">Coupon</a></p>
+                    <p><a href="coupon.jsp" class="btn btn-outline-white btn-lg site-animate">Coupon</a></p>
                 </div>
                 <div class="couponH">
                     Insert coupon code to redeem their food
+                </div>
+                <div class="topup">
+                    <p><a href="topUp.jsp" class="btn btn-outline-white btn-lg site-animate">Top up</a></p>
+                </div>
+                <div class="topupH">
+                    Insert student credit point
                 </div>
                     <p><a href="logout.jsp" class="btn btn-outline-white btn-lg site-animate">Log out</a></p>
           </div>

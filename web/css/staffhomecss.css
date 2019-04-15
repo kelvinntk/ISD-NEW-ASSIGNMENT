@@ -33,3 +33,15 @@
   height: 30px;
   opacity: 2;
 }
+
+.topupH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
+
+.topup:hover ~ .topupH {
+  height: 30px;
+  opacity: 2;
+}
