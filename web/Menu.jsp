@@ -45,9 +45,9 @@
 
        <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a onclick="myFunction()" href="" class="nav-link">Credit point</a></li>
-            <li class="nav-item active"><a href="../login.html" class="nav-link">Student</a></li>
+            <li class="nav-item active"><a href="studenthome.jsp" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="" class="nav-link">Credit point: <%=student.getCredpoint()%></a></li>
+            <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("student") != null) { %> ${student.studname} <% } else { %> Student <% } %></a></li>
           </ul>
         </div>
       
@@ -103,10 +103,10 @@
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
                         <label>Starting Date</label>
-                        <input type="date" required="required">
+                        <input type="date" name="startdate" required="required">
                         <label>End Date</label>
-                        <input type="date" required="required">
-                        <button class="button">Order Now</button>
+                        <input type="date" name="enddate" required="required">
+                        <a href="StudentOrderMeal"><button class="button">Order Now</button></a>
                       </div>
                     </div>
                          
@@ -134,10 +134,10 @@
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
                         <label>Starting Date</label>
-                        <input type="date" required="required">
+                        <input type="date" name="startdate" required="required">
                         <label>End Date</label>
-                        <input type="date" required="required">
-                        <button class="button">Order Now</button>
+                        <input type="date" name="enddate" required="required">
+                        <form action="StudentOrderMeal"><button class="button" >Order Now</button></form>
                       </div>
                     </div>
                         

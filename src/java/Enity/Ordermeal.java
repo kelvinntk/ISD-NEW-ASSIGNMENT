@@ -21,15 +21,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author User
+ * @author Kelvin Ng Tiong Kiat
  */
 @Entity
 @Table(name = "ORDERMEAL")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Ordermeal.findAll", query = "SELECT o FROM Ordermeal o")
-    , @NamedQuery(name = "Ordermeal.findByOrdermealid", query = "SELECT o FROM Ordermeal o WHERE o.ordermealid = :ordermealid")
-    , @NamedQuery(name = "Ordermeal.findByOrderCartStudentStudid", query = "SELECT o FROM Ordermeal o WHERE o.orderCartStudentStudid = :orderCartStudentStudid")})
+    , @NamedQuery(name = "Ordermeal.findByOrdermealid", query = "SELECT o FROM Ordermeal o WHERE o.ordermealid = :ordermealid")})
 public class Ordermeal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,11 +38,6 @@ public class Ordermeal implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "ORDERMEALID")
     private String ordermealid;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "ORDER_CART_STUDENT_STUDID")
-    private String orderCartStudentStudid;
     @JoinColumn(name = "MEAL_MEALID", referencedColumnName = "MEALID")
     @ManyToOne(optional = false)
     private Meal mealMealid;
@@ -53,14 +47,15 @@ public class Ordermeal implements Serializable {
 
     public Ordermeal() {
     }
-
+    
+    public Ordermeal(String ordermealid, Meal mealMealid, OrderCart orderCartOrderid) {
+        this.ordermealid = ordermealid;
+        this.mealMealid = mealMealid;
+        this.orderCartOrderid = orderCartOrderid;
+    }
+    
     public Ordermeal(String ordermealid) {
         this.ordermealid = ordermealid;
-    }
-
-    public Ordermeal(String ordermealid, String orderCartStudentStudid) {
-        this.ordermealid = ordermealid;
-        this.orderCartStudentStudid = orderCartStudentStudid;
     }
 
     public String getOrdermealid() {
@@ -69,14 +64,6 @@ public class Ordermeal implements Serializable {
 
     public void setOrdermealid(String ordermealid) {
         this.ordermealid = ordermealid;
-    }
-
-    public String getOrderCartStudentStudid() {
-        return orderCartStudentStudid;
-    }
-
-    public void setOrderCartStudentStudid(String orderCartStudentStudid) {
-        this.orderCartStudentStudid = orderCartStudentStudid;
     }
 
     public Meal getMealMealid() {

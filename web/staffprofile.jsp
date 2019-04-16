@@ -41,7 +41,7 @@
             <span class="focus-input100"></span>
         </div>
         <div class="wrap-input100">
-            <span class="label-input100">Password</span>
+            <span class="label-input100">New Password</span>
             <input class="input100" type="password" name="pass" value="<%=staff.getStaffpass()%>">
             <span class="focus-input100"></span>
         </div>

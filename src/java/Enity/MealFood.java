@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author User
+ * @author Kelvin Ng Tiong Kiat
  */
 @Entity
 @Table(name = "MEAL_FOOD")
@@ -47,15 +47,15 @@ public class MealFood implements Serializable {
 
     public MealFood() {
     }
-
-    public MealFood(String mealFoodid) {
-        this.mealFoodid = mealFoodid;
-    }
-
+    
     public MealFood(String mealFoodid, Meal mealMealid, Food foodFoodid) {
        this.mealFoodid = mealFoodid;
        this.mealMealid = mealMealid;
        this.foodFoodid = foodFoodid;
+    }
+    
+    public MealFood(String mealFoodid) {
+        this.mealFoodid = mealFoodid;
     }
 
     public String getMealFoodid() {

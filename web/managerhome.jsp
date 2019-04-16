@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Enity.*, java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +29,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="../home.html">DelicousFood</a>
+        <a class="navbar-brand">DelicousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>

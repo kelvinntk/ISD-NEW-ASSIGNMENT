@@ -1,10 +1,3 @@
-<%-- 
-    Document   : Menu
-    Created on : Mar 16, 2019, 3:52:55 PM
-    Author     : User
---%>
-
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Enity.*, java.util.*" %>
@@ -39,7 +32,7 @@
         %>
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
+        <a class="navbar-brand">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -47,7 +40,7 @@
        <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="managerhome.jsp" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href="../login.html" class="nav-link">Manager</a></li>
+            <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("manager") != null) { %> ${manager.managername} <% } else { %> Manager <% } %></a></li>
           </ul>
         </div>
       </div>

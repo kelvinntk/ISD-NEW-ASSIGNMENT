@@ -73,7 +73,7 @@
                 Here you can view or edit your profile
             </div>
             <div class="intake">  
-            <p><a href="../weekly.jsp" class="btn btn-outline-white btn-lg site-animate">Weekly Food Intake</a></p>
+            <p><a href="weekly.jsp" class="btn btn-outline-white btn-lg site-animate">Weekly Food Intake</a></p>
             </div> 
             <div class="intakeH">
                 Here can view your weekly calories.

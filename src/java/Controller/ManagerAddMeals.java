@@ -28,7 +28,8 @@ public class ManagerAddMeals extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
+        
+            HttpSession session = request.getSession();
             Query foodquery = em.createNamedQuery("Food.findAll");
             List<Food> foodList = foodquery.getResultList();
             Query mealquery = em.createNamedQuery("Meal.findAll");
