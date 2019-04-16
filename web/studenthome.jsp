@@ -43,7 +43,7 @@
         </button>
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="" class="nav-link">Home</a></li>
             <li class="nav-item active"><a class="nav-link">Credit point: <%=student.getCredpoint()%></a></li>
             <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("student") != null) { %> ${student.studname} <% } else { %> Student <% } %></a></li>
           </ul>

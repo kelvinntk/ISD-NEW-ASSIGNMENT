@@ -29,7 +29,7 @@
       
       <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
         <div class="container">
-          <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
+          <a class="navbar-brand" href="">DeliciousFood</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -77,7 +77,7 @@
                   </div>
                     
                           <div class="buttongroup1" style="text-align: center;">
-                              <button href="home.jsp" style="float:left;" class="backorder">Back</button>
+                              <button href="login.jsp" style="float:left;" class="backorder">Back</button>
                           </div>
                 </form>
                 

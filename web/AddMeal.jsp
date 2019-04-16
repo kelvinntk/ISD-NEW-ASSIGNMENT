@@ -53,7 +53,7 @@
  
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
+        <a class="navbar-brand" href="">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -62,7 +62,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="managerhome.jsp" class="nav-link">Home</a></li>
             
-            <li class="nav-item"><a href="Menu.jsp" class="nav-link">Menu</a></li>
+            <li class="nav-item"><a href="Menu.jsp" class="nav-link"><% if (request.getSession(false).getAttribute("manager") != null) { %> ${manager.managername} <% } else { %> Manager <% } %></a></li>
         
           </ul>
         </div>

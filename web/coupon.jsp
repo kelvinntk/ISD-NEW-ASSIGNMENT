@@ -29,7 +29,7 @@
       
       <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
         <div class="container">
-          <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
+          <a class="navbar-brand" href="">DeliciousFood</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -44,7 +44,7 @@
         
       <section class="site-cover" style="background:black;height: 400px;" id="section-home">
         <h1 style="padding-top:200px;text-align:center; visibility:hidden;" class="site-heading site-animate mb-3">
-          <p style="color:#b8b8b8;">Password recovery</p>
+          <p style="color:#b8b8b8;">Coupon</p>
         </h1>
       </section>
 
@@ -63,7 +63,7 @@
                 <form action="topupServlet" method="post">                 
                    <div class="row">
                     <div class="col-md-12 form-group">
-                      <input type="text" name="couponCode" class="form-control" id="m_fname">
+                      <input type="text" name="couponCode" placeholder="C001" class="form-control" id="m_fname">
                     </div>
                   </div>
 
@@ -71,12 +71,12 @@
                     
                   <div class="row">
                     <div class="col-md-12 form-group">
-                      <input href="login.jsp"  class="btn btn-primary btn-lg btn-block" value="Enter">
+                      <input href="login.jsp"  class="btn btn-primary btn-lg btn-block" value="Claim">
                     </div>
                   </div>
                     
                           <div class="buttongroup1" style="text-align: center;">
-                              <button href="home.jsp" style="float:left;" class="backorder">Back</button>
+                              <button href="staffhome.jsp" style="float:left;" class="backorder">Back</button>
                           </div>
                 </form>
                 

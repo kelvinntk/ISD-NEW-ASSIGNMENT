@@ -3,7 +3,9 @@
     Created on : Apr 2, 2019, 2:05:32 PM
     Author     : User
 --%>
-
+<jsp:useBean id="student" scope="session" class="Enity.Student" />
+<%@page import="Enity.Student"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,9 +44,9 @@
 
        <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a onclick="myFunction()" href="" class="nav-link">Credit point</a></li>
-            <li class="nav-item active"><a href="../login.html" class="nav-link">Student</a></li>
+            <li class="nav-item active"><a href="" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="" class="nav-link">Credit point: <%=student.getCredpoint()%></a></li>
+            <li class="nav-item active"><a href="" class="nav-link"><% if (request.getSession(false).getAttribute("student") != null) { %> ${student.studname} <% } else { %> Student <% } %></a></li>
           </ul>
         </div>
       </div>

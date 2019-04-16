@@ -49,7 +49,7 @@
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="managerhome.jsp" class="nav-link">Home</a></li>
-            
+            <li class="nav-item"><a href="Menu.jsp" class="nav-link"><% if (request.getSession(false).getAttribute("manager") != null) { %> ${manager.managername} <% } else { %> Manager <% } %></a></li>
           </ul>
         </div>
       </div>
