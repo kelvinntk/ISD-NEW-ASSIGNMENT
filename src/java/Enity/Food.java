@@ -47,7 +47,7 @@ public class Food implements Serializable {
     private String foodname;
     @Column(name = "CALORIES")
     private Integer calories;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "food")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "foodFoodid")
     private List<MealFood> mealFoodList;
 
     public Food() {

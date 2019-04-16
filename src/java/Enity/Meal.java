@@ -59,9 +59,9 @@ public class Meal implements Serializable {
     @Size(max = 50)
     @Column(name = "MEALCATEGORY")
     private String mealcategory;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meal")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mealMealid")
     private List<MealFood> mealFoodList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meal")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mealMealid")
     private List<Ordermeal> ordermealList;
 
     public Meal() {

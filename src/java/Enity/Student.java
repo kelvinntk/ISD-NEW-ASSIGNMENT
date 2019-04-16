@@ -59,7 +59,7 @@ public class Student implements Serializable {
     private String studphone;
     @Column(name = "CREDPOINT")
     private Integer credpoint;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "studentStudid")
     private List<OrderCart> orderCartList;
 
     public Student() {

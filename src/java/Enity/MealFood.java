@@ -6,13 +6,17 @@
 package Enity;
 
 import java.io.Serializable;
-import javax.persistence.EmbeddedId;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -24,60 +28,58 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MealFood.findAll", query = "SELECT m FROM MealFood m")
-    , @NamedQuery(name = "MealFood.findByMealFoodid", query = "SELECT m FROM MealFood m WHERE m.mealFoodPK.mealFoodid = :mealFoodid")
-    , @NamedQuery(name = "MealFood.findByMealMealid", query = "SELECT m FROM MealFood m WHERE m.mealFoodPK.mealMealid = :mealMealid")
-    , @NamedQuery(name = "MealFood.findByFoodFoodid", query = "SELECT m FROM MealFood m WHERE m.mealFoodPK.foodFoodid = :foodFoodid")})
+    , @NamedQuery(name = "MealFood.findByMealFoodid", query = "SELECT m FROM MealFood m WHERE m.mealFoodid = :mealFoodid")})
 public class MealFood implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected MealFoodPK mealFoodPK;
-    @JoinColumn(name = "FOOD_FOODID", referencedColumnName = "FOODID", insertable = false, updatable = false)
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "MEAL_FOODID")
+    private String mealFoodid;
+    @JoinColumn(name = "FOOD_FOODID", referencedColumnName = "FOODID")
     @ManyToOne(optional = false)
-    private Food food;
-    @JoinColumn(name = "MEAL_MEALID", referencedColumnName = "MEALID", insertable = false, updatable = false)
+    private Food foodFoodid;
+    @JoinColumn(name = "MEAL_MEALID", referencedColumnName = "MEALID")
     @ManyToOne(optional = false)
-    private Meal meal;
+    private Meal mealMealid;
 
     public MealFood() {
     }
 
-    public MealFood(MealFoodPK mealFoodPK) {
-        this.mealFoodPK = mealFoodPK;
+    public MealFood(String mealFoodid) {
+        this.mealFoodid = mealFoodid;
     }
 
-    public MealFood(String mealFoodid, String mealMealid, String foodFoodid) {
-        this.mealFoodPK = new MealFoodPK(mealFoodid, mealMealid, foodFoodid);
+    public String getMealFoodid() {
+        return mealFoodid;
     }
 
-    public MealFoodPK getMealFoodPK() {
-        return mealFoodPK;
+    public void setMealFoodid(String mealFoodid) {
+        this.mealFoodid = mealFoodid;
     }
 
-    public void setMealFoodPK(MealFoodPK mealFoodPK) {
-        this.mealFoodPK = mealFoodPK;
+    public Food getFoodFoodid() {
+        return foodFoodid;
     }
 
-    public Food getFood() {
-        return food;
+    public void setFoodFoodid(Food foodFoodid) {
+        this.foodFoodid = foodFoodid;
     }
 
-    public void setFood(Food food) {
-        this.food = food;
+    public Meal getMealMealid() {
+        return mealMealid;
     }
 
-    public Meal getMeal() {
-        return meal;
-    }
-
-    public void setMeal(Meal meal) {
-        this.meal = meal;
+    public void setMealMealid(Meal mealMealid) {
+        this.mealMealid = mealMealid;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (mealFoodPK != null ? mealFoodPK.hashCode() : 0);
+        hash += (mealFoodid != null ? mealFoodid.hashCode() : 0);
         return hash;
     }
 
@@ -88,7 +90,7 @@ public class MealFood implements Serializable {
             return false;
         }
         MealFood other = (MealFood) object;
-        if ((this.mealFoodPK == null && other.mealFoodPK != null) || (this.mealFoodPK != null && !this.mealFoodPK.equals(other.mealFoodPK))) {
+        if ((this.mealFoodid == null && other.mealFoodid != null) || (this.mealFoodid != null && !this.mealFoodid.equals(other.mealFoodid))) {
             return false;
         }
         return true;
@@ -96,7 +98,7 @@ public class MealFood implements Serializable {
 
     @Override
     public String toString() {
-        return "Enity.MealFood[ mealFoodPK=" + mealFoodPK + " ]";
+        return "Enity.MealFood[ mealFoodid=" + mealFoodid + " ]";
     }
     
 }
