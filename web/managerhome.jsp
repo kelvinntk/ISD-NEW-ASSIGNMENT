@@ -49,15 +49,8 @@
             <h1 class="site-heading site-animate mb-3">Hello ${manager.managername}</h1>
             <h2 class="h5 site-subheading mb-5 site-animate">Welcome to DeliciousFood</h2> 
             
-            <div class="profile">  
-            <p><a href="profile.jsp" class="btn btn-outline-white btn-lg site-animate">Profile</a></p>
-            </div> 
-            <div class="profileH">
-                Here you can view or edit your profile.
-            </div>
                 <div class="addfood">
-                    <p><a href="AddFood.jsp" class="btn btn-outline-white btn-lg site-animate">Add Food</a></p>
-                    
+                    <p><a href="AddFood.jsp" class="btn btn-outline-white btn-lg site-animate">Add Food</a></p>    
                 </div>
                 <div class="addfoodH">
                     Add food details.
@@ -86,7 +79,7 @@
             <div class="menuH">
                 Here can edit or delete the Food Menu.
             </div>    
-            <p><a href="logout.jsp" class="btn btn-outline-white btn-lg site-animate">Log out</a></p> <!-- Display alert msg then back to HOME page-->
+            <p><a href="logoutServlet" class="btn btn-outline-white btn-lg site-animate">Log out</a></p> <!-- Display alert msg then back to HOME page-->
           </div>
         </div>
       </div>

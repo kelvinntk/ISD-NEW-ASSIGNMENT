@@ -62,7 +62,7 @@
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="managerhome.jsp" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="About.jsp" class="nav-link">Manager</a></li>
+            <li class="nav-item"><a  class="nav-link"><% if (request.getSession(false).getAttribute("manager") != null) { %> ${manager.managername} <% } else { %> Manager <% } %></a></li>
             
         
           </ul>
@@ -77,10 +77,10 @@
       <div class="mealname" style="padding-top:150px;margin-left: 35%;">
            
            <p> <label style="color:black;clear: both;text-align: left;">Food Name</label>
-              <input type="text" style="margin-left:38px;"placeholder="Tuaran Mee" name="foodname" required="required"></p>
+              <input type="text" style="margin-left:38px;"placeholder="Tuaran Mee" name="foodname" ></p>
         
           <p><label style="color:black;clear: both;text-align: left;">Calories</label>
-              <input type="number" style="margin-left:62px;" name="calories" required="required"></p>
+              <input type="number" style="margin-left:62px;" name="calories" ></p>
           
           
       </div>

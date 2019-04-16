@@ -29,7 +29,15 @@
   </head>
 
   <body>
- 
+      <%
+          String status = request.getParameter("success");
+      %>
+      <%
+          if (status != null){
+              if(status.equals("DONE")){
+      %>
+      <script>alert(" You have Successful register your account. **Press OK to proceed**");</script>
+      <%}}%>
     <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
         <a class="navbar-brand" href="home.jsp">DelicousFood</a>
