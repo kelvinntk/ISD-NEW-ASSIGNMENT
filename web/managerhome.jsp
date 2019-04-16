@@ -33,7 +33,7 @@
         </button>
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="managerhome.jsp" class="nav-link">Home</a></li>
             <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("manager") != null) { %> ${manager.managername} <% } else { %> Manager <% } %></a></li>
           </ul>
         </div>
@@ -75,7 +75,7 @@
                 Here can view your report.
             </div>
             <div class="menu">
-                <p><a href="menu.jsp" class="btn btn-outline-white btn-lg site-animate">Menu</a></p>
+                <p><a href="managermenu.jsp" class="btn btn-outline-white btn-lg site-animate">Menu</a></p>
             </div>
             <div class="menuH">
                 Here can edit or delete the menu.

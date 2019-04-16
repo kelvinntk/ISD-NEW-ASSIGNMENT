@@ -96,7 +96,7 @@ public class registerServlet extends HttpServlet {
                             response.sendRedirect("login.jsp?success=DONE");
                         }
             } else{
-                request.setAttribute("errorMsg", "<span style=\"color: #ea5454\">ID already Exists</span>");
+                request.setAttribute("errorMsg", "<span style=\"color: #ea5454\">This ID already Exists</span>");
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
                 return;
             } 

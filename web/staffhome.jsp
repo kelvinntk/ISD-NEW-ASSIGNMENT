@@ -78,7 +78,7 @@
                 <div class="topupH">
                     Insert student credit point
                 </div>
-                    <p><a href="logout.jsp" class="btn btn-outline-white btn-lg site-animate">Log out</a></p>
+                    <p><a href="logoutServlet" class="btn btn-outline-white btn-lg site-animate">Log out</a></p>
           </div>
         </div>
       </div>

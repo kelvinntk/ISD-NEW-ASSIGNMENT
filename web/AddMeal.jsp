@@ -3,8 +3,10 @@
     Created on : Apr 2, 2019, 2:05:32 PM
     Author     : User
 --%>
-
+<%@page import="java.util.*"%>
+<%@page import="Enity.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,7 +33,15 @@
         
     </head>
     <body>
-        
+    <%
+        String status = request.getParameter("status");
+    %>
+    <%
+        if(status != null){
+            if(status.equals("success")){
+    %>
+      <script>alert(" *Successful add meal* ");</script>
+    <%}}%>
  
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
@@ -42,53 +52,62 @@
 
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="Home.jsp" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="About.jsp" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="#section-offer" class="nav-link">Offer</a></li>
+            <li class="nav-item active"><a href="managerhome.jsp" class="nav-link">Home</a></li>
+            
             <li class="nav-item"><a href="Menu.jsp" class="nav-link">Menu</a></li>
         
           </ul>
         </div>
       </div>
     </nav>
-        <section class="site-cover" style="background:black;height: 400px;" id="section-home">
-           
+        <section class="site-cover" style="background:black;height: 400px;" id="section-home">     
             <h1  style="padding-top:200px;text-align:center; visibility:hidden;"class="site-heading site-animate mb-3"><p style="color:#b8b8b8;">Add Meal</p></h1>
-            
-         
         </section>
         
+    <form action="ManagerAddMeals" method="post">
      
-      <div class="mealname" style="padding-top:150px;margin-left: 35%;">
+        <div class="mealname" style="padding-top:150px;margin-left: 35%;">
+          <p> <label style="color:black;clear: both;text-align: left;">Meal ID</label>
+              <input type="text" style="margin-left:127px;"placeholder="M10001" name="mealid" required="required"></p>
           
           <p> <label style="color:black;clear: both;text-align: left;">Meal Name</label>
               <input type="text" style="margin-left:100px;"placeholder="Tuaran Mee" name="mealname" required="required"></p>
         
           <p><label style="color:black;clear: both;text-align: left;">Meal Description</label>
-              <input type="text" style="margin-left:62px;"placeholder="Tuaran Mee" name="mealname" required="required"></p>
+              <input type="text" style="margin-left:62px;"placeholder="Tuaran Mee fried with char siu and vegetables" name="mealdesc" required="required"></p>
           
           <p><label style="color:black;clear: both;text-align: left;">Meal Price</label>
-              <input type="number" style="margin-left:105px;"placeholder="Tuaran Mee" name="mealname" required="required"></p>
+              <input type="number" style="margin-left:105px;"placeholder="2" name="mealprice" required="required"></p>
           
           <p><label style="color:black;clear: both;text-align: left;">Meal Image</label>
-              <button type="text" style="margin-left:97px;"name="mealname" required="required">Choose Image</button>  image.jpg</p>
-              
-          <p><label style="color:black;clear: both;text-align: left;">Food Name</label>
-              <input type="text" style="margin-left:95px;"placeholder="Tuaran Mee" name="mealname" required="required"></p>
+              <input type="text" style="margin-left:97px;"placeholder="images/TuaranMee.jpg"name="mealimage" required="required"></p>
+             
+          <p><label style="color:black;clear: both;text-align: left;">Food name</label>
+            <select style="margin-left:100px;"multiple>
+               
+                <% for(int i=0; i<foodList.size(); i++){
+                       Food food = foodList.get(i);
+                       
+                   %>
+                <option value="<%= food.getFoodname()%>"><%= food.getFoodname()%></option>
+                <% } %>
+            </select>
+          </p>
+            <label style="color:black;clear: both;text-align: left;">Meal Category</label>
+            <select name="mealcategory"style="margin-left:76px;">
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+            </select>
       </div>
-    
-  <div style="margin-right:550px; margin-bottom:150px;padding-top:100px">
+        <div style="margin-right:550px; margin-bottom:150px;padding-top:100px">
       
-      <form action="Menu.jsp" method="post">
-        <button class="backorder">Add Meal</button>
-      </form>
+        <input type="submit" value="Add Meal" class="backorder">
+        <button href="Menu.jsp" class="backorder">Back To Home</button>
       
-      <form action="Menu.jsp" method="post">
-        <button class="backorder">Back To Home</button>
-      </form>
       
-</div>
-        
+        </div>
+      
+      </form>  
          
     <script src="js/jquery.min.js"></script>
     

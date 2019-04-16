@@ -44,7 +44,7 @@
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a class="nav-link">Credit point:  </a></li>
+            <li class="nav-item active"><a class="nav-link">Credit point: <%=student.getCredpoint()%></a></li>
             <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("student") != null) { %> ${student.studname} <% } else { %> Student <% } %></a></li>
           </ul>
         </div>
@@ -84,7 +84,7 @@
             <div class="historyH">
                 Here can view your transaction history
             </div>  
-            <p><a href="logout.jsp" class="btn btn-outline-white btn-lg site-animate">Log out</a></p>
+            <p><a href="logoutServlet" class="btn btn-outline-white btn-lg site-animate">Log out</a></p>
           </div>
         </div>
       </div>

@@ -52,7 +52,10 @@ public class loginServlet extends HttpServlet {
                 }
                 // if doesnt exist, go back to login page
                 else {
-                response.sendRedirect("login.jsp?loginstatus=studloginfail");
+                    // if doesnt exist, go back to login page
+                    request.setAttribute("errorMsg", "<span style=\"color: #FF4500\">Student! Invalid Password</span>");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    return; 
                 }
           } 
             else  if (staff != null) {
@@ -62,8 +65,10 @@ public class loginServlet extends HttpServlet {
                     request.getRequestDispatcher("staffhome.jsp").forward(request, response);
                 }
                 else {
-                // if doesnt exist, go back to login page
-                request.getRequestDispatcher("login.jsp?loginstatus=staffloginfail").forward(request, response);
+                    // if doesnt exist, go back to login page
+                     request.setAttribute("errorMsg", "<span style=\"color: #FF4500\">Staff! Invalid Password</span>");
+                     request.getRequestDispatcher("login.jsp").forward(request, response);
+                     return; 
                 }
           } 
             else if (manager != null){
@@ -73,12 +78,17 @@ public class loginServlet extends HttpServlet {
                     request.getRequestDispatcher("managerhome.jsp").forward(request, response);
                 }
                 else {
-                // if doesnt exist, go back to login page
-                request.getRequestDispatcher("login.jsp?loginstatus=staffloginfail").forward(request, response);
+                    // if doesnt exist, go back to login page
+                    request.setAttribute("errorMsg", "<span style=\"color: #FF4500\">Manager! Invalid Password</span>");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    return; 
                 }
             }
             else{
-                request.getRequestDispatcher("login.jsp?loginstatus=invalidID").forward(request, response);
+                // if ID is invalid 
+                    request.setAttribute("errorMsg", "<span style=\"color: #FF4500\">Error: Invalid ID or password</span>");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    return; 
             }
           } catch (Exception ex) {
               System.out.println("ERROR");

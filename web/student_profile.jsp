@@ -15,8 +15,7 @@
   </head>
   <body style="background-image: url('images/foodbg3.jpg'); background-size: cover">
    <div id="container">
-     <form class="login100-form" action="student_profileServlet" method="post">
-          <%
+       <%
             // get session attributes
             Student student = (Student) session.getAttribute("student");
             // redirect if not logged in
@@ -24,6 +23,8 @@
             // start of else
             else { // containing the following statements in if-else prevents NullPointerException when logged out
         %>
+     <form class="login100-form" action="student_profileServlet?studid=<%= student.getStudid()%>" method="post">
+          
         <h2 style="font-size:30px;">Your Profile</h2>
         <div class="wrap-input100">
             <span class="label-input100">Your ID</span>
@@ -40,9 +41,10 @@
             <input class="input100" type="email" name="email" value="<%=student.getStudemail()%>">
             <span class="focus-input100"></span>
         </div>
+            
         <div class="wrap-input100">
-            <span class="label-input100">Password</span>
-            <input class="input100" type="password" name="pass" value="<%=student.getStudpassword()%>">
+            <span class="label-input100">New Password</span>
+            <input class="input100" type="password" name="newPass" >
             <span class="focus-input100"></span>
         </div>
 

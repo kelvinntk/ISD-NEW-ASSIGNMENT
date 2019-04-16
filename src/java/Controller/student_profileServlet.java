@@ -30,35 +30,36 @@ public class student_profileServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            
+        
             HttpSession session = request.getSession(false);
             Student student = (Student) session.getAttribute("student");
             
             String newName = request.getParameter("name");
             String newEmail = request.getParameter("email");
-            String newPass = request.getParameter("pass");
+            String newPass = request.getParameter("newPass");
             String newPhone = request.getParameter("phone");
             
             try{
             Query studquery = em.createNamedQuery("Student.findAll");
             List <Student> studList = studquery.getResultList();
-            
-            student.setStudname(newName);
-            student.setStudemail(newEmail);
-            student.setStudpassword(newPass);
-            student.setStudphone(newPhone);
-            
-            utx.begin();
-            em.merge(student);
-            utx.commit();
-            
-            studquery = em.createNamedQuery("Student.findAll");
-            studList = studquery.getResultList();
-            session.setAttribute("student", student);
-            
-                request.setAttribute("alertMsg", "<span style=\"color: #20D845\">Sucessfully edit your profile</span>");
-                request.getRequestDispatcher("studenthome.jsp").forward(request, response);
-                return;    
+
+                        student.setStudname(newName);
+                        student.setStudemail(newEmail);
+                        student.setStudpassword(newPass);
+                        student.setStudphone(newPhone);
+
+                        utx.begin();
+                        em.merge(student);
+                        utx.commit();
+
+                        studquery = em.createNamedQuery("Student.findAll");
+                        studList = studquery.getResultList();
+                        session.setAttribute("student", student);
+
+                        request.setAttribute("alertMsg", "<span style=\"color: #20D845\">Sucessfully edit your profile</span>");
+                        request.getRequestDispatcher("studenthome.jsp").forward(request, response);
+                        return;             
+                        
             }catch (ConstraintViolationException e){
                 System.out.println(e.getConstraintViolations());
             }catch(Exception ex){

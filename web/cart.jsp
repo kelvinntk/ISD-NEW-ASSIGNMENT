@@ -81,7 +81,7 @@
 
   <div class="product">
     <div class="product-image">
-      <img src="images/TuaranMee.jpg">
+      <img src="">
     </div>
     <div class="product-details">
       <div class="product-title">Tuaran Mee</div>
@@ -99,10 +99,12 @@
     </div>
  
   </div>
-
+<% for(int i=0; i<mealList.size(); i++){
+                    Meal meal = mealList.get(i);
+                 %>
   <div class="product">
     <div class="product-image">
-      <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
+      <img src="">
     </div>
     <div class="product-details">
       <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>

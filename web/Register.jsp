@@ -35,7 +35,7 @@
     <div class="limiter">
       <div class="container-login100">
         <div class="login100-more" style="background-image: url('images/foodbg1.jpg');">
-          <a href="../home.html" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">Cancel</a>
+            <a href="home.jsp" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30" style="font-size: 20px;">Back</a>
         </div>
         <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
             
