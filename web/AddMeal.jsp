@@ -87,18 +87,20 @@
           
           <p><label style="color:black;clear: both;text-align: left;">Meal Image</label>
               <input type="text" style="margin-left:97px;"placeholder="images/TuaranMee.jpg"name="mealimage" required="required"></p>
-             
-          <p><label style="color:black;clear: both;text-align: left;">Food name</label>
-            <%
+           <div style="">  
+          <p><label style="color:black;clear: both;text-align: left;margin-right:80px;">Food name</label>
+          
+              <%
                             int[] foodArr = new int[foodList.size()];
                             for(int i=0 ; i<foodList.size() ; i++){
                                 Food food = foodList.get(i);
                         %>
-              <label style="margin-left:100px;"><%= food.getFoodname()%>
-                                    <input type="checkbox" name="<%= "foodArr[" + i + "]"%>">
+              <label ><%= food.getFoodname()%>
+                                    <input style=""type="checkbox" name="<%= "foodArr[" + i + "]"%>">
                                     <span class="checkmark"></span>
                                 </label>
                             <%}%>
+          </div>
           <p><label style="color:black;clear: both;text-align: left;">Meal Category</label>
             <select name="mealcategory"style="margin-left:76px;">
                 <option value="Breakfast">Breakfast</option>

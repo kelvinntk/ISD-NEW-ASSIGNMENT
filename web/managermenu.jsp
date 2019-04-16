@@ -58,7 +58,7 @@
             <h2 style="text-align:center;"class="h5 site-subheading mb-5 site-animate"><p style="color:#b8b8b8;">Our menu include breakfast &amp; lunch.</p></h2>    
          
         </section>
-        
+        <br /><br />
        <div class="container">
         <div class="row align-items-center justify-content-center text-center site-vh-100">
           <div class="col-md-12">
@@ -73,21 +73,21 @@
             </ul>       
             </div>
             
-            <br /><br />
+            
   
             <div class="tab-content text-left">
               <div class="tab-pane fade show active" id="pills-breakfast" role="tabpanel" aria-labelledby="pills-breakfast-tab">
                   
                 <div class="row">
                  
-                
-                    <div class="col-md-6 site-animate">
-                        <% 
+                <% 
                     
                      for(int i=0; i<mealList.size(); i++){
                     Meal meal = mealList.get(i);
                     if(meal.getMealcategory().equals("Breakfast")){
                  %>
+                    <div class="col-md-6 site-animate">
+                        
                     <div class="media menu-item">
                       <img class="mr-3" src="<%= meal.getMealimage()%>" class="img-fluid" >
                       <div class="media-body">
@@ -98,31 +98,31 @@
                         
                       </div>
                     </div>
-                        <% }} %>
+                        
                     </div>
-                    
+                    <% }} %>
                 </div>
               </div>
                 <div class="tab-pane fade" id="pills-lunch" role="tabpanel" aria-labelledby="pills-lunch-tab">
                     <div class="row">
-                       
-                    <div class="col-md-6 site-animate">
-                 <% for(int i=0; i<mealList.size(); i++){
+                      <% for(int i=0; i<mealList.size(); i++){
                     Meal meal = mealList.get(i);
                     if(meal.getMealcategory().equals("Lunch")){
-                 %>
+                 %> 
+                    <div class="col-md-6 site-animate">
+                 
                     <div class="media menu-item">
                       <img class="mr-3" src="<%= meal.getMealimage()%>" class="img-fluid" >
                       <div class="media-body">
                         <h5 class="mt-0"><%= meal.getMealname() %></h5>
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
-                        
+                         <a href="EditMeal.jsp?mealid=<%= meal.getMealid()%>"><button class="button" style="margin-right:200px;float:right;">Edit</button></a>
                       </div>
                     </div>
-                         <% }} %>  
+                         
                   </div>
-                     
+                     <% }} %>  
           </div>
                 </div>
         </div>

@@ -48,8 +48,7 @@ public class ManagerAddMeals extends HttpServlet {
             
              mealid = "M" + String.format("%03d",mealList.size() + 1);
              mealfoodid = "MF" + String.format("%03d",mealFoodList.size()+1);
-              int mealFoodListSize = mealFoodList.size() ;
-            int mealListSize = mealList.size() ;
+              
         try {
            Meal meal = new Meal();
             meal.setMealid(mealid);
@@ -59,14 +58,15 @@ public class ManagerAddMeals extends HttpServlet {
             meal.setMealprice(mealprice);
             meal.setMealimage(mealimage);
             meal.setMealcategory(mealcategory);
-            
+            int size = mealFoodList.size() + 1;
             List<MealFood> selectedMealFood = new ArrayList<MealFood>();
              for (int i = 0; i < foodList.size(); ++i) {
                 if (request.getParameter("foodArr[" + i + "]")!=null) {
                     
                     MealFood mealfood = new MealFood(mealfoodid,meal,foodList.get(i));
                     selectedMealFood.add(mealfood);
-                    
+                    size++;
+                    mealfoodid = "MF" + String.format("%03d", size);
                 }
                 
             }
@@ -76,6 +76,7 @@ public class ManagerAddMeals extends HttpServlet {
             utx.commit();
             mealList = mealquery.getResultList();
             session.setAttribute("mealList", mealList);
+            
         } catch(Exception ex) {
             System.out.println("ERROR");
             ex.printStackTrace();

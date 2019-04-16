@@ -46,12 +46,14 @@ public class ManagerAddFoods extends HttpServlet {
                             utx.begin();
                             em.persist(food);
                             utx.commit();   
+                            Query query = em.createNamedQuery("Food.findAll");
+                            foodList = foodquery.getResultList();
                             session.setAttribute("foodList", foodList);
-            
+                           
             
                           
         } catch(Exception ex) {}
-                        request.getRequestDispatcher("AddFood.jsp?status=success").forward(request, response);
+              request.getRequestDispatcher("AddFood.jsp?status=success").forward(request, response);           
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

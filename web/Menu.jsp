@@ -62,7 +62,7 @@
        <div class="container">
         <div class="row align-items-center justify-content-center text-center site-vh-100">
           <div class="col-md-12">
-            
+            <br /><br />
             <div class="container-fluid">
             
             <ul class="list-unstyled multi-steps">
@@ -72,7 +72,7 @@
               <li>Payment</li>
             </ul>
           </div>
-              <br />
+              
             <div class="col-md-12 text-center">
             <ul class="nav site-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
               <li class="nav-item site-animate" >
@@ -89,59 +89,69 @@
             <div class="tab-content text-left">
               <div class="tab-pane fade show active" id="pills-breakfast" role="tabpanel" aria-labelledby="pills-breakfast-tab">
                 <div class="row">
-                   
-                  <div class="col-md-6 site-animate">
-                      <%   
+                   <%   
                        for(int i=0; i<mealList.size(); i++){
                        Meal meal = mealList.get(i);
                         if(meal.getMealcategory().equals("Breakfast")){
                     %>
+                  <div class="col-md-6 site-animate">
+                      
                     <div class="media menu-item">
                       <img class="mr-3" src="<%= meal.getMealimage()%>" class="img-fluid" >
                       <div class="media-body">
                         <h5 class="mt-0"><%= meal.getMealname() %></h5>
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
+                        <label>Starting Date</label>
+                        <input type="date" required="required">
+                        <label>End Date</label>
                         <input type="date" required="required">
                         <button class="button">Order Now</button>
                       </div>
                     </div>
-                         <% }} %>
+                         
                   </div>
-                       
+                       <% }} %>
                         
-                   
+                    
                 </div>
+                   <a href="OrderCart.jsp"><button style="margin-left:45%;" class="button">Order Cart</button></a>
               </div>
              
               <div class="tab-pane fade" id="pills-lunch" role="tabpanel" aria-labelledby="pills-lunch-tab">
-               
                     <div class="row">
-                    
-                  <div class="col-md-6 site-animate">
-                 <% 
-                    
+                        <% 
                      for(int i=0; i<mealList.size(); i++){
                     Meal meal = mealList.get(i);
                     if(meal.getMealcategory().equals("Lunch")){
                  %>
+                  <div class="col-md-6 site-animate">
+                 
                     <div class="media menu-item">
                       <img class="mr-3" src="<%= meal.getMealimage()%>" class="img-fluid" >
                       <div class="media-body">
                         <h5 class="mt-0"><%= meal.getMealname() %></h5>
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
+                        <label>Starting Date</label>
+                        <input type="date" required="required">
+                        <label>End Date</label>
+                        <input type="date" required="required">
                         <button class="button">Order Now</button>
                       </div>
                     </div>
-                         <% }} %>
+                        
                   </div>
+                         <% }} %>
                     </div>
+                 <a href="OrderCart.jsp"><button style="margin-left:45%;" class="button">Order Cart</button></a>
               </div>
+                   
             </div>
+                  
           </div>
         </div>
-                   <a href="cart.jsp"><button style="margin-left:45%;" class="button"> Order Cart</button></a>
+                   
        </div>
                  
                  <% } %>

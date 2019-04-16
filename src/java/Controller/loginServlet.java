@@ -46,8 +46,17 @@ public class loginServlet extends HttpServlet {
                 if (student.getStudpassword().equals(pass)) {
                     HttpSession session  = request.getSession(true);
                     session.setAttribute("student", student);
-                    request.getRequestDispatcher("studenthome.jsp").forward(request, response);
                     
+                   
+                    Query query = em.createNamedQuery("Food.findAll");
+                    List<Food> foodList = query.getResultList();
+                    session.setAttribute("foodList", foodList);
+                                        
+                    query = em.createNamedQuery("Meal.findAll");
+                    List<Meal> mealList = query.getResultList();
+                    session.setAttribute("mealList", mealList);
+                    
+                    request.getRequestDispatcher("studenthome.jsp").forward(request, response);
                 }
                 // if doesnt exist, go back to login page
                 else {
