@@ -9,7 +9,17 @@
   height: 30px;
   opacity: 2;
 }
+.mealmenuH{
+  height: 0px;
+  width: 100%;
+  opacity: 0;
+  transition: height 0.4s, opacity 0.4s;
+}
 
+.mealmenu:hover ~ .mealmenuH {
+  height: 30px;
+  opacity: 2;
+}
 .profileH{
   height: 0px;
   width: 100%;

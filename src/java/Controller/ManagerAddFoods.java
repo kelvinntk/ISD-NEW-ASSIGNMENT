@@ -27,27 +27,31 @@ public class ManagerAddFoods extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        Query foodquery = em.createNamedQuery("Food.findAll");
+            List<Food> foodList = foodquery.getResultList();
         
-        String foodid = request.getParameter("foodid");
         String foodname = request.getParameter("foodname");
         int calories = Integer.parseInt(request.getParameter("calories"));
+        String foodid = "";
         Food food = new Food();
        HttpSession session = request.getSession();
-       food.setFoodid(foodid);
-       food.setFoodname(foodname);
-       food.setCalories(calories);         
+        foodid = "F" + String.format("%03d",foodList.size() + 1);
+           
              
-       try {  
-  
-                   utx.begin();
-                   em.persist(food);
-                   utx.commit();   
-                    Query query = em.createNamedQuery("Food.findAll");
-                    List<Food> foodList = query.getResultList();
-                    session.setAttribute("foodList", foodList);
-                   
+       try{  
+            
+                        food.setFoodid(foodid);
+                            food.setFoodname(foodname);
+                            food.setCalories(calories);   
+                            utx.begin();
+                            em.persist(food);
+                            utx.commit();   
+                            session.setAttribute("foodList", foodList);
+            
+            
+                          
         } catch(Exception ex) {}
-         request.getRequestDispatcher("AddFood.jsp?status=success").forward(request,response); 
+                        request.getRequestDispatcher("AddFood.jsp?status=success").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

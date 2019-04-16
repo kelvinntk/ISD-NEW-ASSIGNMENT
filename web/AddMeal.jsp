@@ -33,6 +33,14 @@
         
     </head>
     <body>
+        <%
+            // get session attributes
+            Manager manager = (Manager) session.getAttribute("manager");
+            // redirect if not logged in
+            if (session.getAttribute("manager") == null) {response.sendRedirect("login.jsp");}
+            // start of else
+            else { // containing the following statements in if-else prevents NullPointerException when logged out
+        %>
     <%
         String status = request.getParameter("status");
     %>
@@ -67,9 +75,7 @@
     <form action="ManagerAddMeals" method="post">
      
         <div class="mealname" style="padding-top:150px;margin-left: 35%;">
-          <p> <label style="color:black;clear: both;text-align: left;">Meal ID</label>
-              <input type="text" style="margin-left:127px;"placeholder="M10001" name="mealid" required="required"></p>
-          
+         
           <p> <label style="color:black;clear: both;text-align: left;">Meal Name</label>
               <input type="text" style="margin-left:100px;"placeholder="Tuaran Mee" name="mealname" required="required"></p>
         
@@ -83,32 +89,33 @@
               <input type="text" style="margin-left:97px;"placeholder="images/TuaranMee.jpg"name="mealimage" required="required"></p>
              
           <p><label style="color:black;clear: both;text-align: left;">Food name</label>
-            <select style="margin-left:100px;"multiple>
-               
-                <% for(int i=0; i<foodList.size(); i++){
-                       Food food = foodList.get(i);
-                       
-                   %>
-                <option value="<%= food.getFoodname()%>"><%= food.getFoodname()%></option>
-                <% } %>
-            </select>
-          </p>
-            <label style="color:black;clear: both;text-align: left;">Meal Category</label>
+            <%
+                            int[] foodArr = new int[foodList.size()];
+                            for(int i=0 ; i<foodList.size() ; i++){
+                                Food food = foodList.get(i);
+                        %>
+              <label style="margin-left:100px;"><%= food.getFoodname()%>
+                                    <input type="checkbox" name="<%= "foodArr[" + i + "]"%>">
+                                    <span class="checkmark"></span>
+                                </label>
+                            <%}%>
+          <p><label style="color:black;clear: both;text-align: left;">Meal Category</label>
             <select name="mealcategory"style="margin-left:76px;">
                 <option value="Breakfast">Breakfast</option>
                 <option value="Lunch">Lunch</option>
             </select>
+          </p>    
       </div>
         <div style="margin-right:550px; margin-bottom:150px;padding-top:100px">
       
         <input type="submit" value="Add Meal" class="backorder">
-        <button href="Menu.jsp" class="backorder">Back To Home</button>
+        <a href="managerhome.jsp"><button class="backorder">Back To Home</button></a>
       
       
         </div>
       
       </form>  
-         
+         <% } %>
     <script src="js/jquery.min.js"></script>
     
 

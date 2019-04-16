@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Enity.Meal, java.util.*" %>
+<%@page import="Enity.*, java.util.*" %>
 <% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
 
 <!DOCTYPE html>
@@ -28,7 +28,14 @@
     
     </head>
     <body>
-        
+         <%
+            // get session attributes
+            Student student = (Student) session.getAttribute("student");
+            // redirect if not logged in
+            if (session.getAttribute("student") == null) {response.sendRedirect("login.jsp");}
+            // start of else
+            else { // containing the following statements in if-else prevents NullPointerException when logged out
+        %>
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
         <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
@@ -43,7 +50,7 @@
             <li class="nav-item active"><a href="../login.html" class="nav-link">Student</a></li>
           </ul>
         </div>
-      </div>
+      
     </nav>
         <section class="site-cover" style="background:black;height: 400px;" id="section-home">
            
@@ -57,7 +64,7 @@
           <div class="col-md-12">
             
             <div class="container-fluid">
-            <br /><br />
+            
             <ul class="list-unstyled multi-steps">
               <li class="is-active">Choose Meal</li>
               <li>Your Order</li>
@@ -65,6 +72,7 @@
               <li>Payment</li>
             </ul>
           </div>
+              <br />
             <div class="col-md-12 text-center">
             <ul class="nav site-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
               <li class="nav-item site-animate" >
@@ -94,6 +102,7 @@
                         <h5 class="mt-0"><%= meal.getMealname() %></h5>
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
+                        <input type="date" required="required">
                         <button class="button">Order Now</button>
                       </div>
                     </div>
@@ -127,16 +136,15 @@
                     </div>
                          <% }} %>
                   </div>
-                 
-                    
-                  </div>
-                </div>
+                    </div>
               </div>
+            </div>
           </div>
         </div>
-      </div>     
-                  <a href="cart.jsp"><button style="margin-left:45%;"class="button">Go To Cart</button></a>
+                   <a href="cart.jsp"><button style="margin-left:45%;" class="button"> Order Cart</button></a>
        </div>
+                 
+                 <% } %>
            
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>

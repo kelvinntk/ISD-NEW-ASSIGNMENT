@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Kelvin Ng Tiong Kiat
+ * @author User
  */
 @Entity
 @Table(name = "ORDER_CART")

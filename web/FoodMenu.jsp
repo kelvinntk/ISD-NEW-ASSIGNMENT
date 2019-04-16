@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Enity.Food, java.util.*" %>
+<%@page import="Enity.*, java.util.*" %>
 <% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,14 @@
     
     </head>
     <body>
-        
+        <%
+            // get session attributes
+            Manager manager = (Manager) session.getAttribute("manager");
+            // redirect if not logged in
+            if (session.getAttribute("manager") == null) {response.sendRedirect("login.jsp");}
+            // start of else
+            else { // containing the following statements in if-else prevents NullPointerException when logged out
+        %>
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
         <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
@@ -92,7 +99,7 @@
                 </div>
        </div>
         
-           
+           <% } %>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>

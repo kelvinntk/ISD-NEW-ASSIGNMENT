@@ -29,7 +29,14 @@
     
     </head>
     <body>
-        
+       <%
+            // get session attributes
+            Manager manager = (Manager) session.getAttribute("manager");
+            // redirect if not logged in
+            if (session.getAttribute("manager") == null) {response.sendRedirect("login.jsp");}
+            // start of else
+            else { // containing the following statements in if-else prevents NullPointerException when logged out
+        %>
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
         <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
@@ -76,10 +83,11 @@
                 
                     <div class="col-md-6 site-animate">
                         <% 
-                        for(int i=0; i<mealList.size(); i++){
-                        Meal meal = mealList.get(i);
-                        if(meal.getMealcategory().equals("Breakfast")){
-                        %>
+                    
+                     for(int i=0; i<mealList.size(); i++){
+                    Meal meal = mealList.get(i);
+                    if(meal.getMealcategory().equals("Breakfast")){
+                 %>
                     <div class="media menu-item">
                       <img class="mr-3" src="<%= meal.getMealimage()%>" class="img-fluid" >
                       <div class="media-body">
@@ -87,7 +95,7 @@
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
                         <a href="EditMeal.jsp?mealid=<%= meal.getMealid()%>"><button class="button" style="margin-right:200px;float:right;">Edit</button></a>
-                        <button class="button">Delete</button>
+                        
                       </div>
                     </div>
                         <% }} %>
@@ -99,20 +107,20 @@
                     <div class="row">
                        
                     <div class="col-md-6 site-animate">
-                    <% for(int i=0; i<mealList.size(); i++){
-                        Meal meal = mealList.get(i);
-                        if(meal.getMealcategory().equals("Lunch")){
-                    %>
+                 <% for(int i=0; i<mealList.size(); i++){
+                    Meal meal = mealList.get(i);
+                    if(meal.getMealcategory().equals("Lunch")){
+                 %>
                     <div class="media menu-item">
                       <img class="mr-3" src="<%= meal.getMealimage()%>" class="img-fluid" >
                       <div class="media-body">
                         <h5 class="mt-0"><%= meal.getMealname() %></h5>
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
-                        <button class="button">Order Now</button>
+                        
                       </div>
                     </div>
-                    <% }} %>  
+                         <% }} %>  
                   </div>
                      
           </div>
@@ -120,6 +128,8 @@
         </div>
       </div>     
        </div>
+       </div>
+                  <% } %>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>

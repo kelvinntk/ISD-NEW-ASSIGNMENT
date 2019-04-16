@@ -1,10 +1,9 @@
 package Controller;
-
+import java.util.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.annotation.Resource;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -75,7 +74,17 @@ public class loginServlet extends HttpServlet {
                  if (manager.getManagerpass().equals(pass)) {
                     HttpSession session  = request.getSession(true);
                     session.setAttribute("manager", manager);
+                    
+	            Query query = em.createNamedQuery("Food.findAll");
+                    List<Food> foodList = query.getResultList();
+                    session.setAttribute("foodList", foodList);
+                                        
+                    query = em.createNamedQuery("Meal.findAll");
+                    List<Meal> mealList = query.getResultList();
+                    session.setAttribute("mealList", mealList);
+                    
                     request.getRequestDispatcher("managerhome.jsp").forward(request, response);
+                    
                 }
                 else {
                     // if doesnt exist, go back to login page

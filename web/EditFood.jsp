@@ -82,6 +82,7 @@
      <% }} %>
   <div style="margin-right:550px; margin-bottom:150px;padding-top:100px">
         <input type="submit" class="backorder" value="Edit Food">
+        <a href="FoodMenu.jsp"><button class="backorder">Back To Food Menu</button></a>
   </div>
      </form>     
          

@@ -6,6 +6,7 @@
 package Controller;
 import Enity.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.*;
 import javax.persistence.*;
@@ -35,35 +36,51 @@ public class ManagerAddMeals extends HttpServlet {
             Query mealfoodquery = em.createNamedQuery("MealFood.findAll");
             List<MealFood> mealFoodList = mealfoodquery.getResultList();
        
-            String mealid = request.getParameter("mealid");
+            
             String mealname = request.getParameter("mealname");
-        String mealdesc = request.getParameter("mealdesc");
-        int mealprice = Integer.parseInt(request.getParameter("mealprice"));
-        String mealimage = request.getParameter("mealimage");
-        String mealcategory = request.getParameter("mealcategory");
-        
-        
+            String mealdesc = request.getParameter("mealdesc");
+            int mealprice = Integer.parseInt(request.getParameter("mealprice"));
+            String mealimage = request.getParameter("mealimage");
+            String mealcategory = request.getParameter("mealcategory");
+            String mealid = "";
+            String mealfoodid ="";  
+             
+            
+             mealid = "M" + String.format("%03d",mealList.size() + 1);
+             mealfoodid = "MF" + String.format("%03d",mealFoodList.size()+1);
+              int mealFoodListSize = mealFoodList.size() ;
+            int mealListSize = mealList.size() ;
         try {
-            Meal meal = new Meal();
+           Meal meal = new Meal();
             meal.setMealid(mealid);
-            System.out.println(mealid);
+         
             meal.setMealname(mealname);
             meal.setMealdesc(mealdesc);
             meal.setMealprice(mealprice);
             meal.setMealimage(mealimage);
             meal.setMealcategory(mealcategory);
-             
+            
+            List<MealFood> selectedMealFood = new ArrayList<MealFood>();
+             for (int i = 0; i < foodList.size(); ++i) {
+                if (request.getParameter("foodArr[" + i + "]")!=null) {
+                    
+                    MealFood mealfood = new MealFood(mealfoodid,meal,foodList.get(i));
+                    selectedMealFood.add(mealfood);
+                    
+                }
+                
+            }
             utx.begin();
+            meal.setMealFoodList(selectedMealFood);
             em.persist(meal);
             utx.commit();
-            Query query = em.createNamedQuery("Meal.findAll");
-                   
-                    session.setAttribute("mealList", mealList);
+            mealList = mealquery.getResultList();
+            session.setAttribute("mealList", mealList);
         } catch(Exception ex) {
             System.out.println("ERROR");
             ex.printStackTrace();
         }
-         request.getRequestDispatcher("AddMeal.jsp?status=success").forward(request,response); 
+         request.getRequestDispatcher("AddMeal.jsp?status=success" + mealname).forward(request,response); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

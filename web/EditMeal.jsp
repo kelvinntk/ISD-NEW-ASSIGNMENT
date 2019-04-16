@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Enity.Meal, java.util.*" %>
+<%@page import="Enity.*, java.util.*" %>
 <% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
 <!DOCTYPE html>
 <html>
@@ -33,6 +33,14 @@
         
     </head>
     <body>
+        <%
+            // get session attributes
+            Manager manager = (Manager) session.getAttribute("manager");
+            // redirect if not logged in
+            if (session.getAttribute("manager") == null) {response.sendRedirect("login.jsp");}
+            // start of else
+            else { // containing the following statements in if-else prevents NullPointerException when logged out
+        %>
     <%
         String status = request.getParameter("status");
     %>
@@ -102,9 +110,10 @@
       
         <div style="margin-right:550px; margin-bottom:150px;padding-top:100px">
             <input type="submit" value="Edit Meal" class="backorder">
+            <a href="managermenu.jsp"><button class="backorder">Back To Meal Menu</button></a>
         </div>
       </form>  
-         
+         <% } %>
     <script src="js/jquery.min.js"></script>
     
 

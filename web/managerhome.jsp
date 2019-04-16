@@ -74,11 +74,17 @@
             <div class="reportH">
                 Here can view your report.
             </div>
+            <div class="mealmenu">
+                <p><a href="managermenu.jsp" class="btn btn-outline-white btn-lg site-animate">Meal Menu</a></p>
+            </div>
+            <div class="mealmenuH">
+                Here can edit or delete the Meal Menu.
+            </div>   
             <div class="menu">
-                <p><a href="managermenu.jsp" class="btn btn-outline-white btn-lg site-animate">Menu</a></p>
+                <p><a href="FoodMenu.jsp" class="btn btn-outline-white btn-lg site-animate">Food Menu</a></p>
             </div>
             <div class="menuH">
-                Here can edit or delete the menu.
+                Here can edit or delete the Food Menu.
             </div>    
             <p><a href="logout.jsp" class="btn btn-outline-white btn-lg site-animate">Log out</a></p> <!-- Display alert msg then back to HOME page-->
           </div>
