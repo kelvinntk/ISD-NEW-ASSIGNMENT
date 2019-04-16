@@ -34,9 +34,7 @@ public class ManagerEditFoods extends HttpServlet {
         HttpSession session = request.getSession();
         
         try {
-            
-            
-            
+         
             Food food = new Food();
             food.setFoodid(foodid);
             food.setFoodname(foodname);
@@ -48,9 +46,9 @@ public class ManagerEditFoods extends HttpServlet {
             Query query = em.createNamedQuery("Food.findAll");
             List<Food> foodList = query.getResultList();
             session.setAttribute("foodList", foodList);
-         
+            request.getRequestDispatcher("EditFood.jsp?status=success").forward(request,response);   
         } catch(Exception ex) {}
-         request.getRequestDispatcher("EditFood.jsp?status=success").forward(request,response);      
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -40,14 +40,14 @@ public class ManagerAddFoods extends HttpServlet {
              
        try{  
             
-                        food.setFoodid(foodid);
-                            food.setFoodname(foodname);
-                            food.setCalories(calories);   
-                            utx.begin();
-                            em.persist(food);
-                            utx.commit();   
-                            Query query = em.createNamedQuery("Food.findAll");
-                            foodList = foodquery.getResultList();
+              food.setFoodid(foodid);
+              food.setFoodname(foodname);
+              food.setCalories(calories);   
+              utx.begin();
+              em.persist(food);
+              utx.commit();   
+              Query query = em.createNamedQuery("Food.findAll");
+              foodList = foodquery.getResultList();
                             session.setAttribute("foodList", foodList);
                            
             

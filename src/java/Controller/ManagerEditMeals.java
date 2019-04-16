@@ -48,6 +48,7 @@ public class ManagerEditMeals extends HttpServlet {
             utx.begin();
             em.merge(meal);
             utx.commit();
+            
           Query query = em.createNamedQuery("Meal.findAll");
           List<Meal> mealList = query.getResultList();
           session.setAttribute("mealList", mealList);
