@@ -85,7 +85,9 @@ public class OrderCart implements Serializable {
     public void setOrderdate(Date orderdate) {
         this.orderdate = orderdate;
     }
-
+    public Date getOrderdate(Date orderdate){
+        return orderdate;
+    }
     public String getOrderstatus() {
         return orderstatus;
     }

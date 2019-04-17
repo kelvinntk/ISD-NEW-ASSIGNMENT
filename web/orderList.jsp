@@ -3,6 +3,8 @@
     Created on : Apr 2, 2019, 2:05:32 PM
     Author     : User
 --%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="Enity.*, java.util.*"%>
 <% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
@@ -29,6 +31,7 @@
       <link rel="stylesheet" href="css/icomoon.css">
       <link rel="stylesheet" href="css/style.css">
       <link rel="stylesheet" href="css/rangebar.css">
+       <link rel="stylesheet" href="css/reportcss.css">
     </head>
 
     <body>
@@ -61,53 +64,44 @@
         </h1>
       </section>
             
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center site-vh-100">
-          <div class="col-md-12">
-            <div class="shopping-cart">
+            <br /><br />
                 
+        <table class="fold-table">
+        <thead>
+          <tr>
+            <th>Order ID</th><th>Order Date</th><th>Order Status</th><th>Coupon Code</th>
+          </tr>
+        </thead>
+        <%
+                    for (int i = 0; i < orderList.size(); i++) {
+                        SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd");
+                        String orderDate = sm.format(orderList.get(i).getOrderdate());
+                        
+
+                       
+                  %> 
+        <tbody>
+            
+               
+          <tr class="view">
+            <td><%= orderList.get(i).getOrderid()%></td>
+            <td><%= orderDate %></td>
+            <td><%= orderList.get(i).getOrderstatus()%></td>
+            <td><%= orderList.get(i).getCouponcode() %></td>
+           
+          </tr>
+          
+          
+               
+        </tbody>
+        <%}%>   
+      </table>
+          
              <form action="../CheckMeal" method="POST">
                 <input type="date" id="mealsetlistdate" name="checkmeal">
                 <input type="submit" value="Check" id="mealsetlistbtn">
-                    <table id="mealsetlist">
-                        <tr>
-                          <th>Meal Sets</th>
-                          <th>Meal</th>
-                          <th>Quantity</th>
-                        </tr>
-                        <%
-                            String checkdate = request.getParameter("checkmealdate");
-                            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                            
-                            for(int j=0 ; j<mealList.size() ; j++){
-                                int count=0;
-                                Meal meal = mealList.get(j);
-                                    for(int i=0 ;  i<orderList.size() ; i++){
-                                        OrderCart orders = orderList.get(i);
-                                        
-                                        if(orders.getOrderstatus().equals("Paid")){
-                                            if(meal.getMealid().equals(orders.getOrdermealList().get(0).getMealMealid().getMealid())){
-                                                if(checkdate!=null){
-                                                    if(checkdate.equals(df.format(orders.getOrderdate()))){
-                                                        count++;
-                                                    }
-                                                }    
-                                            }  
-                                        }
-                                    }
-                        %>
-                        
-                        <tr>
-                            
-                              
-                            <td><%= meal.getMealname()%></td>
-                            <td><%= meal.getMealcategory()%></td>
-                            
-                        </tr>
-                        <%}%>
                     
-                        
-                      </table>
+                
             </form>
                 
                 
@@ -121,9 +115,8 @@
                 <button class="backorder">Back To Order</button>
               </form>
             </div>
-          </div>
-        </div>
-      </div>
+         
+
 <% } %>
       <script src="js/jquery.min.js"></script>
       <script src="js/jquery.waypoints.min.js"></script>

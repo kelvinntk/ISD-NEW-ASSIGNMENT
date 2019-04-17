@@ -66,7 +66,7 @@
                 </div>
                 <div class="orderH">
                     The total pre-order that made from Student
-                    (UNDER MAINTENANCE)
+                    
                 </div>
                 <div class="coupon">
                     <p><a href="coupon.jsp" class="btn btn-outline-white btn-lg site-animate">Claim Food</a></p>

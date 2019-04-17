@@ -3,9 +3,13 @@
     Created on : Apr 2, 2019, 2:05:32 PM
     Author     : User
 --%>
-<jsp:useBean id="student" scope="session" class="Enity.Student" />
-<%@page import="Enity.Student"%>
+<%@page import="java.text.SimpleDateFormat"%>
+
+<%@page import="Enity.*, java.util.*"%>
 <%@page import="javax.servlet.http.HttpSession"%>
+<% List<OrderCart> orderList = (List<OrderCart>) session.getAttribute("orderList");%>
+<% List<Ordermeal> orderMealList = (List<Ordermeal>) session.getAttribute("orderMealList");%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,7 +36,14 @@
         
     </head>
     <body>
-        
+         <%
+            // get session attributes
+            Student student = (Student) session.getAttribute("student");
+            // redirect if not logged in
+            if (session.getAttribute("student") == null) {response.sendRedirect("login.jsp");}
+            // start of else
+            else { // containing the following statements in if-else prevents NullPointerException when logged out
+        %>
  
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
@@ -43,7 +54,7 @@
 
    <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="studenthome.jsp" class="nav-link">Home</a></li>
             <li class="nav-item active"><a href="" class="nav-link">Credit point: <%=student.getCredpoint()%></a></li>
             <li class="nav-item active"><a href="" class="nav-link"><% if (request.getSession(false).getAttribute("student") != null) { %> ${student.studname} <% } else { %> Student <% } %></a></li>
           </ul>
@@ -75,25 +86,26 @@
   <div class="column-labels">
     <label class="product-image">Image</label>
     <label class="product-details">Product</label>
-    <label class="product-quantity">Quantity</label>
     <label class="product-price">Credit Points</label>
     <label class="product-removal">Remove</label>
     
   </div>
-
-  <div class="product">
+    <%
+    for (int i = 0; i < orderMealList.size(); i++) {
+        
+    
+  %>
+        <div class="product">
     <div class="product-image">
-      <img src="">
+        <img src="<%= orderMealList.get(i).getMealMealid().getMealimage()%>">
     </div>
     <div class="product-details">
-      <div class="product-title">Tuaran Mee</div>
-      <p class="product-description">Noodle that has tuaran style fry with vegetable, char siu and pork egg roll.</p>
+        <div class="product-title"><%= orderMealList.get(i).getMealMealid().getMealname() %></div>
+      <p class="product-description"><%= orderMealList.get(i).getMealMealid().getMealdesc() %></p>
     </div>
     
-    <div class="product-quantity">
-      <input type="number" value="2" min="1">
-    </div>
-    <div class="product-price">8</div>
+   
+    <div class="product-price"><%= orderMealList.get(i).getMealMealid().getMealprice() %></div>
     <div class="product-removal">
       <button class="remove-product" >
         Remove
@@ -101,33 +113,20 @@
     </div>
  
   </div>
-
-  <div class="product">
-    <div class="product-image">
-      <img src="liushabao.png">
-    </div>
-    <div class="product-details">
-      <div class="product-title">Liu Sha Bao</div>
-      <p class="product-description">Creamy Pau with mustard sauce</p>
-    </div>
-    
-    <div class="product-quantity">
-      <input style="width:40px;"type="number" value="1" min="1">
-    </div>
-    <div class="product-price">8</div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
-    </div>
-    
-  </div>
+<% } %>
 
   <div class="totals">
     <div class="totals-item" style="float: right; clear: both;width: 100%;
     margin-bottom: 10px;margin-right: 20%;">
       <label style="float: left;clear: both;width: 79%;text-align: right;">Total</label>
-      <div class="totals-value" style="text-align: right;margin-right: 40px;">71.97</div>
+      <%
+    for (int i = 0; i < orderMealList.size(); i++) {
+        int credpoints=0, total=0;
+         credpoints = orderMealList.get(i).getMealMealid().getMealprice();
+         total = credpoints + total;
+  %>
+      <div class="totals-value" style="text-align: right;margin-right: 40px;"><%= total %></div>
+      <%}%>
     </div>
     
     </div>
@@ -135,14 +134,14 @@
   <div style="margin-top:50px;float:right; margin-right:300px;">
    
       <a href="OrderConfirmation.jsp"> <button class="checkout">Proceed Order</button></a>
-      <button class="update">Update</button>
+      
       <a href="Menu.jsp"> <button class="backorder">Back To Order</button></a>
     
 </div>
           </div>
         </div>
        </div>
-        
+       <% } %> 
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>

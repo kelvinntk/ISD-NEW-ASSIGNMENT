@@ -65,7 +65,7 @@
               <div class="col-lg-12 p-5">
                  ${alertMsg}
                 <h1 class="mb-4">Enter coupon code</h1>  
-                <label for="m_fname">THIS FUNCTION IS NOT AVAILABLE YET</label><br><br>
+                <label for="m_fname">This will claim student order by insert coupon code</label><br><br>
                 
                 <form action="claimCoupon" method="post">                 
                    <div class="row">

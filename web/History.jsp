@@ -116,7 +116,7 @@
           </div>
           <div class="buttongroup1">
             <form action="studenthome.html" method="post">
-              <a href="studenthome.jsp" class="backorder">Back To Home</a>
+              <a href="studenthome.jsp" style="margin-right:42%;"class="backorder">Back To Home</a>
             </form>
           </div>
         </div>

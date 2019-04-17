@@ -4,9 +4,10 @@
     Author     : User
 --%>
 
-<jsp:useBean id="student" scope="session" class="Enity.Student" />
-<%@page import="Enity.Student"%>
+
+<%@page import="Enity.*, java.util.*"%>
 <%@page import="javax.servlet.http.HttpSession"%>
+<% List<Ordermeal> orderMealList = (List<Ordermeal>) session.getAttribute("orderMealList");%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,14 +29,23 @@
     </head>
     <body>
         
+       <%
+            // get session attributes
+            Student student = (Student) session.getAttribute("student");
+            // redirect if not logged in
+            if (session.getAttribute("student") == null) {response.sendRedirect("login.jsp");}
+            // start of else
+            else { // containing the following statements in if-else prevents NullPointerException when logged out
+        %>
+ 
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="">DeliciousFood</a>
+        <a class="navbar-brand">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
 
-        <div class="collapse navbar-collapse" id="site-nav">
+   <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="" class="nav-link">Home</a></li>
             <li class="nav-item active"><a href="" class="nav-link">Credit point: <%=student.getCredpoint()%></a></li>
@@ -47,7 +57,7 @@
         <section class="site-cover" style="background:black;height: 400px;" id="section-home">
            
             <h1  style="padding-top:200px; text-align:center; visibility:hidden;"class="site-heading site-animate mb-3"><p style="color:#b8b8b8;">Order Confirmation</p></h1>
-            <h2 style="text-align:center;"class="h5 site-subheading mb-5 site-animate"><p style="color:#b8b8b8;"></p></h2>    
+            
          
         </section>
         
@@ -56,75 +66,71 @@
           <div class="col-md-12">
             
             <div class="container-fluid">
-  <br /><br />
-  <ul class="list-unstyled multi-steps">
-    <li>Choose Meal</li>
-    <li>Your Order</li>
-    <li class="is-active">Order Confirmation</li>
-    <li>Payment</li>
-  </ul>
-</div>
+            <br /><br />
+                <ul class="list-unstyled multi-steps">
+                  <li>Choose Meal</li>
+                  <li>Your Order</li>
+                  <li class="is-active">Order Confirmation</li>
+                  <li>Payment</li>
+                </ul>
+          </div>
 <div class="shopping-cart">
 
   <div class="column-labels">
     <label class="product-image">Image</label>
     <label class="product-details">Product</label>
-    <label class="product-quantity">Quantity</label>
     <label class="product-price">Credit Points</label>
-
+    
     
   </div>
-
-  <div class="product">
+    <%
+    for (int i = 0; i < orderMealList.size(); i++) {
+        
+    
+  %>
+        <div class="product">
     <div class="product-image">
-      <img src="images/TuaranMee.jpg">
+        <img src="<%= orderMealList.get(i).getMealMealid().getMealimage()%>">
     </div>
     <div class="product-details">
-      <div class="product-title">Tuaran Mee</div>
-      <p class="product-description">Tuaran Mee fried with vegetable and prawn</p>
+        <div class="product-title"><%= orderMealList.get(i).getMealMealid().getMealname() %></div>
+      <p class="product-description"><%= orderMealList.get(i).getMealMealid().getMealdesc() %></p>
     </div>
     
-    <div class="product-quantity">
-      3
-    </div>
-    <div class="product-price">24</div>
+   
+    <div class="product-price"><%= orderMealList.get(i).getMealMealid().getMealprice() %></div>
     
  
   </div>
-
-  <div class="product">
-    <div class="product-image">
-      <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
-    </div>
-    <div class="product-details">
-      <div class="product-title">Liu Sha Bao</div>
-      <p class="product-description">Creamy Pau with mustard sauce</p>
-    </div>
-    
-    <div class="product-quantity">
-      2
-    </div>
-    <div class="product-price">16</div>
-    
-    
-  </div>
+<% } %>
 
   <div class="totals">
-    <div class="totals-item">
-      <label style="">Total</label>
-      <div class="totals-value">40</div>
+    <div class="totals-item" style="float: right; clear: both;width: 100%;
+    margin-bottom: 10px;margin-right: 20%;">
+      <label style="float: left;clear: both;width: 79%;text-align: right;">Total</label>
+      <%
+    for (int i = 0; i < orderMealList.size(); i++) {
+        int credpoints=0, total=0;
+         credpoints = orderMealList.get(i).getMealMealid().getMealprice();
+         total = credpoints + total;
+  %>
+      <div class="totals-value" style="text-align: right;margin-right: 40px;"><%= total %></div>
+      <%}%>
     </div>
     
     </div>
   </div>
-    <div class="buttongroup1">
-        <a href="Payment.jsp" class="checkout">Confirm Order</a>
-     
-        <a href="OrderCart.jsp" class="backorder">Back To Cart</a>
-    </div>
+  <div style="margin-top:50px;float:right; margin-right:300px;">
+   
+      <a href="Payment.jsp"> <button class="checkout">Go To Payment</button></a>
+      
+      <a href="OrderCart.jsp"> <button class="backorder">Back To Order Cart</button></a>
+    
+</div>
           </div>
         </div>
        </div>
+       <% } %> 
               
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>

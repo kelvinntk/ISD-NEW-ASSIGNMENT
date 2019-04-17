@@ -66,22 +66,29 @@
     <li>Choose Meal</li>
     <li>Your Order</li>
     <li>Order Confirmation</li>
-    <li class="is-active">Payment</li>
+    <li>Payment</li>
   </ul>
 </div>
 
 
-    <div class="totals-item" style="float: right; clear: both;width: 100%;
-    margin-right: 20%;">
-      <label style="float: left;clear: both;width: 79%;text-align: right;">Total deducted balance : 40 credit points</label>
       
+    <div class="totals-item" style="margin-top:120px;float: right; clear: both;width: 100%;
+    margin-right: 20%;">
+        
+        <label style="float: left;clear: both;width: 79%;text-align: right;"><font size="6"><b>Total deducted balance : </b></font></label>
+        
     </div>
-    
+          <div>
+              <font size="9"><p style="text-align:center;padding-right:14px;">Enjoy your day!!</p></font>
+          </div>
+       
+          
+    <br /><br />
   <div class="buttongroup1" style="margin-bottom:50px;padding-top:100px;">
       
-      <form action="Menu.jsp" method="post">
-        <button style="float:none; margin-left:51%;"class="backorder">Back To Order History</button>
-      </form>
+      
+      <a href="History.jsp"style="float:none; margin-top:50px;margin-left:51%;"class="backorder">Back To Order History</a>
+      
 </div>
         
          
