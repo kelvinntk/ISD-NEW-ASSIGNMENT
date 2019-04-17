@@ -23,6 +23,7 @@
       <link rel="stylesheet" href="css/style.css">
       <link rel="stylesheet" href="css/rangebar.css">
       <link rel="stylesheet" href="css/reportcss.css">
+      <link rel="stylesheet" href="css/buttonstyle.css">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
@@ -58,32 +59,32 @@
             <td>Kelvin</td>
             <td>Breakfast</td>
             <td>1</td>
-            <td class="per">6.00</td>
+            <td>6.00</td>
           </tr>
            <tr class="view">
             <td>OR0002</td>
             <td>Jackson</td>
             <td>Lunch</td>
             <td>2</td>
-            <td class="per">14.00</td>
+            <td>14.00</td>
           </tr>
            <tr class="view">
             <td>OR0003</td>
             <td>So kian hwa</td>
             <td>Lunch</td>
             <td>2</td>
-            <td class="per">12.00</td>
+            <td >12.00</td>
           </tr>
           <tr class="view">
             <td>OR0004</td>
             <td>Irfan</td>
             <td>Breakfast</td>
             <td>1</td>
-            <td class="per">6.00</td>
+            <td >6.00</td>
           </tr>
         </tbody>
       </table>
-            
+       <a href="managerhome.jsp"><button style="margin-left:45%; margin-top: 5%;" class="button">Back</button></a>     
       <script src="js/reportjs.js"></script>      
       <script src="js/jquery.min.js"></script>
       <script src="js/jquery.waypoints.min.js"></script>

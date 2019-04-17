@@ -26,7 +26,14 @@
     </head>
 
     <body>
-      
+        <%
+            // get session attributes
+            Staff staff = (Staff) session.getAttribute("staff");
+            // redirect if not logged in
+            if (session.getAttribute("staff") == null) {response.sendRedirect("login.jsp");}
+            // start of else
+            else { // containing the following statements in if-else prevents NullPointerException when logged out
+        %>
       <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
         <div class="container">
           <a class="navbar-brand" href="">DeliciousFood</a>
@@ -56,14 +63,14 @@
             <div class="row">
                 
               <div class="col-lg-12 p-5">
-                  
+                 ${alertMsg}
                 <h1 class="mb-4">Enter coupon code</h1>  
                 <label for="m_fname">THIS FUNCTION IS NOT AVAILABLE YET</label><br><br>
                 
-                <form action="topupServlet" method="post">                 
+                <form action="claimCoupon" method="post">                 
                    <div class="row">
                     <div class="col-md-12 form-group">
-                      <input type="text" name="couponCode" placeholder="C001" class="form-control" id="m_fname">
+                      <input type="text" name="couponCode" placeholder="C01" class="form-control" id="m_fname">
                     </div>
                   </div>
 
@@ -71,7 +78,7 @@
                     
                   <div class="row">
                     <div class="col-md-12 form-group">
-                      <input href="login.jsp"  class="btn btn-primary btn-lg btn-block" value="Claim">
+                      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Claim">
                     </div>
                   </div>
                     
@@ -88,7 +95,7 @@
     </div>
     <!-- End coupon -->
 
-
+<% } %>
 
 
       <script src="js/jquery.min.js"></script>

@@ -11,11 +11,10 @@
 * {
   box-sizing: border-box;
 }
-body {
-  padding: 0.2em 2em;
-}
+
 table {
   width: 100%;
+  
 }
 table th {
   text-align: left;
