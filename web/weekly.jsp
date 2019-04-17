@@ -103,7 +103,7 @@
           </div>
           <div class="buttongroup1">
             <form action="studenthome.html" method="post">
-              <button class="backorder">Back To Home</button>
+              <a href="studenthome.jsp" class="backorder">Back To Home</a>
             </form>
           </div>
         </div>

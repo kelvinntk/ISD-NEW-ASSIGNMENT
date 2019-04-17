@@ -43,16 +43,21 @@ public class StudentOrderMeal extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try  {
+            
             HttpSession session = request.getSession(true);
             String orderStartDate = request.getParameter("startdate");
             String orderEndDate = request.getParameter("enddate");
             String mealcategory = request.getParameter("mealcategory");
             String mealid = request.getParameter("mealid");
-            String studid = request.getParameter("studid");
-            
+            String studid = request.getParameter("id");
+           /* try (PrintWriter out = response.getWriter()) {
+            out.println("<h1>Servlet NewServlet at " +studid + "</h1>");
+            }*/
             
             Student stud = em.find(Student.class,studid);
+                           
             Meal meal = em.find(Meal.class,mealid);
+            
             Calendar c = Calendar.getInstance();
             
             Date startDate = new SimpleDateFormat("yyyy-MM-dd").parse(orderStartDate);  
@@ -62,19 +67,19 @@ public class StudentOrderMeal extends HttpServlet {
             LocalDateTime now = LocalDateTime.now();  
             
             Date todaysDate = new SimpleDateFormat("yyyy-MM-dd").parse(dtf.format(now));
-            int daysBeforeOrders = (int)(startDate.getTime() - todaysDate.getTime())/(1000*60*60*24);
+            int daysBeforeOrders = (int)(todaysDate.getTime()- startDate.getTime())/(1000*60*60*24)  ;
             
             int days = (int)(endDate.getTime() - startDate.getTime())/(1000*60*60*24);
             boolean sameDate = false;
-                
-            
+             
             if(daysBeforeOrders >2){
             List<Ordermeal> selectedOrderMeal = new ArrayList<Ordermeal>();  
-                utx.begin();
+               
+                
             for(int i=0; i<=days ; i++){
-                Query orderquery = em.createNamedQuery("Orders.findAll");
+                Query orderquery = em.createNamedQuery("OrderCart.findAll");
                 List<OrderCart> orderList = orderquery.getResultList();
-                Query ordermealquery = em.createNamedQuery("OrderMeal.findAll");
+                Query ordermealquery = em.createNamedQuery("Ordermeal.findAll");
                 List<Ordermeal> orderMealList = ordermealquery.getResultList();
                 
                 int ordersize = orderList.size();
@@ -84,23 +89,21 @@ public class StudentOrderMeal extends HttpServlet {
                 String orderID = "";
                 String couponCode = "";
                 String ordermealid = "";
-               ordermealid = "OM" + String.format("%03d", orderMealList.size()+1);
-                 couponCode = "C" + String.format("%03d", orderMealList.size()+1);
-                  orderID = "OR" + String.format("%03d", orderMealList.size()+1);
+                
                 c.setTime(startDate);
                 c.add(Calendar.DATE,i);
                 startDate = c.getTime();
-                
                 for(int j=0 ; j<orderList.size() ; j++){
                     OrderCart orders = orderList.get(j);
                     if(orders.getOrderdate().compareTo(startDate) == 0 && orders.getStudentStudid().getStudid().equals(studid) && 
                         orders.getOrdermealList().get(0).getMealMealid().getMealcategory().equals(mealcategory)){
                         sameDate = true;
-                        orderquery = em.createNamedQuery("Orders.findAll");
+                        
+                        orderquery = em.createNamedQuery("OrderCart.findAll");
                         orderList = orderquery.getResultList();
                         session.setAttribute("orderList", orderList);
                         if(orders.getOrdermealList().get(0).getMealMealid().getMealcategory().equals("Breakfast")){
-                            response.sendRedirect("Menu.jsp" + orders.getOrderdate());
+                            response.sendRedirect("Menu.jsp?" + orders.getOrderdate());
                         }
                         else
                             response.sendRedirect("Menu.jsp");
@@ -109,13 +112,13 @@ public class StudentOrderMeal extends HttpServlet {
                 
                 
                 if(orderList.size() == 0){
-                    orderID = "OD" + String.format("%02d",ordersize + 1);
-                    couponCode = "CP" + String.format("%02d",ordersize + 1);
+                    orderID = "OR" + String.format("%02d",ordersize + 1);
+                    couponCode = "C" + String.format("%02d",ordersize + 1);
                     ordermealid = "OM" + String.format("%02d",ordermealsize + 1);
                 }
                 else{
-                    orderID = "OD" + String.format("%02d",ordersize + 1);
-                    couponCode = "CP" + String.format("%02d",ordersize + 1);
+                    orderID = "OR" + String.format("%02d",ordersize + 1);
+                    couponCode = "C" + String.format("%02d",ordersize + 1);
                     boolean duplicateID;
                     int newID = 1;
                     
@@ -136,8 +139,8 @@ public class StudentOrderMeal extends HttpServlet {
                         }
                         ++newID;
                         if(duplicateID == false){
-                            orderID = "OD" + newFormatOrdernum;
-                            couponCode = "CP" + newFormatOrdernum;
+                            orderID = "OR" + newFormatOrdernum;
+                            couponCode = "C" + newFormatOrdernum;
                             ordermealid = "OM" + newFormatOrdernum;
                         }
                     }while(duplicateID == true);
@@ -157,34 +160,20 @@ public class StudentOrderMeal extends HttpServlet {
                 
                 
                 orders.setOrdermealList(selectedOrderMeal);
-                
+                utx.begin();
                 em.persist(orders);
+                 utx.commit();
+                request.getRequestDispatcher("Menu.jsp").forward(request,response);
             }
             
-            if(sameDate == false){
-                utx.commit();
-            }
-            
-                Query orderquery = em.createNamedQuery("Orders.findAll");
-                List<OrderCart> orderList = orderquery.getResultList();
-                session.setAttribute("orderList", orderList);
-                
-                if(mealcategory.equals("Breakfast"))
-                    response.sendRedirect("Menu.jsp");
-                else
-                    response.sendRedirect("Menu.jsp");
-            }
-            else{
-                if(mealcategory.equals("Lunch"))
-                    response.sendRedirect("Menu.jsp");
-                else
-                    response.sendRedirect("Menu.jsp");
-            }
+           
+        }
         }
         catch(Exception ex){
             System.out.println("ERROR");
             ex.printStackTrace();
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -41,7 +41,7 @@
         
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="home.html">DeliciousFood</a>
+        <a class="navbar-brand">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -71,21 +71,22 @@
       <div class="mealname" style="padding-top:150px;margin-left: 35%;">
   
             <p> <label style="color:black;clear: both;text-align: left;">Food ID</label>
-                <input type="text" style="margin-left:38px;" value="<%= food.getFoodid() %>" name="foodid" readonly="readonly"></p>
+                <input type="text" style="margin-left:65px;" value="<%= food.getFoodid() %>" name="foodid" readonly="readonly"></p>
      
             <p> <label style="color:black;clear: both;text-align: left;">Food Name</label>
                <input type="text" style="margin-left:38px;" value="<%= food.getFoodname() %>" name="foodname" required="required"></p>
         
             <p><label style="color:black;clear: both;text-align: left;">Calories</label>
                <input type="number" style="margin-left:62px;" value="<%= food.getCalories() %>" name="calories" required="required"></p>      
-      </div>
+      
      <% }} %>
-  <div style="margin-right:550px; margin-bottom:150px;padding-top:100px">
+    <div style="margin-right:550px; margin-bottom:150px;padding-top:100px">
         <input type="submit" class="backorder" value="Edit Food">
-        <a href="FoodMenu.jsp"><button class="backorder">Back To Food Menu</button></a>
-  </div>
+        <a href="FoodMenu.jsp" class="backorder">Back To Food Menu</a>
+  
      </form>     
-         
+    
+      </div>
     <script src="js/jquery.min.js"></script>
     
 

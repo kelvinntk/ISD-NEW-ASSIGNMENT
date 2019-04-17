@@ -26,14 +26,15 @@
      <form class="login100-form" action="student_profileServlet?studid=<%= student.getStudid()%>" method="post">
           
         <h2 style="font-size:30px;">Your Profile</h2>
+        
         <div class="wrap-input100">
             <span class="label-input100">Your ID</span>
-            <input class="input100" type="text" name="id" value="<%=student.getStudid()%>" style="color:red;" disabled>
+            <input class="input100" type="text" name="id" value="<%=student.getStudid()%>" style="color:red;" readonly>
             <span class="focus-input100"></span>
         </div>
         <div class="wrap-input100">
-            <span class="label-input100">Full name</span>
-            <input class="input100" type="text" name="name" value="<%=student.getStudname()%>" >
+            <span class="label-input100">Your name</span>
+            <input class="input100" type="text" name="name" value="<%=student.getStudname()%>" readonly>
             <span class="focus-input100"></span>
         </div>
         <div class="wrap-input100">
@@ -41,10 +42,24 @@
             <input class="input100" type="email" name="email" value="<%=student.getStudemail()%>">
             <span class="focus-input100"></span>
         </div>
+            ${errorMsg} </br>
+        <div class="wrap-input100">
+
+            <span class="label-input100">Current Password</span>
+            <input class="input100" type="password" name="cPass" value="" placeholder="*********">
+            <span class="focus-input100"></span>
+            
+        </div>    
             
         <div class="wrap-input100">
             <span class="label-input100">New Password</span>
-            <input class="input100" type="password" name="newPass" >
+            <input class="input100" type="password" name="newPass" value="" placeholder="*********">
+            <span class="focus-input100"></span>
+        </div>
+            
+        <div class="wrap-input100">
+            <span class="label-input100">Confirm Password</span>
+            <input class="input100" type="password" name="newconPass" value="" placeholder="*********">
             <span class="focus-input100"></span>
         </div>
 
@@ -55,7 +70,7 @@
         </div>
             
         <div>
-            <button href="studenthome.jsp" class="button" style="color: red;">Back</button>
+            <a href="studenthome.jsp" class="button" style="color: red;">Back</a>
         </div>
         <div>
             <input class="button" type="Submit" value="Save">

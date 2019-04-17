@@ -73,7 +73,7 @@
 
     <div class="totals-item" style="float: right; clear: both;width: 100%;
     margin-right: 20%;">
-      <label style="float: left;clear: both;width: 79%;text-align: right;">Total deducted balance : 21 credit points</label>
+      <label style="float: left;clear: both;width: 79%;text-align: right;">Total deducted balance : 40 credit points</label>
       
     </div>
     

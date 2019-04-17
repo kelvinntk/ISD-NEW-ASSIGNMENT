@@ -7,6 +7,7 @@
 <%@page import="Enity.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
+<% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -50,10 +51,10 @@
     %>
       <script>alert(" *Successful add meal* ");</script>
     <%}}%>
- 
+ <form action="ManagerAddMeals" method="post">
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="">DeliciousFood</a>
+        <a class="navbar-brand">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -62,7 +63,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="managerhome.jsp" class="nav-link">Home</a></li>
             
-            <li class="nav-item"><a href="Menu.jsp" class="nav-link"><% if (request.getSession(false).getAttribute("manager") != null) { %> ${manager.managername} <% } else { %> Manager <% } %></a></li>
+            <li class="nav-item"><a class="nav-link"><% if (request.getSession(false).getAttribute("manager") != null) { %> ${manager.managername} <% } else { %> Manager <% } %></a></li>
         
           </ul>
         </div>
@@ -72,7 +73,7 @@
             <h1  style="padding-top:200px;text-align:center; visibility:hidden;"class="site-heading site-animate mb-3"><p style="color:#b8b8b8;">Add Meal</p></h1>
         </section>
         
-    <form action="ManagerAddMeals" method="post">
+    
      
         <div class="mealname" style="padding-top:150px;margin-left: 35%;">
          
@@ -111,7 +112,7 @@
         <div style="margin-right:550px; margin-bottom:150px;padding-top:100px">
       
         <input type="submit" value="Add Meal" class="backorder">
-        <a href="managerhome.jsp"><button class="backorder">Back To Home</button></a>
+        <a href="managerhome.jsp"class="backorder">Back To Home</a>
       
       
         </div>

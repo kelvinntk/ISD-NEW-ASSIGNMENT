@@ -54,7 +54,7 @@
         
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="">DeliciousFood</a>
+        <a class="navbar-brand">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -73,7 +73,7 @@
            
             <h1  style="padding-top:200px;text-align:center; visibility:hidden;"class="site-heading site-animate mb-3"><p style="color:#b8b8b8;">Add Food</p></h1>      
         </section>
-       ${errormsg}
+       
       <div class="mealname" style="padding-top:150px;margin-left: 35%;">
            
            <p> <label style="color:black;clear: both;text-align: left;">Food Name</label>
@@ -87,9 +87,11 @@
      
   <div style="margin-right:550px; margin-bottom:150px;padding-top:100px">
         <input type="submit" class="backorder" value="Add Food">
-        <a href="FoodMenu.jsp"><button class="backorder">Back To Food Menu</button></a>
-  </div>
-     </form>     
+        <a href="FoodMenu.jsp" class="backorder">Back To Food Menu</a>
+   </div>
+     </form>   
+            
+           
          <% } %>
     <script src="js/jquery.min.js"></script>
     

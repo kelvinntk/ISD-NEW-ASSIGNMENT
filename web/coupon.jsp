@@ -76,7 +76,7 @@
                   </div>
                     
                           <div class="buttongroup1" style="text-align: center;">
-                              <button href="staffhome.jsp" style="float:left;" class="backorder">Back</button>
+                              <a href="staffhome.jsp" style="float:left;" class="backorder">Back</a>
                           </div>
                 </form>
                 

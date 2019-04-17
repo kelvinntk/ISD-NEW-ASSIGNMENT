@@ -37,7 +37,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="../home.html">DelicousFood</a>
+        <a class="navbar-brand" href="">DelicousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -64,22 +64,16 @@
                 <p><a href="Menu.jsp" class="btn btn-outline-white btn-lg site-animate">Menu</a></p>
             </div>
             <div class="menuH">
-                View the menu and order your meal
+                Here can view the menu and order your meal
             </div>
             <div class="profile">  
             <p><a href="student_profile.jsp" class="btn btn-outline-white btn-lg site-animate">Profile</a></p>
             </div> 
             <div class="profileH">
-                Here you can view or edit your profile
-            </div>
-            <div class="intake">  
-            <p><a href="weekly.jsp" class="btn btn-outline-white btn-lg site-animate">Weekly Food Intake</a></p>
-            </div> 
-            <div class="intakeH">
-                Here can view your weekly calories.
+                Here you can view and edit your profile
             </div>
             <div class="history">
-            <p><a href="../History.jsp" class="btn btn-outline-white btn-lg site-animate">History</a></p>
+            <p><a href="History.jsp" class="btn btn-outline-white btn-lg site-animate">History</a></p>
             </div>
             <div class="historyH">
                 Here can view your transaction history

@@ -3,7 +3,9 @@
     Created on : Apr 8, 2019, 3:46:15 PM
     Author     : Kelvin Ng Tiong Kiat
 --%>
-
+<jsp:useBean id="student" scope="session" class="Enity.Student" />
+<%@page import="Enity.Student"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -34,7 +36,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
+        <a class="navbar-brand" href="">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -42,8 +44,8 @@
         <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a onclick="myFunction()" href="" class="nav-link">Credit point</a></li>
-            <li class="nav-item active"><a href="../login.html" class="nav-link">Student</a></li>
+            <li class="nav-item active"><a href="" class="nav-link">Credit point: <%=student.getCredpoint()%></a></li>
+            <li class="nav-item active"><a class="nav-link"><% if (request.getSession(false).getAttribute("student") != null) { %> ${student.studname} <% } else { %> Student <% } %></a></li>
           </ul>
         </div>
       </div>
@@ -82,7 +84,7 @@
               <div class="product-quantity">
                 2
               </div>
-              <div class="product-price">RM 12</div>
+              <div class="product-price">12</div>
               <div class="product-print">
                 <button class="print-coupon">
                     Print
@@ -94,16 +96,16 @@
              <div class="product-number">2</div>
               <div class="product-date">26 May</div>
               <div class="product-image">
-                <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
+                <img src="images/siumai.jpg">
               </div>
               <div class="product-meal">
-                <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
+                <div class="product-title">Siu Mai</div>
               </div>
 
               <div class="product-quantity">
                 1
               </div>
-              <div class="product-price">RM 10</div>
+              <div class="product-price">6</div>
               <div class="product-print">
                 <button class="print-coupon">
                     Print
@@ -114,7 +116,7 @@
           </div>
           <div class="buttongroup1">
             <form action="studenthome.html" method="post">
-              <button class="backorder">Back To Home</button>
+              <a href="studenthome.jsp" class="backorder">Back To Home</a>
             </form>
           </div>
         </div>

@@ -2,6 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Enity.*, java.util.*" %>
 <% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
+<% List<Food> foodList = (List<Food>) session.getAttribute("foodList");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,7 +33,7 @@
         %>
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand">DeliciousFood</a>
+        <a class="navbar-brand" href="">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -79,6 +80,8 @@
                     Meal meal = mealList.get(i);
                     if(meal.getMealcategory().equals("Breakfast")){
                  %>
+                     
+                 
                     <div class="col-md-6 site-animate">
                         
                     <div class="media menu-item">
@@ -87,6 +90,8 @@
                         <h5 class="mt-0"><%= meal.getMealname() %></h5>
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
+                        
+                    
                         <a href="EditMeal.jsp?mealid=<%= meal.getMealid()%>"><button class="button" style="margin-right:200px;float:right;">Edit</button></a>
                         
                       </div>
@@ -94,6 +99,7 @@
                         
                     </div>
                     <% }} %>
+                    
                 </div>
               </div>
                 <div class="tab-pane fade" id="pills-lunch" role="tabpanel" aria-labelledby="pills-lunch-tab">
@@ -101,6 +107,7 @@
                       <% for(int i=0; i<mealList.size(); i++){
                     Meal meal = mealList.get(i);
                     if(meal.getMealcategory().equals("Lunch")){
+                      
                  %> 
                     <div class="col-md-6 site-animate">
                  
@@ -109,13 +116,16 @@
                       <div class="media-body">
                         <h5 class="mt-0"><%= meal.getMealname() %></h5>
                         <p><%= meal.getMealdesc() %></p>
+                       
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
+                        
                          <a href="EditMeal.jsp?mealid=<%= meal.getMealid()%>"><button class="button" style="margin-right:200px;float:right;">Edit</button></a>
                       </div>
                     </div>
                          
                   </div>
                      <% }} %>  
+                    
           </div>
                 </div>
         </div>

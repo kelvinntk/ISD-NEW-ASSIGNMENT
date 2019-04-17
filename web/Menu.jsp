@@ -38,7 +38,7 @@
         %>
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
+        <a class="navbar-brand">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -102,11 +102,14 @@
                         <h5 class="mt-0"><%= meal.getMealname() %></h5>
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
+                        <form action="StudentOrderMeal?id=<%= student.getStudid()%>&mealid=<%= meal.getMealid()%>&mealcategory=<%= meal.getMealcategory()%>" method="POST">
                         <label>Starting Date</label>
+                        
                         <input type="date" name="startdate" required="required">
                         <label>End Date</label>
                         <input type="date" name="enddate" required="required">
-                        <a href="StudentOrderMeal"><button class="button">Order Now</button></a>
+                        <input type="submit" class="button" value="Order Now">
+                        </form>
                       </div>
                     </div>
                          
@@ -133,11 +136,13 @@
                         <h5 class="mt-0"><%= meal.getMealname() %></h5>
                         <p><%= meal.getMealdesc() %></p>
                         <h6 class="text-primary menu-price"><%= meal.getMealprice() + " credit points"%></h6>
-                        <label>Starting Date</label>
-                        <input type="date" name="startdate" required="required">
-                        <label>End Date</label>
-                        <input type="date" name="enddate" required="required">
-                        <form action="StudentOrderMeal"><button class="button" >Order Now</button></form>
+                        <form action="StudentOrderMeal?id=<%= student.getStudid()%>&mealid=<%= meal.getMealid()%>&mealcategory=<%= meal.getMealcategory()%>" method="POST">
+                            <label>Starting Date</label>
+                            <input type="date" name="startdate" required="required">
+                            <label>End Date</label>
+                            <input type="date" name="enddate" required="required">
+                            <input type="submit" class="button" value="Order Now">
+                        </form>
                       </div>
                     </div>
                         

@@ -4,7 +4,9 @@
     Author     : User
 --%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="Enity.*"%>
+<%@page import="Enity.*, java.util.*"%>
+<% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
+<% List<OrderCart> orderList = (List<OrderCart>) session.getAttribute("orderList");%>
   <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html>
@@ -30,7 +32,14 @@
     </head>
 
     <body>
-        
+        <%
+            // get session attributes
+            Staff staff = (Staff) session.getAttribute("staff");
+            // redirect if not logged in
+            if (session.getAttribute("staff") == null) {response.sendRedirect("login.jsp");}
+            // start of else
+            else { // containing the following statements in if-else prevents NullPointerException when logged out
+        %>
       <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
         <div class="container">
           <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
@@ -74,10 +83,10 @@
                                 int count=0;
                                 Meal meal = mealList.get(j);
                                     for(int i=0 ;  i<orderList.size() ; i++){
-                                        Orders orders = orderList.get(i);
+                                        OrderCart orders = orderList.get(i);
                                         
                                         if(orders.getOrderstatus().equals("Paid")){
-                                            if(meal.getMealid().equals(orders.getOrderMealList().get(0).getMealMealid().getMealid())){
+                                            if(meal.getMealid().equals(orders.getOrdermealList().get(0).getMealMealid().getMealid())){
                                                 if(checkdate!=null){
                                                     if(checkdate.equals(df.format(orders.getOrderdate()))){
                                                         count++;
@@ -85,14 +94,19 @@
                                                 }    
                                             }  
                                         }
-                                    }     
+                                    }
                         %>
+                        
                         <tr>
+                            
+                              
                             <td><%= meal.getMealname()%></td>
                             <td><%= meal.getMealcategory()%></td>
-                            <td><%= count%></td>
+                            
                         </tr>
                         <%}%>
+                    
+                        
                       </table>
             </form>
                 
@@ -110,7 +124,7 @@
           </div>
         </div>
       </div>
-
+<% } %>
       <script src="js/jquery.min.js"></script>
       <script src="js/jquery.waypoints.min.js"></script>
       <script src="js/owl.carousel.min.js"></script>

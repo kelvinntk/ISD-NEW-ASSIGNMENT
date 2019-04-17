@@ -48,26 +48,26 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center site-vh-100">
           <div class="col-md-12">
-            <h1 class="site-heading site-animate mb-3">Hello ${manager.managername}</h1>
+            <h1 class="site-heading site-animate mb-3">Hello Manager ${manager.managername}</h1>
             <h2 class="h5 site-subheading mb-5 site-animate">Welcome to DeliciousFood</h2> 
             
                 <div class="addfood">
                     <p><a href="AddFood.jsp" class="btn btn-outline-white btn-lg site-animate">Add Food</a></p>    
                 </div>
                 <div class="addfoodH">
-                    Add food details.
+                    Add more food details.
                 </div>
                 <div class="addmeal">
                     <p><a href="AddMeal.jsp" class="btn btn-outline-white btn-lg site-animate">Add Meal</a></p>   
                 </div> 
                 <div class="addmealH">
-                    Add meal details.
+                    Add more meal details.
                 </div>    
             <div class="report">  
             <p><a href="report.jsp" class="btn btn-outline-white btn-lg site-animate">Report</a></p>
             </div> 
             <div class="reportH">
-                Here can view your report.
+                Here can view monthly report.
             </div>
             <div class="mealmenu">
                 <p><a href="managermenu.jsp" class="btn btn-outline-white btn-lg site-animate">Meal Menu</a></p>

@@ -54,29 +54,31 @@
           <div class="col-md-12">
             <h1 class="site-heading site-animate mb-3">Hello ${staff.staffname}</h1>
             <h2 class="h5 site-subheading mb-5 site-animate">Button below will lead you to the process</h2>  
+                ${alertMsg}
                 <div class="profile">
                     <p><a href="staffprofile.jsp" class="btn btn-outline-white btn-lg site-animate">Profile</a></p>
                 </div>
                 <div class="profileH">
-                    Here you can view or edit your profile
+                    Here you can view and edit your profile
                 </div>  
                 <div class="order">
                     <p><a href="orderList.jsp" class="btn btn-outline-white btn-lg site-animate">Order Lists</a></p>
                 </div>
                 <div class="orderH">
                     The total pre-order that made from Student
+                    (UNDER MAINTENANCE)
                 </div>
                 <div class="coupon">
-                    <p><a href="coupon.jsp" class="btn btn-outline-white btn-lg site-animate">Coupon</a></p>
+                    <p><a href="coupon.jsp" class="btn btn-outline-white btn-lg site-animate">Claim Food</a></p>
                 </div>
                 <div class="couponH">
-                    Insert coupon code to redeem their food
+                    Here you can Insert coupon code to redeem student food
                 </div>
                 <div class="topup">
                     <p><a href="topUp.jsp" class="btn btn-outline-white btn-lg site-animate">Top up</a></p>
                 </div>
                 <div class="topupH">
-                    Insert student credit point
+                    Here you can top up student's credit point
                 </div>
                     <p><a href="logoutServlet" class="btn btn-outline-white btn-lg site-animate">Log out</a></p>
           </div>

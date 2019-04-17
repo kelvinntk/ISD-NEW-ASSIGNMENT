@@ -62,17 +62,17 @@
                 
                 <form action="topupServlet" method="post">
                     ${errorMsg}
-                    
+                    ${successMsg}
                    <div class="row">
                     <div class="col-md-12 form-group">
                       <label for="m_fname">Student ID</label>
-                      <input type="text" name="id" class="form-control" id="m_fname">
+                      <input type="text" name="id" class="form-control" id="m_fname" placeholder="STUD00x">
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col-md-12 form-group">
-                      <label for="m_fname">Insert your value in (RM)</label>
+                      <label for="m_fname">Insert your total amount in (RM)</label>
                       <input type="text" name="credit" class="form-control" id="m_fname">
                     </div>
                   </div>
@@ -84,7 +84,7 @@
                   </div>
                     
                           <div class="buttongroup1" style="text-align: center;">
-                              <button href="staffhome.jsp" style="float:left;" class="backorder">Back</button>
+                              <a href="staffhome.jsp" style="float:left;" class="backorder">Back</a>
                           </div>
                 </form>
                 

@@ -27,7 +27,7 @@
         <h2 style="font-size:30px;">Your Profile</h2>
         <div class="wrap-input100">
             <span class="label-input100">Your ID</span>
-            <input class="input100" type="text" name="id" value="<%=staff.getStaffid()%>" style="color:red;" disabled>
+            <input class="input100" type="text" name="id" value="<%=staff.getStaffid()%>" style="color:red;" readonly>
             <span class="focus-input100"></span>
         </div>
         <div class="wrap-input100">
@@ -40,14 +40,25 @@
             <input class="input100" type="email" name="email" value="<%=staff.getStaffemail()%>">
             <span class="focus-input100"></span>
         </div>
+        ${errorMsg}    
+        <div class="wrap-input100">
+            <span class="label-input100">Current Password</span>
+            <input class="input100" type="password" name="cPass" value="" placeholder="***********">
+            <span class="focus-input100"></span>
+        </div> 
         <div class="wrap-input100">
             <span class="label-input100">New Password</span>
-            <input class="input100" type="password" name="pass" value="<%=staff.getStaffpass()%>">
+            <input class="input100" type="password" name="newPass" value="" placeholder="***********">
+            <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100">
+            <span class="label-input100">Confirm Password</span>
+            <input class="input100" type="password" name="newconPass" value="" placeholder="***********">
             <span class="focus-input100"></span>
         </div>
         
         <div>
-            <button href="staffhome.jsp" class="button" style="color: red;">Back</button>
+            <a href="staffhome.jsp" class="button" style="color: red;">Back</a>
         </div>    
         
         <div>

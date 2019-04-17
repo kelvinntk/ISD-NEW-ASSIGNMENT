@@ -57,12 +57,12 @@ public class topupServlet extends HttpServlet {
                     utx.commit();
 
                    // response.sendRedirect("topUp.jsp?status=success");
-                request.setAttribute("successMsg", "<span style=\"color: #20D845\">Sucessful add credit point</span>");
+                request.setAttribute("successMsg", "<span style=\"color: #20D845\">Sucessful add credit point!!</span>");
                 request.getRequestDispatcher("topUp.jsp").forward(request, response);
                 return;
                 }
             } else {
-                request.setAttribute("errorMsg", "<span style=\"color: #ea5454\">ERROR: Student not exists</span>");
+                request.setAttribute("errorMsg", "<span style=\"color: #ea5454\">ERROR: Invalid ID or student not exists</span>");
                 request.getRequestDispatcher("topUp.jsp").forward(request, response);
                 return;
             }

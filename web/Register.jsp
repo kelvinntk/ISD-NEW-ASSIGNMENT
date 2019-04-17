@@ -3,7 +3,7 @@
     Created on : Apr 8, 2019, 4:04:25 PM
     Author     : Kelvin Ng Tiong Kiat
 --%>
-
+<%@page import="Enity.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +41,7 @@
             
           <form class="login100-form validate-form" action="registerServlet" method="post">
             <span class="login100-form-title p-b-59">
-	Sign Up
+            Sign Up
             </span>
             ${errorMsg}
             <div class="wrap-input100 validate-input" data-validate="User ID is required">

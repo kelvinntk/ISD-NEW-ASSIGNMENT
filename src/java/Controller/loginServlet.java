@@ -70,6 +70,18 @@ public class loginServlet extends HttpServlet {
                 if (staff.getStaffpass().equals(pass)) {
                     HttpSession session  = request.getSession(true);
                     session.setAttribute("staff", staff);
+                    
+                    Query query = em.createNamedQuery("Food.findAll");
+                    List<Food> foodList = query.getResultList();
+                    session.setAttribute("foodList", foodList);
+                                        
+                    query = em.createNamedQuery("Meal.findAll");
+                    List<Meal> mealList = query.getResultList();
+                    session.setAttribute("mealList", mealList);
+                    
+                    query = em.createNamedQuery("OrderCart.findAll");
+                    List<OrderCart> orderList = query.getResultList();
+                    session.setAttribute("orderList", orderList);
                     request.getRequestDispatcher("staffhome.jsp").forward(request, response);
                 }
                 else {

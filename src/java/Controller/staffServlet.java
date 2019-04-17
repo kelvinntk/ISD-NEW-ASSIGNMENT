@@ -39,28 +39,48 @@ public class staffServlet extends HttpServlet {
             HttpSession session = request.getSession(false);
             Staff staff = (Staff) session.getAttribute("staff");
             
+            
+            String id = request.getParameter("id");
             String newName = request.getParameter("name");
             String newEmail = request.getParameter("email");
-            String newPass = request.getParameter("pass");
-        
+            String cPass = request.getParameter("cPass");
+            String newPass = request.getParameter("newPass");
+            String newconPass = request.getParameter("newconPass");
+            boolean isSame = false;
+            
         try {
             Query staffquery = em.createNamedQuery("Staff.findAll");
             List <Staff> staffList = staffquery.getResultList();
-            
-            staff.setStaffname(newName);
-            staff.setStaffemail(newEmail);
-            staff.setStaffpass(newPass);
-            
-            utx.begin();
-            em.merge(staff);
-            utx.commit();
-            
-            staffquery = em.createNamedQuery("Staff.findAll");
-            staffList = staffquery.getResultList();
-            session.setAttribute("staff", staff);
-            
-            response.sendRedirect("staffhome.jsp");
-            
+            staff = em.find(Staff.class,id);
+            if(staff != null){
+                for(int i=0; i<staffList.size(); i++){
+                    staff = staffList.get(i);
+                    if (staff.getStaffpass().equals(cPass)){
+                        isSame = true;
+                        if((newPass).equals(newconPass)){
+                            staff.setStaffname(newName);
+                            staff.setStaffemail(newEmail);
+                            staff.setStaffpass(newPass);
+
+                            utx.begin();
+                            em.merge(staff);
+                            utx.commit();
+
+                            staffquery = em.createNamedQuery("Staff.findAll");
+                            staffList = staffquery.getResultList();
+                            session.setAttribute("staff", staff);
+
+                            request.setAttribute("alertMsg", "<span style=\"color: #20D845\">Sucessfully edit your profile</span>");
+                            request.getRequestDispatcher("staffhome.jsp").forward(request, response);   
+                            return;
+                        }
+                    } else {
+                        request.setAttribute("errorMsg", "<span style=\"color:red\">Password not match</span>");
+                        request.getRequestDispatcher("staffprofile.jsp").forward(request, response);
+                        return;
+                    }
+                }
+            }
         } catch (ConstraintViolationException e){
             System.out.println(e.getConstraintViolations());
         } catch(Exception ex){

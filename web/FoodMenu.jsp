@@ -42,7 +42,7 @@
         %>
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
+        <a class="navbar-brand">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -66,12 +66,12 @@
            
               <div class="tab-content text-left">
               <div class="tab-pane fade show active" id="pills-breakfast" role="tabpanel" aria-labelledby="pills-breakfast-tab">
-                <% for(int i=0; i<foodList.size(); i++){
+                
+                  <div class="row">
+                   <% for(int i=0; i<foodList.size(); i++){
                        Food food = foodList.get(i);
                        
                    %>
-                  <div class="row">
-                   
                   <div class="col-md-6 site-animate">
                    
                       <div class="media menu-item">
@@ -86,10 +86,10 @@
                     </div>
                 
                   </div>
-                
+                  <%}%>
                 
                 </div>
-              <%}%>  
+              
               </div>
                 </div>
 

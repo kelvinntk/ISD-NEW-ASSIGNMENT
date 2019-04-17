@@ -36,7 +36,7 @@
  
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="">DeliciousFood</a>
+        <a class="navbar-brand">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -93,7 +93,7 @@
     <div class="product-quantity">
       <input type="number" value="2" min="1">
     </div>
-    <div class="product-price">45.99</div>
+    <div class="product-price">8</div>
     <div class="product-removal">
       <button class="remove-product" >
         Remove
@@ -104,17 +104,17 @@
 
   <div class="product">
     <div class="product-image">
-      <img src="">
+      <img src="liushabao.png">
     </div>
     <div class="product-details">
-      <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
-      <p class="product-description">Who doesn't like lamb and rice? We've all hit the halal cart at 3am while quasi-blackout after a night of binge drinking in Manhattan. Now it's your dog's turn!</p>
+      <div class="product-title">Liu Sha Bao</div>
+      <p class="product-description">Creamy Pau with mustard sauce</p>
     </div>
     
     <div class="product-quantity">
       <input style="width:40px;"type="number" value="1" min="1">
     </div>
-    <div class="product-price">45.99</div>
+    <div class="product-price">8</div>
     <div class="product-removal">
       <button class="remove-product">
         Remove

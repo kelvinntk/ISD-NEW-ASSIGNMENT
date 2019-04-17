@@ -40,6 +40,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
             <li class="nav-item active"><a  class="nav-link">Guest</a></li>
+            <li class="nav-item active"><a href="#section-about" class="nav-link">About</a></li>
           </ul>
         </div>
       </div>
@@ -67,13 +68,13 @@
           <div class="col-md-5 site-animate mb-5">
             <h4 class="site-sub-title">About Us</h4>
             <h2 class="site-primary-title display-4">Welcome</h2>
-            <p>Far far away, behind the word mountains, far from the countries Malaysia, there live the blind texts.</p>
+            <p style="color: black;">What is this?</p><p> This is a Canteen Management System develop by us and for you. We hope that you will enjoy this experience than we do.</p>
 
-            <p class="mb-4">DelicousFood is embarking on this initiative, which aims to bring cheer to residents of homes while bringing Malaysians together through joy & laughter. </p>
+            <p class="mb-4" style="color: black;">Who are we?</p><p class="mb-4"> We are DelicousFood canteen. DelicousFood is embarking on this initiative, which aims to bring cheer to residents of homes while bringing Malaysians together through joy & laughter. </p>
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-6 site-animate img" data-animate-effect="fadeInRight">
-            <img src="images/about_img_1.jpg" alt="Free Template by colorlib.com" class="img-fluid">
+            <img src="images/aboutDIA2.jpeg" alt="Free Template by colorlib.com" class="img-fluid">
           </div>
         </div>
       </div>

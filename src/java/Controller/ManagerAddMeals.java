@@ -79,10 +79,9 @@ public class ManagerAddMeals extends HttpServlet {
             session.setAttribute("mealList", mealList);
             
         } catch(Exception ex) {
-            System.out.println("ERROR");
-            ex.printStackTrace();
+          
         }
-         request.getRequestDispatcher("AddMeal.jsp?status=success" + mealname).forward(request,response); 
+         request.getRequestDispatcher("AddMeal.jsp?status=success").forward(request,response); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
