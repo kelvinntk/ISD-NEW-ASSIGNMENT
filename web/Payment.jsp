@@ -1,5 +1,5 @@
 <%-- 
-    Document   : cart
+    Document   : payment
     Created on : Apr 2, 2019, 2:05:32 PM
     Author     : User
 --%>
@@ -36,7 +36,7 @@
  
         <nav class="navbar navbar-expand-lg navbar-dark site_navbar bg-dark site-navbar-light" id="site-navbar">
       <div class="container">
-        <a class="navbar-brand" href="index_1.html">DeliciousFood</a>
+        <a class="navbar-brand">DeliciousFood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-nav" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
@@ -49,7 +49,7 @@
 
        <div class="collapse navbar-collapse" id="site-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="studenthome.jsp" class="nav-link">Home</a></li>
             <li class="nav-item active"><a href="" class="nav-link">Credit point: <%=student.getCredpoint()%></a></li>
             <li class="nav-item active"><a href="" class="nav-link"><% if (request.getSession(false).getAttribute("student") != null) { %> ${student.studname} <% } else { %> Student <% } %></a></li>
           </ul>
@@ -82,10 +82,13 @@
         <form action="paymentServlet?total=<%=total%>&student=<%=student.getStudid()%>" method="post">    
             <label style="clear: both;width: 100%;text-align: center;"><font size="6"><b>Total deducted balance will be: <%= total%> Credit point</b></font></label> 
             <label style="clear: both;width: 100%;text-align: center;"><font size="3"><b>Proceed to payment? Are you sure?</b></font></label> 
-           <div class="buttongroup1" style="margin-bottom:50px;padding-top:100px;">  
-               <input type="submit" style="float:none; margin-top:10px;margin-left:51%;"class="backorder" value="Confirm Payment?">
-                <a href="OrderCart.jsp"style="float:none; margin-top:10px;margin-left:51%;"class="backorder">Back</a>      
-          </div>
+            <label style="clear: both;width: 100%;text-align: center;"><font size="3"><b>${errorMsg}</b></font></label>
+            
+           <div class="buttongroup1" style="margin-right: 42%; margin-bottom: 20%;">  
+               <input type="submit" class="backorder" value="Confirm">
+                <a href="OrderCart.jsp"class="backorder">Back</a>      
+            </div>
+            
         </form>
     </div>
   

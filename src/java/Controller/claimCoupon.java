@@ -88,7 +88,7 @@ public class claimCoupon extends HttpServlet {
             orderquery = em.createNamedQuery("OrderCart.findAll");
             orderList = orderquery.getResultList();
             session.setAttribute("orderList", orderList);
-            request.setAttribute("alertMsg", "<span style=\"color: green\">Food successfully claim</span>");
+            request.setAttribute("alertMsg", "<span style=\"color: #7DE969 \">Food successfully claim</span>");
             request.getRequestDispatcher("coupon.jsp").forward(request, response);
             return; 
             

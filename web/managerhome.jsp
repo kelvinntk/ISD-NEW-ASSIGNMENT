@@ -1,9 +1,14 @@
+<%-- 
+    Document   : Manager home
+    Created on : Apr 8, 2019, 3:54:46 PM
+    Author     : User
+--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Enity.*, java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Manager Home page</title>
+    <title>Manager's Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     

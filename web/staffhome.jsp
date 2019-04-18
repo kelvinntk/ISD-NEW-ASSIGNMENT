@@ -1,14 +1,14 @@
 <%-- 
-    Document   : staffhome
+    Document   : Staff's home
     Created on : Apr 8, 2019, 3:53:42 PM
-    Author     : Kelvin Ng Tiong Kiat
+    Author     : User
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Staff Home page</title>
+    <title>Staff's Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     

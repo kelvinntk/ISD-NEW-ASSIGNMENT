@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Enity.*, java.util.*" %>
 <% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>
-
+<% List<Ordermeal> orderMealList = (List<Ordermeal>) session.getAttribute("orderMealList");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,7 +68,7 @@
             <ul class="list-unstyled multi-steps">
               <li class="is-active">Choose Meal</li>
               <li>Your Order</li>
-              <li>Order Confirmation</li>
+  
               <li>Payment</li>
             </ul>
           </div>
@@ -147,9 +147,10 @@
                     </div>
                         
                   </div>
+                            <a href="OrderCart.jsp?id=<%= student.getStudid()%>&mealid=<%= meal.getMealid()%>&mealcategory=<%= meal.getMealcategory()%><button style="margin-left:45%;" class="button">Order Cart</button></a>
                          <% }} %>
                     </div>
-                 <a href="OrderCart.jsp"><button style="margin-left:45%;" class="button">Order Cart</button></a>
+                 
               </div>
                    
             </div>

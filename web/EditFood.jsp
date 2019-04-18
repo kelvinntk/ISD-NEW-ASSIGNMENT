@@ -1,5 +1,5 @@
 <%-- 
-    Document   : cart
+    Document   : Edit food
     Created on : Apr 2, 2019, 2:05:32 PM
     Author     : User
 --%>
@@ -70,7 +70,7 @@
     
       <div class="mealname" style="padding-top:150px;margin-left: 35%;">
   
-            <p> <label style="color:black;clear: both;text-align: left;">Food ID</label>
+            <p> <label style="color:red;clear: both;text-align: left;">Food ID</label>
                 <input type="text" style="margin-left:65px;" value="<%= food.getFoodid() %>" name="foodid" readonly="readonly"></p>
      
             <p> <label style="color:black;clear: both;text-align: left;">Food Name</label>

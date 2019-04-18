@@ -1,5 +1,5 @@
 <%-- 
-    Document   : topup
+    Document   : Recovery password
     Created on : Apr 2, 2019, 2:05:32 PM
     Author     : User
 --%>
@@ -10,7 +10,7 @@
 
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>Top up</title>
+      <title>Recovery password</title>
       <link rel="stylesheet" href="css/ordercart.css">
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">

@@ -130,10 +130,7 @@
                total += credpoints;
         %>
       <%}%>
-      <%
-         
-      %>
-        
+      
       <div class="totals-value" style="text-align: right;margin-right: 40px;"><%= total %></div>
     </div>
     

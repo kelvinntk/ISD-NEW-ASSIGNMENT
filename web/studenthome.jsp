@@ -1,7 +1,7 @@
 <%-- 
-    Document   : studenthome
+    Document   : Student's home
     Created on : Apr 8, 2019, 3:52:55 PM
-    Author     : Kelvin Ng Tiong Kiat
+    Author     : User
 --%>
 
 <jsp:useBean id="student" scope="session" class="Enity.Student" />
@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Student Home page</title>
+    <title>Student's Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     

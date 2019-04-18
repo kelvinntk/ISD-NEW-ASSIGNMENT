@@ -1,14 +1,14 @@
 <%-- 
     Document   : home
     Created on : Apr 8, 2019, 4:01:20 PM
-    Author     : Kelvin Ng Tiong Kiat
+    Author     : user
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ISD Assignment</title>
+    <title>Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     

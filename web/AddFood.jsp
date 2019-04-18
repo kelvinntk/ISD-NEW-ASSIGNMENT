@@ -1,7 +1,7 @@
 <%-- 
-    Document   : cart
+    Document   : AddFood
     Created on : Apr 2, 2019, 2:05:32 PM
-    Author     : User
+    Author     : Us
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

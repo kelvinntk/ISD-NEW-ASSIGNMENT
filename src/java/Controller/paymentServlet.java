@@ -41,6 +41,7 @@ public class paymentServlet extends HttpServlet {
                 int total = Integer.parseInt(totalStr);
                 // Get the latest student detailss
                 if (student != null) {
+                    if(student.getCredpoint() >= total){
                         // Charge the student
                         HttpSession session  = request.getSession(true);
                         session.setAttribute("student", student);
@@ -53,9 +54,14 @@ public class paymentServlet extends HttpServlet {
                        em.merge(student);
                        utx.commit();
 
-                       request.setAttribute("alertMsg", "<span style=\"color: green\">Thank you for your purchase!</span>");
+                       request.setAttribute("alertMsg", "<span style=\"color: #7DE969  \"><b>Thank you for your purchase!</b></span>");
                        request.getRequestDispatcher("studenthome.jsp").forward(request, response);
                        return; 
+                    } else{
+                       request.setAttribute("errorMsg", "<span style=\"color:red\"><b>Insufficient credit point! Please top up!</b></span>");
+                       request.getRequestDispatcher("Payment.jsp").forward(request, response);
+                       return;
+                    }
                 }
                     
         } catch (Exception ex){

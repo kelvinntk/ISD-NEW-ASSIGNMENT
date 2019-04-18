@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : Apr 8, 2019, 3:54:46 PM
-    Author     : Kelvin Ng Tiong Kiat
+    Author     : User
 --%>
 <jsp:useBean id="student" scope="session" class="Enity.Student" />
 <jsp:useBean id="staff" scope="session" class="Enity.Staff" />
@@ -10,7 +10,7 @@
 <html lang="en">
 
   <head>
-    <title>Login page</title>
+    <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

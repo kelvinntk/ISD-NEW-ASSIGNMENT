@@ -97,23 +97,13 @@
         <%}%>   
       </table>
           
-             <form action="../CheckMeal" method="POST">
-                <input type="date" id="mealsetlistdate" name="checkmeal">
-                <input type="submit" value="Check" id="mealsetlistbtn">
-                    
-                
-            </form>
                 
                 
             <div class="buttongroup1">
-              <form action="OrderConfirmation.jsp" method="post">
-                <button class="checkout">Proceed Order</button>
-              </form>
-
-              <button class="update">Update</button>
-              <form action="Menu.jsp" method="post">
-                <button class="backorder">Back To Order</button>
-              </form>
+             
+             
+                <a href="staffhome.jsp"class="backorder"style="margin-right:36%;">Back</a>
+             
             </div>
          
 

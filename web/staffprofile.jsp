@@ -1,14 +1,14 @@
 <%-- 
-    Document   : profile
+    Document   : Staff profile
     Created on : Apr 8, 2019, 3:49:16 PM
-    Author     : Kelvin Ng Tiong Kiat
+    Author     : User
 --%>
 <%@page import="Enity.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Staff Profile</title>
+    <title>Staff's Profile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="css/profilecss.css">

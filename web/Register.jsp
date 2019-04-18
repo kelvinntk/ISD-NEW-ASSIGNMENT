@@ -1,7 +1,7 @@
 <%-- 
     Document   : Register
     Created on : Apr 8, 2019, 4:04:25 PM
-    Author     : Kelvin Ng Tiong Kiat
+    Author     : User
 --%>
 <%@page import="Enity.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <html lang="en">
 
   <head>
-    <title>Register page</title>
+    <title>Register</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />

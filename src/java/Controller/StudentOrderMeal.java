@@ -105,8 +105,12 @@ public class StudentOrderMeal extends HttpServlet {
                         if(orders.getOrdermealList().get(0).getMealMealid().getMealcategory().equals("Breakfast")){
                             response.sendRedirect("Menu.jsp?" + orders.getOrderdate());
                         }
-                        else
+                        else if(orders.getOrdermealList().get(0).getMealMealid().getMealcategory().equals("Lunch")){
+                            response.sendRedirect("Menu.jsp" + orders.getOrderdate());
+                        }
+                        else{
                             response.sendRedirect("Menu.jsp");
+                        }
                     }
                 }
                 

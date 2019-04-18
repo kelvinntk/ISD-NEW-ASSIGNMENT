@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : Manager menu
+    Created on : Apr 8, 2019, 3:54:46 PM
+    Author     : User
+--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Enity.*, java.util.*" %>
 <% List<Meal> mealList = (List<Meal>) session.getAttribute("mealList");%>

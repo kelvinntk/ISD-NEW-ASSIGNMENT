@@ -60,6 +60,10 @@ public class loginServlet extends HttpServlet {
                     List<Ordermeal> orderMealList = query.getResultList();
                     session.setAttribute("orderMealList", orderMealList);
                     
+                    query = em.createNamedQuery("OrderCart.findAll");
+                    List<OrderCart> orderList = query.getResultList();
+                    session.setAttribute("orderList", orderList);
+                    
                     request.getRequestDispatcher("studenthome.jsp").forward(request, response);
                 }
                 // if doesnt exist, go back to login page
