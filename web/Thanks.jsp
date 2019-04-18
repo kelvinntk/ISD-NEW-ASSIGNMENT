@@ -70,7 +70,7 @@
   <ul class="list-unstyled multi-steps">
     <li>Choose Meal</li>
     <li>Your Order</li>
-
+    <li>Order Confirmation</li>
     <li>Payment</li>
   </ul>
 </div>

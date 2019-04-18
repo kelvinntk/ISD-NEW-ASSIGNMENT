@@ -77,7 +77,7 @@
                 <ul class="list-unstyled multi-steps">
                   <li>Choose Meal</li>
                   <li class="is-active">Your Order</li>
-                  <li>Order Confirmation</li>
+                  
                   <li>Payment</li>
                 </ul>
           </div>
@@ -87,7 +87,7 @@
     <label class="product-image">Image</label>
     <label class="product-details">Product</label>
     <label class="product-price">Credit Points</label>
-    <label class="product-removal">Remove</label>
+  
     
   </div>
     <%
@@ -107,34 +107,41 @@
    
     <div class="product-price"><%= orderMealList.get(i).getMealMealid().getMealprice() %></div>
     <div class="product-removal">
-      <button class="remove-product" >
-        Remove
-      </button>
+        <form action="removeOrderServlet" method="post">
+            
+            <input type="hidden" value="<%= orderMealList.get(i).getMealMealid().getMealid()%>" name="ordermealid"/>
+        </form>
     </div>
  
   </div>
 <% } %>
 
-  <div class="totals">
+<div class="totals" style="margin-left: 17%">
     <div class="totals-item" style="float: right; clear: both;width: 100%;
     margin-bottom: 10px;margin-right: 20%;">
-      <label style="float: left;clear: both;width: 79%;text-align: right;">Total</label>
-      <%
-    for (int i = 0; i < orderMealList.size(); i++) {
-        int credpoints=0, total=0;
-         credpoints = orderMealList.get(i).getMealMealid().getMealprice();
-         total = credpoints + total;
-  %>
-      <div class="totals-value" style="text-align: right;margin-right: 40px;"><%= total %></div>
+      <label style="float: left;margin-right:100px;clear: both;width: 79%;text-align: right;">Total:</label>
+         <%
+             int total = 0;
+             %>
+         <%
+          for (int i = 0; i < orderMealList.size(); i++) {
+              int credpoints=0;
+               credpoints = orderMealList.get(i).getMealMealid().getMealprice();
+               total += credpoints;
+        %>
       <%}%>
+      <%
+         
+      %>
+        
+      <div class="totals-value" style="text-align: right;margin-right: 40px;"><%= total %></div>
     </div>
     
     </div>
   </div>
   <div style="margin-top:50px;float:right; margin-right:300px;">
    
-      <a href="OrderConfirmation.jsp"> <button class="checkout">Proceed Order</button></a>
-      
+      <a href="Payment.jsp?total=<%=total%>"> <button class="checkout">Proceed To payment</button></a>
       <a href="Menu.jsp"> <button class="backorder">Back To Order</button></a>
     
 </div>

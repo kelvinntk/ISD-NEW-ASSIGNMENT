@@ -4,9 +4,17 @@
         <servlet-name>StudentOrderMeal</servlet-name>
         <servlet-class>Controller.StudentOrderMeal</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>removeOrderServlet</servlet-name>
+        <servlet-class>Controller.removeOrderServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StudentOrderMeal</servlet-name>
         <url-pattern>/StudentOrderMeal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>removeOrderServlet</servlet-name>
+        <url-pattern>/removeOrderServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
