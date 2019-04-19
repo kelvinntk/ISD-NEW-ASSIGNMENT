@@ -1,0 +1,100 @@
+CREATE TABLE food (
+    foodid     VARCHAR(20) NOT NULL,
+    foodname   VARCHAR(50),
+    calories   INTEGER
+);
+
+ALTER TABLE food ADD CONSTRAINT food_pk PRIMARY KEY ( foodid );
+
+CREATE TABLE manager (
+    managerid      VARCHAR(20) NOT NULL,
+    managername    VARCHAR(50),
+    manageremail   VARCHAR(50),
+    managerpass    VARCHAR(50)
+);
+
+ALTER TABLE manager ADD CONSTRAINT manager_pk PRIMARY KEY ( managerid );
+
+CREATE TABLE meal (
+    mealid         VARCHAR(20) NOT NULL,
+    mealname       VARCHAR(50),
+    mealdesc       VARCHAR(300),
+    mealprice      INTEGER,
+    mealimage      VARCHAR(50),
+    mealcategory   VARCHAR(50)
+);
+
+ALTER TABLE meal ADD CONSTRAINT meal_pk PRIMARY KEY ( mealid );
+
+CREATE TABLE meal_food (
+    meal_foodid   VARCHAR(20) NOT NULL,
+    meal_mealid   VARCHAR(20) NOT NULL,
+    food_foodid   VARCHAR(20) NOT NULL
+);
+
+ALTER TABLE meal_food
+    ADD CONSTRAINT meal_food_pk PRIMARY KEY ( meal_foodid
+                                             );
+
+CREATE TABLE order_cart (
+    orderid          VARCHAR(20) NOT NULL,
+    orderdate        DATE,
+    orderstatus      VARCHAR(50),
+    couponcode       VARCHAR(20),
+    student_studid   VARCHAR(20) NOT NULL
+);
+
+ALTER TABLE order_cart ADD CONSTRAINT order_cart_pk PRIMARY KEY ( orderid
+);
+
+CREATE TABLE ordermeal (
+    ordermealid                 VARCHAR(20) NOT NULL,
+    order_cart_orderid          VARCHAR(20) NOT NULL,
+    meal_mealid                 VARCHAR(20) NOT NULL
+);
+
+ALTER TABLE ordermeal
+    ADD CONSTRAINT ordermeal_pk PRIMARY KEY ( ordermealid
+                                              
+);
+
+CREATE TABLE staff (
+    staffid      VARCHAR(20) NOT NULL,
+    staffname    VARCHAR(50),
+    staffemail   VARCHAR(50),
+    staffpass    VARCHAR(50)
+);
+
+ALTER TABLE staff ADD CONSTRAINT staff_pk PRIMARY KEY ( staffid );
+
+CREATE TABLE student (
+    studid         VARCHAR(20) NOT NULL,
+    studname       VARCHAR(50),
+    studemail      VARCHAR(50),
+    studpassword   VARCHAR(50),
+    studphone      VARCHAR(12),
+    credpoint      INTEGER
+);
+
+ALTER TABLE student ADD CONSTRAINT student_pk PRIMARY KEY ( studid );
+
+ALTER TABLE meal_food
+    ADD CONSTRAINT meal_food_food_fk FOREIGN KEY ( food_foodid )
+        REFERENCES food ( foodid );
+
+ALTER TABLE meal_food
+    ADD CONSTRAINT meal_food_meal_fk FOREIGN KEY ( meal_mealid )
+        REFERENCES meal ( mealid );
+
+ALTER TABLE order_cart
+    ADD CONSTRAINT order_cart_student_fk FOREIGN KEY ( student_studid )
+        REFERENCES student ( studid );
+
+ALTER TABLE ordermeal
+    ADD CONSTRAINT ordermeal_meal_fk FOREIGN KEY ( meal_mealid )
+        REFERENCES meal ( mealid );
+
+ALTER TABLE ordermeal
+    ADD CONSTRAINT ordermeal_order_cart_fk FOREIGN KEY ( order_cart_orderid)
+        REFERENCES order_cart ( orderid
+                                );
