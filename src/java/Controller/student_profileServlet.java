@@ -48,7 +48,7 @@ public class student_profileServlet extends HttpServlet {
             student = em.find(Student.class,id);
             if(student!= null){
                 for(int i=0; i<studList.size(); i++){
-                    student = studList.get(i);
+                    
                     if (student.getStudpassword().equals(cPass)){
                         isSame = true;
                         if((newPass).equals(newconPass)){
