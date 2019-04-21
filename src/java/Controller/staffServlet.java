@@ -54,7 +54,7 @@ public class staffServlet extends HttpServlet {
             staff = em.find(Staff.class,id);
             if(staff != null){
                 for(int i=0; i<staffList.size(); i++){
-                    staff = staffList.get(i);
+                    
                     if (staff.getStaffpass().equals(cPass)){
                         isSame = true;
                         if((newPass).equals(newconPass)){
